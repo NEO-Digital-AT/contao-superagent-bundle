@@ -1,0 +1,37 @@
+# Terms of the SuperAgent per edition, shown on "Access keys and licences".
+# The German text (neo_superagent_terms.de.yaml) is binding; a changed passage
+# needs a new version in Neo\SuperAgentBundle\Licence\Terms::PASSAGES.
+all:
+    title: "Vse izdaje"
+    text: |
+        Odgovori: Odgovore ustvari jezikovni model drugega ponudnika. Lahko so napačni, nepopolni ali neprimerni. Kot upravljavec ste odgovorni za nastavitve, znanje in besedila pomočnika ter za njegovo uporabo na spletnem mestu.
+
+        Varnostna pravila: Način varstva podatkov in pravilo proti zdravstvenim nasvetom zmanjšata tveganje, ne izključita pa ga. Ni prepoznan vsak osebni podatek, jezikovni model pa lahko pravilo prezre.
+
+        Varstvo podatkov: Za politiko zasebnosti, privolitev obiskovalcev in pogodbo o obdelavi podatkov s storitvijo UI ste odgovorni vi. Priložena besedila (PRIVACY.md, privzeta besedila) so predloge, ne pravni nasvet.
+
+        Stroški: Stroške pri storitvi UI in pri drugih izbranih storitvah nosite vi. Omejitev zahtev zmanjša tveganje zlorabe, ne prepreči pa je.
+
+        Odgovornost: Proizvajalec te razširitve ne prevzema odgovornosti za vsebine in stroške po teh točkah. Kaj natančno velja in katere izjeme obstajajo, določajo licenčni pogoji.
+basic:
+    title: "Izdaja Basic"
+    text: |
+        Iskanje po spletu: Vsebine drugih spletnih mest, ki jih pomočnik bere, so lahko napačne ali zastarele. Proizvajalec te razširitve jih ne preverja.
+
+        Posredovanje: Ni zagotovljeno, da posredovana vprašanja prispejo po e-pošti. Preverite pošiljanje e-pošte in svoj poštni predal.
+plus:
+    title: "Izdaja Plus"
+    text: |
+        Strežniki MCP: Prek strežnika MCP lahko pomočnik kliče funkcije drugega sistema, tudi takšne, ki tam spreminjajo ali brišejo podatke ali prikazujejo podatke strank. Odobrite samo orodja z majhnim tveganjem ali orodja, ki jih omejuje skill, in pomočnika preizkusite, preden ga omogočite obiskovalcem. Priložene predloge tvegana orodja privzeto blokirajo. Preostalo tveganje kljub temu ostane, saj se jezikovni model lahko zmoti ali ga zavedejo spretno oblikovana sporočila.
+
+        Skilli iz drugih virov: Proizvajalec te razširitve preveri samo njihovo zgradbo, ne vsebine.
+
+        Viri znanja: Vse, kar je v izbranih mapah ali na izbranih straneh, na primer v OneDrive ali Notionu, lahko klepet pokaže kateremu koli obiskovalcu. Izberite samo vsebine, ki smejo biti javne.
+
+        Odgovornost: Proizvajalec te razširitve ne prevzema odgovornosti za škodo, ki jo povzročijo odobrena orodja, skilli in viri znanja. Kaj natančno velja in katere izjeme obstajajo, določajo licenčni pogoji.
+pro:
+    title: "Izdaja Pro"
+    text: |
+        Dejanja s posledicami: Prek odobrenih orodij lahko pomočnik izvaja dejanja, na primer ustvarja rezervacije, pripravlja povezave za plačilo ali zapisuje vnose v CRM. Preverite rezultate. Proizvajalec te razširitve ne prevzema odgovornosti za takšna dejanja in njihove posledice; kaj natančno velja in katere izjeme obstajajo, določajo licenčni pogoji.
+
+        Glasovni vnos: Prepis lahko izgovorjeno zapiše napačno; obiskovalec besedilo pred pošiljanjem preveri. Posnetek gre nefiltriran do storitve za prepis. To navedite v svoji politiki zasebnosti.

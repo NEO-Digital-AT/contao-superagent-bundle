@@ -1,0 +1,37 @@
+# Terms of the SuperAgent per edition, shown on "Access keys and licences".
+# The German text (neo_superagent_terms.de.yaml) is binding; a changed passage
+# needs a new version in Neo\SuperAgentBundle\Licence\Terms::PASSAGES.
+all:
+    title: "Minden kiadás"
+    text: |
+        Válaszok: A válaszokat egy másik szolgáltató nyelvi modellje állítja elő. Lehetnek hibásak, hiányosak vagy nem megfelelők. Üzemeltetőként Ön felel az asszisztens beállításaiért, tudásáért és szövegeiért, valamint a weboldalon való használatáért.
+
+        Biztonsági szabályok: Az adatvédelmi mód és az orvosi tanácsadás elleni szabály csökkenti a kockázatot, de nem zárja ki. Nem minden személyes adatot ismer fel a rendszer, és egy nyelvi modell figyelmen kívül hagyhat egy szabályt.
+
+        Adatvédelem: Az adatvédelmi tájékoztatóért, a látogatók hozzájárulásáért és az MI-szolgáltatással kötött adatfeldolgozási szerződésért Ön felel. A mellékelt szövegek (PRIVACY.md, alapértelmezett szövegek) minták, nem jogi tanácsadás.
+
+        Költségek: Az MI-szolgáltatásnál és más választott szolgáltatásoknál felmerülő költségeket Ön viseli. A kérések korlátozása csökkenti a visszaélés kockázatát, de nem akadályozza meg.
+
+        Felelősség: E bővítmény gyártója nem vállal felelősséget az ezekben a pontokban említett tartalmakért és költségekért. Hogy pontosan mi érvényes, és milyen kivételek vannak, azt a licencfeltételek tartalmazzák.
+basic:
+    title: "Basic kiadás"
+    text: |
+        Internetes keresés: Más weboldalak tartalma, amelyet az asszisztens elolvas, hibás vagy elavult lehet. E bővítmény gyártója ezt nem ellenőrzi.
+
+        Továbbítás: Nem garantált, hogy a továbbított kérések e-mailben megérkeznek. Ellenőrizze levélküldését és postafiókját.
+plus:
+    title: "Plus kiadás"
+    text: |
+        MCP-szerverek: Egy MCP-szerveren keresztül az asszisztens egy másik rendszer funkcióit hívhatja meg, olyanokat is, amelyek ott adatokat módosítanak vagy törölnek, illetve ügyféladatokat jelenítenek meg. Csak alacsony kockázatú vagy skill által korlátozott eszközöket engedélyezzen, és tesztelje az asszisztenst, mielőtt a látogatók számára láthatóvá teszi. A mellékelt sablonok alapértelmezés szerint letiltják a kockázatos eszközöket. Maradványkockázat ennek ellenére marad, mert egy nyelvi modell tévedhet, vagy ügyesen megfogalmazott üzenetek félrevezethetik.
+
+        Skillek más forrásokból: E bővítmény gyártója csak a felépítésüket ellenőrzi, a tartalmukat nem.
+
+        Tudásforrások: Mindent, ami a kiválasztott mappákban vagy oldalakon található, például a OneDrive-on vagy a Notionben, a csevegés bármely látogatónak megmutathat. Csak olyan tartalmat válasszon, amely nyilvános lehet.
+
+        Felelősség: E bővítmény gyártója nem vállal felelősséget az engedélyezett eszközök, skillek és tudásforrások által okozott károkért. Hogy pontosan mi érvényes, és milyen kivételek vannak, azt a licencfeltételek tartalmazzák.
+pro:
+    title: "Pro kiadás"
+    text: |
+        Következményekkel járó műveletek: Engedélyezett eszközökön keresztül az asszisztens műveleteket hajthat végre, például foglalásokat hozhat létre, fizetési linkeket generálhat vagy bejegyzéseket írhat egy CRM-be. Ellenőrizze az eredményeket. E bővítmény gyártója nem vállal felelősséget az ilyen műveletekért és következményeikért; hogy pontosan mi érvényes, és milyen kivételek vannak, azt a licencfeltételek tartalmazzák.
+
+        Hangbevitel: Az átírás hibásan adhatja vissza az elhangzottakat; a látogató küldés előtt ellenőrzi a szöveget. A felvétel szűretlenül jut el az átírási szolgáltatáshoz. Ezt tüntesse fel adatvédelmi tájékoztatójában.

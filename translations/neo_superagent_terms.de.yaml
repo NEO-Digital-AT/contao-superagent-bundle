@@ -1,0 +1,37 @@
+# Terms of the SuperAgent per edition, shown on "Access keys and licences".
+# The German text (neo_superagent_terms.de.yaml) is binding; a changed passage
+# needs a new version in Neo\SuperAgentBundle\Licence\Terms::PASSAGES.
+all:
+    title: "Für alle Stufen"
+    text: |
+        Antworten: Die Antworten erzeugt ein Sprachmodell eines anderen Anbieters. Sie können falsch, unvollständig oder unpassend sein. Für die Einstellungen, das Wissen und die Texte des Assistenten und für seinen Einsatz auf der Website sind Sie als Betreiber verantwortlich.
+
+        Sicherheitsregeln: Der Datenschutzmodus und die Regel gegen medizinische Auskünfte senken das Risiko, schließen es aber nicht aus. Nicht jede persönliche Angabe wird erkannt, und ein Sprachmodell kann eine Regel übergehen.
+
+        Datenschutz: Für die Datenschutzerklärung, die Einwilligung der Besucher und den Vertrag zur Auftragsverarbeitung mit dem KI-Dienst sind Sie verantwortlich. Die mitgelieferten Texte (PRIVACY.md, Standardtexte) sind Vorlagen, keine Rechtsberatung.
+
+        Kosten: Die Kosten beim KI-Dienst und bei anderen gewählten Diensten tragen Sie. Die Begrenzung der Anfragen senkt das Risiko von Missbrauch, verhindert ihn aber nicht.
+
+        Haftung: Für Inhalte und Kosten nach diesen Punkten übernimmt der Hersteller dieser Erweiterung keine Haftung. Was genau gilt und welche Ausnahmen es gibt, steht in den Lizenzbedingungen.
+basic:
+    title: "Stufe Basic"
+    text: |
+        Internetsuche: Inhalte fremder Websites, die der Assistent liest, können falsch oder veraltet sein. Der Hersteller dieser Erweiterung prüft sie nicht.
+
+        Weiterleitung: Dass weitergeleitete Anfragen per E-Mail ankommen, ist nicht garantiert. Prüfen Sie Ihren Mailversand und Ihr Postfach.
+plus:
+    title: "Stufe Plus"
+    text: |
+        MCP-Server: Über einen MCP-Server kann der Assistent Funktionen eines anderen Systems aufrufen, auch solche, die dort Daten ändern, löschen oder Kundendaten anzeigen. Geben Sie nur Werkzeuge frei, die wenig Risiko bergen oder die ein Skill eingrenzt, und testen Sie den Assistenten, bevor Sie ihn für Besucher freischalten. Die mitgelieferten Vorlagen sperren riskante Werkzeuge ab Werk. Ein Restrisiko bleibt trotzdem, denn ein Sprachmodell kann sich irren oder durch geschickt formulierte Nachrichten getäuscht werden.
+
+        Skills aus fremden Quellen: Der Hersteller dieser Erweiterung prüft nur ihren Aufbau, nicht ihren Inhalt.
+
+        Wissensquellen: Alles, was in den gewählten Ordnern oder Seiten liegt, etwa auf OneDrive oder in Notion, kann der Chat jedem Besucher zeigen. Wählen Sie nur Inhalte, die öffentlich sein dürfen.
+
+        Haftung: Für Schäden durch freigegebene Werkzeuge, Skills und Wissensquellen übernimmt der Hersteller dieser Erweiterung keine Haftung. Was genau gilt und welche Ausnahmen es gibt, steht in den Lizenzbedingungen.
+pro:
+    title: "Stufe Pro"
+    text: |
+        Aktionen mit Folgen: Über freigegebene Werkzeuge kann der Assistent Aktionen ausführen, etwa Buchungen anlegen, Zahlungslinks erzeugen oder Einträge in einem CRM schreiben. Prüfen Sie die Ergebnisse. Für solche Aktionen und ihre Folgen übernimmt der Hersteller dieser Erweiterung keine Haftung; was genau gilt und welche Ausnahmen es gibt, steht in den Lizenzbedingungen.
+
+        Spracheingabe: Die Umschrift kann Gesagtes falsch wiedergeben; der Besucher prüft den Text vor dem Senden. Die Aufnahme geht ungefiltert an den Umschrift-Dienst. Nennen Sie das in Ihrer Datenschutzerklärung.

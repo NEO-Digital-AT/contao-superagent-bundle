@@ -1,0 +1,333 @@
+/* =========================================================================
+   SuperAgent chat widget: base styles.
+   Everything a website usually adapts is a --nsa-* custom property on .nsa:
+   colours, fonts, radii, sizes, position, shadows and icons. Override them in
+   your own stylesheet; the README lists every variable with its default.
+   Defaults: light, brand-free, Arial; text ≥ 4.5:1, controls ≥ 3:1.
+   Message nodes (.nsa-msg, .nsa-bubble, .nsa-chip, .nsa-nav, .nsa-file) come from neo-agent.js.
+   ========================================================================= */
+.nsa {
+  /* colours */
+  --nsa-fab-bg: #1f2328; --nsa-fab-ink: #ffffff;
+  --nsa-panel-bg: #ffffff; --nsa-panel-border: #d1d9e0;
+  --nsa-head-bg: #1f2328; --nsa-head-ink: #ffffff; --nsa-head-sub: #d1d9e0;
+  --nsa-avatar-bg: rgba(255, 255, 255, 0.12); --nsa-avatar-border: rgba(255, 255, 255, 0.35); --nsa-avatar-ink: #ffffff;
+  --nsa-fg: #1f2328; --nsa-text: #1f2328; --nsa-muted: #59636e; --nsa-faint: #59636e;
+  --nsa-ai-bg: #f6f8fa; --nsa-ai-ink: #1f2328;
+  --nsa-icon-bg: #f6f8fa; --nsa-icon-border: #d1d9e0; --nsa-icon-ink: #1f2328;
+  --nsa-bot-bg: #f6f8fa; --nsa-bot-ink: #1f2328; --nsa-bot-border: #d1d9e0;
+  --nsa-user-bg: #1f2328; --nsa-user-ink: #ffffff;
+  --nsa-dot: #818b98;
+  --nsa-chip-bg: #ffffff; --nsa-chip-hover-bg: #f6f8fa; --nsa-chip-border: #818b98; --nsa-chip-ink: #1f2328;
+  --nsa-line: #d1d9e0;
+  --nsa-field-bg: #ffffff; --nsa-field-border: #818b98; --nsa-field-ink: #1f2328; --nsa-placeholder: #6e7781;
+  --nsa-rec-bg: #b42318; --nsa-rec-ink: #ffffff; --nsa-error: #b42318; --nsa-wave: var(--nsa-rec-bg);
+  --nsa-accent: #1f2328; --nsa-accent-ink: #ffffff; --nsa-ring: rgba(9, 105, 218, 0.3); --nsa-hover: #0969da; --nsa-ok: #1a7f37;
+  /* formatted replies: tables, code (translucent, so they suit light and dark replies) */
+  --nsa-table-border: var(--nsa-bot-border); --nsa-table-head-bg: rgba(110, 119, 129, 0.14); --nsa-code-bg: rgba(110, 119, 129, 0.14);
+  /* fonts */
+  --nsa-font-body: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --nsa-font-display: var(--nsa-font-body);
+  --nsa-font-size: 15px;
+  --nsa-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* radii (--nsa-radius-xl and --nsa-radius-md of earlier versions still work) */
+  --nsa-radius-panel: var(--nsa-radius-xl, 20px);
+  --nsa-radius-bubble: 16px;
+  --nsa-radius-input: var(--nsa-radius-md, 12px);
+  --nsa-radius-button: 999px;
+  --nsa-radius-chip: 999px;
+  --nsa-radius-fab: 50%;
+  --nsa-radius-avatar: 50%;
+  /* size and position */
+  --nsa-fab-size: 60px;
+  --nsa-panel-width: 380px;
+  --nsa-log-height: min(46vh, 380px);
+  --nsa-right: clamp(16px, 3vw, 28px);
+  --nsa-left: auto;
+  --nsa-bottom: clamp(16px, 3vw, 28px);
+  --nsa-z: 290;
+  --nsa-gap: 10px;
+  /* shadows */
+  --nsa-fab-shadow: 0 10px 24px rgba(31, 35, 40, 0.25);
+  --nsa-panel-shadow: 0 20px 50px rgba(31, 35, 40, 0.25);
+  --nsa-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  /* icons: any image address, e.g. url(/files/icons/send.svg); drawn in the colour of the element */
+  --nsa-icon-chat: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v11H8l-4 4V5z'/%3E%3Cpath d='M8 9.5h8M8 12.5h5'/%3E%3C/svg%3E");
+  --nsa-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E");
+  --nsa-icon-send: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 19V5M5 12l7-7 7 7'/%3E%3C/svg%3E");
+  --nsa-icon-bot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='8' width='16' height='11' rx='3'/%3E%3Cpath d='M12 3v5M8.5 13h.01M15.5 13h.01M9 16.5h6'/%3E%3C/svg%3E");
+  --nsa-icon-mail: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='M3 7l9 6 9-6'/%3E%3C/svg%3E");
+  --nsa-icon-new: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z'/%3E%3C/svg%3E");
+  --nsa-icon-consent: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M12 3a9 9 0 1 0 9 9 3.5 3.5 0 0 1-3.8-3.7A3.5 3.5 0 0 1 13.4 4.5 9 9 0 0 0 12 3z'/%3E%3Cpath d='M8.5 10h.01M10 15.5h.01M15 14h.01'/%3E%3C/svg%3E");
+  --nsa-icon-settings: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z'/%3E%3C/svg%3E");
+  --nsa-icon-mic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='3' width='6' height='11' rx='3'/%3E%3Cpath d='M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6'/%3E%3C/svg%3E");
+  --nsa-icon-shield: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l7 3v6c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6z'/%3E%3Cpath d='M12 8v4.5M12 16h.01'/%3E%3C/svg%3E");
+  --nsa-icon-download: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4v11M7 10l5 5 5-5M5 20h14'/%3E%3C/svg%3E");
+  --nsa-icon-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+}
+.nsa.nsa--left { --nsa-left: clamp(16px, 3vw, 28px); --nsa-right: auto; }
+
+/* Specificity: controls are prefixed with .nsa so generic theme rules (input, textarea, button) do not repaint them. */
+.nsa { position: fixed; right: var(--nsa-right); left: var(--nsa-left); bottom: calc(var(--nsa-bottom) + var(--neo-dock-y, 0px)); z-index: var(--nsa-z); font-family: var(--nsa-font-body); font-size: var(--nsa-font-size); line-height: 1.45; color: var(--nsa-text); }
+.nsa *, .nsa *::before, .nsa *::after { box-sizing: border-box; }
+
+/* ---- Icons (mask: the image gives the shape, the element its colour) ---- */
+.nsa-i { display: inline-block; flex: none; width: 1em; height: 1em; background-color: currentColor; -webkit-mask: var(--nsa-icon) center / contain no-repeat; mask: var(--nsa-icon) center / contain no-repeat; }
+/* High contrast of an accessibility panel (html[data-a11y-contrast]) gives every element a white
+   background; the mask icons keep the text colour instead, or they disappear. */
+html[data-a11y-contrast] .nsa-i,
+html[data-a11y-contrast] .nsa .nsa-nav::after, html[data-a11y-contrast] .nsa .nsa-file::before { background-color: currentColor !important; }
+.nsa-i--chat { --nsa-icon: var(--nsa-icon-chat); }
+.nsa-i--close { --nsa-icon: var(--nsa-icon-close); }
+.nsa-i--send { --nsa-icon: var(--nsa-icon-send); }
+.nsa-i--bot { --nsa-icon: var(--nsa-icon-bot); }
+.nsa-i--mail { --nsa-icon: var(--nsa-icon-mail); }
+.nsa-i--new { --nsa-icon: var(--nsa-icon-new); }
+.nsa-i--consent { --nsa-icon: var(--nsa-icon-consent); }
+.nsa-i--settings { --nsa-icon: var(--nsa-icon-settings); }
+.nsa-i--arrow { --nsa-icon: var(--nsa-icon-arrow); }
+.nsa-i--mic { --nsa-icon: var(--nsa-icon-mic); }
+.nsa-i--shield { --nsa-icon: var(--nsa-icon-shield); }
+
+/* ---- Launcher ---- */
+.nsa .nsa-fab { position: relative; width: var(--nsa-fab-size); height: var(--nsa-fab-size); border-radius: var(--nsa-radius-fab); border: none; cursor: pointer; background: var(--nsa-fab-bg); color: var(--nsa-fab-ink); box-shadow: var(--nsa-fab-shadow); display: inline-flex; align-items: center; justify-content: center; font-size: calc(var(--nsa-fab-size) * 0.45); transition: transform 0.25s var(--nsa-ease-out); }
+.nsa .nsa-fab:hover { transform: scale(1.06); }
+.nsa .nsa-fab:focus-visible { outline: 3px solid var(--nsa-ring); outline-offset: 3px; }
+.nsa-fab .nsa-fab__open { display: inline-block; }
+.nsa-fab .nsa-fab__close { display: none; }
+.nsa-fab.is-open .nsa-fab__open { display: none; }
+.nsa-fab.is-open .nsa-fab__close { display: inline-block; }
+
+/* ---- Panel ---- */
+.nsa-panel { position: absolute; right: 0; bottom: calc(var(--nsa-fab-size) + 16px); width: min(var(--nsa-panel-width), calc(100vw - 32px)); background: var(--nsa-panel-bg); border: 1px solid var(--nsa-panel-border); border-radius: var(--nsa-radius-panel); box-shadow: var(--nsa-panel-shadow); overflow: hidden; display: flex; flex-direction: column; }
+.nsa--left .nsa-panel { right: auto; left: 0; }
+/* Buttons at the edge of the screen of NEO Basic: --neo-dock-x/-y move the widget away from the edges
+   (stacked with the buttons of other extensions, or onto the settings button of the menu, where the
+   chat button is hidden and the window opens right above the settings button). */
+.nsa[data-neo-dock-place] { right: calc(var(--nsa-right) + var(--neo-dock-x, 0px)); }
+.nsa.nsa--left[data-neo-dock-place] { right: auto; left: calc(var(--nsa-left) + var(--neo-dock-x, 0px)); }
+.nsa[data-neo-dock-place="menu"] .nsa-panel { bottom: var(--neo-dock-menu-gap, 12px); }
+.nsa-panel[hidden] { display: none; }
+
+/* ---- Head ---- */
+.nsa-head { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--nsa-head-bg); color: var(--nsa-head-ink); }
+.nsa-head__avatar { width: 38px; height: 38px; flex: none; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; border-radius: var(--nsa-radius-avatar); background: var(--nsa-avatar-bg); border: 1px solid var(--nsa-avatar-border); color: var(--nsa-avatar-ink); font-size: 1.25rem; }
+.nsa-head__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.nsa-head__text { flex: 1; min-width: 0; }
+.nsa-head__text strong { display: block; font-family: var(--nsa-font-display); font-weight: 700; color: var(--nsa-head-ink); font-size: 1.05em; line-height: 1.2; }
+.nsa-head__text span { display: block; font-size: 0.8em; color: var(--nsa-head-sub); margin-top: 2px; }
+.nsa .nsa-head__new, .nsa .nsa-head__close { background: none; border: none; color: var(--nsa-head-ink); cursor: pointer; display: inline-flex; padding: 6px; border-radius: 8px; font-size: 1.15em; }
+.nsa .nsa-head__new { opacity: 0.85; font-size: 1em; }
+.nsa .nsa-head__new:hover { opacity: 1; }
+.nsa .nsa-head__new:focus-visible, .nsa .nsa-head__close:focus-visible { outline: 2px solid var(--nsa-head-ink); outline-offset: 0; }
+
+/* AI notice below the head (required, EU AI Act Art. 50) */
+.nsa-ai { margin: 0; padding: 7px 16px; background: var(--nsa-ai-bg); color: var(--nsa-ai-ink); border-bottom: 1px solid var(--nsa-line); font-size: 0.8em; line-height: 1.4; }
+
+/* ---- Consent gate ---- */
+.nsa-gate { padding: 26px 22px 24px; text-align: center; }
+.nsa-gate[hidden] { display: none; }
+/* Parts of the gate hidden by the script (the consent request while the chat is not available). */
+.nsa .nsa-gate [hidden] { display: none; }
+.nsa .nsa-gate p.nsa-gate__unavailable { margin: 0; }
+.nsa .nsa-gate p.nsa-gate__unavailable:focus { outline: none; }
+.nsa-gate__icon { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--nsa-icon-bg); border: 1px solid var(--nsa-icon-border); color: var(--nsa-icon-ink); margin-bottom: 14px; font-size: 1.6rem; }
+.nsa-gate h3 { font-family: var(--nsa-font-display); font-weight: 700; color: var(--nsa-fg); font-size: 1.1em; margin: 0 0 8px; }
+.nsa-gate p { color: var(--nsa-text); font-size: 0.93em; line-height: 1.55; margin: 0 0 18px; }
+
+/* ---- Conversation ---- */
+.nsa-body[hidden] { display: none; }
+/* Notice before personal data goes to the AI service: takes the place of the conversation (same
+   height), scrolls when the text is longer than the window; the icon keeps its round shape. */
+.nsa-pii { max-height: var(--nsa-log-height); overflow-y: auto; padding: 22px 22px 18px; }
+.nsa-pii .nsa-gate__icon { flex: none; }
+.nsa-pii p { margin-bottom: 16px; }
+.nsa-pii__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.nsa-log { max-height: var(--nsa-log-height); overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: var(--nsa-gap); }
+/* The row takes the width of the log, so that the 84 % of a bubble refer to it and not to the bubble itself. */
+.nsa-msg { display: flex; align-items: flex-end; gap: 8px; max-width: 100%; align-self: stretch; }
+.nsa-msg--user { justify-content: flex-end; }
+.nsa-msg--bot { justify-content: flex-start; }
+.nsa-msg__av { display: var(--nsa-msg-avatar, none); width: 28px; height: 28px; flex: none; align-items: center; justify-content: center; overflow: hidden; border-radius: var(--nsa-radius-avatar); background: var(--nsa-bot-bg); border: 1px solid var(--nsa-bot-border); color: var(--nsa-bot-ink); font-size: 0.95rem; }
+.nsa-msg__av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.nsa-bubble { max-width: 84%; padding: 10px 14px; border-radius: var(--nsa-radius-bubble); font-size: 0.95em; line-height: 1.5; white-space: pre-line; overflow-wrap: anywhere; }
+.nsa-msg--bot .nsa-bubble { background: var(--nsa-bot-bg); color: var(--nsa-bot-ink); border: 1px solid var(--nsa-bot-border); border-bottom-left-radius: 4px; }
+.nsa-msg--user .nsa-bubble { background: var(--nsa-user-bg); color: var(--nsa-user-ink); border-bottom-right-radius: 4px; }
+.nsa-msg--rejected .nsa-bubble { opacity: 0.6; }
+/* Formatted replies (Markdown from neo-agent.js): paragraphs, lists, tables, the button of a link alone in its line. */
+.nsa-bubble.nsa-md { white-space: normal; }
+.nsa-bubble--table { max-width: 100%; }
+.nsa-md > :first-child { margin-top: 0; }
+.nsa-md > :last-child { margin-bottom: 0; }
+.nsa-md p, .nsa-md ul, .nsa-md ol, .nsa-md blockquote, .nsa-md pre, .nsa-md .nsa-md-table { margin: 0 0 0.6em; }
+.nsa-md ul, .nsa-md ol { padding-left: 1.3em; }
+.nsa-md li + li { margin-top: 0.15em; }
+.nsa-md .nsa-md-h { font-weight: 700; }
+.nsa-md strong { font-weight: 700; }
+.nsa-md code { padding: 0 0.25em; border-radius: 4px; background: var(--nsa-code-bg); font-family: ui-monospace, Consolas, monospace; font-size: 0.92em; }
+.nsa-md pre { padding: 8px 10px; border-radius: 6px; background: var(--nsa-code-bg); overflow-x: auto; white-space: pre; }
+.nsa-md pre code { padding: 0; background: none; }
+.nsa-md blockquote { padding-left: 10px; border-left: 3px solid var(--nsa-table-border); }
+.nsa-md hr { margin: 0.6em 0; border: 0; border-top: 1px solid var(--nsa-table-border); }
+.nsa-md a { color: inherit; text-decoration: underline; }
+.nsa-md-table { max-width: 100%; }
+.nsa-md th, .nsa-md td { overflow-wrap: normal; word-break: normal; }
+/* Too wide for the bubble: row by row in one box, each cell as "Header: value". */
+.nsa-md .nsa-md-table--stacked { padding: 6px 10px; border: 1px solid var(--nsa-table-border); border-radius: 8px; }
+.nsa-md .nsa-md-table--stacked table, .nsa-md .nsa-md-table--stacked tbody, .nsa-md .nsa-md-table--stacked tr, .nsa-md .nsa-md-table--stacked td { display: block; }
+.nsa-md .nsa-md-table--stacked thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.nsa-md .nsa-md-table--stacked tr + tr { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--nsa-table-border); }
+.nsa-md .nsa-md-table--stacked td { padding: 2px 0; border: 0; overflow-wrap: anywhere; text-align: left; }
+.nsa-md .nsa-md-table--stacked td::before { content: attr(data-label) ": "; font-weight: 700; }
+.nsa-md table { border-collapse: collapse; font-size: 0.95em; line-height: 1.35; }
+.nsa-md th, .nsa-md td { padding: 5px 8px; border: 1px solid var(--nsa-table-border); text-align: left; vertical-align: top; }
+.nsa-md th { background: var(--nsa-table-head-bg); font-weight: 700; }
+.nsa-md .nsa-md-center { text-align: center; }
+.nsa-md .nsa-md-right { text-align: right; }
+.nsa-md .nsa-md-cta { margin: 0.4em 0 0.6em; }
+.nsa-md a.nsa-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 18px; border-radius: 999px; background: var(--nsa-accent); color: var(--nsa-accent-ink); font-weight: 700; text-decoration: none; }
+.nsa-md a.nsa-cta:hover { background: var(--nsa-hover); color: var(--nsa-accent-ink); }
+.nsa-md a.nsa-cta:focus-visible { outline: 3px solid var(--nsa-ring); outline-offset: 2px; }
+.nsa-msg-notice { align-self: stretch; margin: 0; padding: 6px 4px; color: var(--nsa-muted); font-size: 0.82em; line-height: 1.4; text-align: center; }
+.nsa-bubble a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.nsa-bubble a:focus-visible { outline: 2px solid var(--nsa-accent); outline-offset: 2px; border-radius: 2px; }
+
+/* typing dots */
+.nsa-typing { display: inline-flex; gap: 4px; align-items: center; }
+.nsa-typing .nsa-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--nsa-dot); animation: nsaBlink 1.2s infinite ease-in-out; }
+.nsa-typing .nsa-dot:nth-child(2) { animation-delay: 0.2s; }
+.nsa-typing .nsa-dot:nth-child(3) { animation-delay: 0.4s; }
+/* what the assistant is doing (thinking, looking for a page …) */
+.nsa-typing__text { margin-left: 6px; font-size: 0.9em; color: var(--nsa-muted); overflow-wrap: normal; }
+.nsa-typing__text:empty { display: none; }
+@keyframes nsaBlink { 0%, 60%, 100% { opacity: 0.25; } 30% { opacity: 1; } }
+
+/* suggestions and the button that opens a page */
+.nsa-suggest { display: flex; flex-wrap: wrap; gap: 8px; }
+.nsa .nsa-chip, .nsa .nsa-nav, .nsa .nsa-file { display: inline-flex; align-items: center; gap: 6px; background: var(--nsa-chip-bg); border: 1px solid var(--nsa-chip-border); color: var(--nsa-chip-ink); border-radius: var(--nsa-radius-chip); padding: 7px 13px; font-family: var(--nsa-font-body); font-size: 0.85em; line-height: 1.3; cursor: pointer; text-decoration: none; }
+.nsa .nsa-chip:hover, .nsa .nsa-nav:hover, .nsa a.nsa-file:hover { background: var(--nsa-chip-hover-bg); }
+.nsa .nsa-chip:focus-visible, .nsa .nsa-nav:focus-visible, .nsa .nsa-file:focus-visible { outline: 2px solid var(--nsa-accent); outline-offset: 2px; }
+.nsa .nsa-nav, .nsa .nsa-file { align-self: flex-start; }
+/* Download of a file a tool delivered; once downloaded it is plain text. */
+.nsa .nsa-file::before { content: ""; display: inline-block; flex: none; width: 1em; height: 1em; background-color: currentColor; -webkit-mask: var(--nsa-icon-download) center / contain no-repeat; mask: var(--nsa-icon-download) center / contain no-repeat; }
+.nsa .nsa-file--used { cursor: default; color: var(--nsa-muted); border-style: dashed; }
+.nsa .nsa-nav::after { content: ""; display: inline-block; width: 1em; height: 1em; background-color: currentColor; -webkit-mask: var(--nsa-icon-arrow) center / contain no-repeat; mask: var(--nsa-icon-arrow) center / contain no-repeat; }
+
+/* ---- Input ---- */
+.nsa-inputbar { display: flex; gap: 8px; align-items: flex-end; padding: 12px 14px; border-top: 1px solid var(--nsa-line); background: var(--nsa-panel-bg); }
+.nsa-inputbar[hidden] { display: none; }
+.nsa .nsa-input { flex: 1; min-width: 0; background: var(--nsa-field-bg); border: 1.5px solid var(--nsa-field-border); border-radius: var(--nsa-radius-input); padding: 10px 14px; color: var(--nsa-field-ink); outline: none; font: inherit; font-size: 0.95em; resize: none; max-height: 96px; line-height: 1.4; }
+.nsa .nsa-input:focus { border-color: var(--nsa-accent); box-shadow: 0 0 0 3px var(--nsa-ring); }
+.nsa .nsa-input:disabled { opacity: 0.6; }
+.nsa-input::placeholder { color: var(--nsa-placeholder); }
+.nsa .nsa-send { flex: none; width: 42px; height: 42px; border-radius: var(--nsa-radius-button); border: none; background: var(--nsa-accent); color: var(--nsa-accent-ink); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 1.25rem; transition: opacity 0.15s; }
+.nsa .nsa-send:disabled { opacity: 0.45; cursor: default; }
+/* voice input (edition "pro"): outlined button; red while recording */
+.nsa .nsa-mic { flex: none; width: 42px; height: 42px; border-radius: var(--nsa-radius-button); border: 1px solid var(--nsa-field-border); background: var(--nsa-field-bg); color: var(--nsa-field-ink); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 1.1em; }
+.nsa .nsa-mic[hidden] { display: none; }
+.nsa .nsa-mic:disabled { opacity: 0.45; cursor: default; }
+.nsa .nsa-mic:focus-visible { outline: 2px solid var(--nsa-accent); outline-offset: 2px; }
+.nsa .nsa-mic.is-recording { background: var(--nsa-rec-bg); border-color: var(--nsa-rec-bg); color: var(--nsa-rec-ink); }
+.nsa .nsa-mic { position: relative; }
+.nsa .nsa-mic__icon { display: block; width: 20px; height: 20px; }
+/* SVG elements are not hidden by the browser's own [hidden] rule everywhere. */
+.nsa .nsa-mic [data-nsa-mic-icon][hidden] { display: none; }
+.nsa .nsa-mic.is-busy { cursor: progress; }
+.nsa .nsa-mic.is-recording::after { content: ''; position: absolute; inset: -5px; border-radius: inherit; border: 2px solid var(--nsa-rec-bg); animation: nsaRing 1.4s ease-out infinite; pointer-events: none; }
+.nsa .nsa-mic__spin { animation: nsaSpin 0.9s linear infinite; }
+@keyframes nsaRing { from { transform: scale(0.92); opacity: 0.9; } to { transform: scale(1.3); opacity: 0; } }
+@keyframes nsaSpin { to { transform: rotate(360deg); } }
+/* Voice input: while recording the row shows wave, time and the stop button; then the busy state. */
+.nsa .nsa-input[hidden], .nsa .nsa-send[hidden] { display: none; }
+.nsa-rec, .nsa-busy { flex: 1; min-width: 0; min-height: 42px; display: flex; align-items: center; gap: 10px; }
+.nsa-rec[hidden], .nsa-busy[hidden] { display: none; }
+.nsa-rec__wave { flex: 1; min-width: 0; height: 32px; display: flex; align-items: center; gap: 3px; overflow: hidden; }
+.nsa-rec__wave span { flex: 1 1 0; min-width: 2px; max-width: 5px; height: 18%; border-radius: 999px; background: var(--nsa-wave); transition: height 0.12s linear; }
+.nsa-rec__time { flex: none; font-family: var(--nsa-font-mono); font-size: 0.9em; font-variant-numeric: tabular-nums; color: var(--nsa-text); }
+.nsa-busy__bar { flex: 1; min-width: 40px; height: 4px; border-radius: 999px; background: var(--nsa-line); position: relative; overflow: hidden; }
+.nsa-busy__bar::after { content: ''; position: absolute; top: 0; bottom: 0; left: -40%; width: 40%; border-radius: inherit; background: var(--nsa-accent); animation: nsaProgress 1.1s ease-in-out infinite; }
+@keyframes nsaProgress { to { left: 100%; } }
+.nsa-busy__text { flex: none; font-size: 0.85em; color: var(--nsa-text); }
+.nsa-mic-status { margin: 0; padding: 0 16px; font-size: 0.8em; line-height: 1.4; color: var(--nsa-muted); }
+.nsa-mic-status.has-text { padding-bottom: 8px; }
+.nsa-mic-status[hidden] { display: none; }
+.nsa .nsa-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+/* Shows the suggested questions again. */
+.nsa .nsa-suggest-btn { display: block; margin: 0 14px 0 auto; padding: 6px 8px; background: none; border: none; border-radius: 6px; color: var(--nsa-muted); font-family: var(--nsa-font-body); font-size: 0.8em; line-height: 1.3; text-decoration: underline; cursor: pointer; }
+.nsa .nsa-suggest-btn:hover { color: var(--nsa-hover); }
+.nsa .nsa-suggest-btn[hidden] { display: none; }
+.nsa .nsa-suggest-btn:focus-visible { outline: 2px solid var(--nsa-accent); outline-offset: 2px; }
+.nsa .nsa-suggest-btn[hidden] { display: none; }
+.nsa .nsa-send:focus-visible { outline: 2px solid var(--nsa-accent); outline-offset: 2px; }
+
+/* privacy hint, operator note, notice while the credit line is not visible */
+.nsa-privacy { margin: 0; padding: 0 16px 10px; font-size: 0.75em; line-height: 1.4; color: var(--nsa-muted); text-align: center; }
+.nsa-disclaimer { margin: 0; padding: 0 16px 12px; font-size: 0.72em; color: var(--nsa-faint); text-align: center; }
+.nsa-notice { margin: 0; padding: 12px 16px; border-top: 1px solid var(--nsa-line); color: var(--nsa-text); font-size: 0.88em; line-height: 1.45; }
+.nsa-notice[hidden] { display: none; }
+
+/* Credit line of the free edition (shared script of the Basic bundle, closed shadow root):
+   it takes the panel colours through these variables while they are readable. */
+.nsa { --neo-credit-bg: var(--nsa-panel-bg); --neo-credit-ink: var(--nsa-muted); --neo-credit-line: var(--nsa-line); }
+
+/* ---- Forwarding (contact form in the chat) ---- */
+.nsa .nsa-handoff { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; background: none; border: none; border-top: 1px solid var(--nsa-line); color: var(--nsa-muted); cursor: pointer; padding: 10px; font-family: var(--nsa-font-body); font-size: 0.82em; }
+.nsa .nsa-handoff:hover { color: var(--nsa-hover); }
+.nsa .nsa-handoff:disabled { opacity: 0.5; cursor: default; }
+.nsa .nsa-handoff[hidden] { display: none; }
+.nsa-escalate { padding: 14px 16px; border-top: 1px solid var(--nsa-line); }
+.nsa-escalate[hidden] { display: none; }
+.nsa-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; }
+.nsa-field span { font-size: 0.82em; font-weight: 700; color: var(--nsa-fg); }
+.nsa .nsa-field input, .nsa .nsa-field textarea { background: var(--nsa-field-bg); border: 1.5px solid var(--nsa-field-border); border-radius: var(--nsa-radius-input); padding: 9px 12px; color: var(--nsa-field-ink); outline: none; font: inherit; font-size: 0.93em; resize: vertical; }
+.nsa-field input::placeholder, .nsa-field textarea::placeholder { color: var(--nsa-placeholder); }
+.nsa .nsa-field input:focus, .nsa .nsa-field textarea:focus { border-color: var(--nsa-accent); box-shadow: 0 0 0 3px var(--nsa-ring); }
+.nsa-esc__actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+/* required marker, newsletter checkbox, field errors (text in role=status, never colour alone) */
+.nsa-req { color: var(--nsa-error); font-weight: 700; }
+.nsa-check { display: flex; gap: 8px; align-items: flex-start; margin: 0 0 10px; font-size: 0.85em; line-height: 1.4; color: var(--nsa-text); cursor: pointer; }
+.nsa-check a { color: inherit; text-decoration: underline; }
+.nsa .nsa-check [aria-invalid="true"] { outline: 2px solid var(--nsa-error); outline-offset: 2px; }
+.nsa .nsa-check input { flex: none; width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--nsa-accent); }
+.nsa .nsa-field [aria-invalid="true"] { border-color: var(--nsa-error); }
+/* phone: country code (select box with filter) + number */
+.nsa-phone { display: flex; gap: 8px; align-items: stretch; }
+.nsa-cc { position: relative; flex: none; }
+.nsa .nsa-cc__btn { height: 100%; min-width: 96px; display: inline-flex; align-items: center; justify-content: space-between; gap: 8px; background: var(--nsa-field-bg); border: 1.5px solid var(--nsa-field-border); border-radius: var(--nsa-radius-input); padding: 9px 12px; color: var(--nsa-field-ink); font: inherit; font-size: 0.93em; cursor: pointer; }
+.nsa .nsa-cc__btn::after { content: ""; width: 7px; height: 7px; margin-top: -4px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.nsa .nsa-cc__btn[aria-expanded="true"]::after { margin-top: 4px; transform: rotate(-135deg); }
+.nsa .nsa-cc__btn:focus-visible { border-color: var(--nsa-accent); box-shadow: 0 0 0 3px var(--nsa-ring); outline: none; }
+.nsa-phone > input { flex: 1; min-width: 0; }
+.nsa-cc__pop { position: absolute; z-index: 2; left: 0; bottom: calc(100% + 4px); width: min(270px, 78vw); padding: 8px; background: var(--nsa-panel-bg); border: 1px solid var(--nsa-line); border-radius: var(--nsa-radius-input); box-shadow: var(--nsa-panel-shadow); box-sizing: border-box; }
+.nsa-cc__pop[hidden] { display: none; }
+.nsa .nsa-cc__search { width: 100%; box-sizing: border-box; margin-bottom: 6px; background: var(--nsa-field-bg); border: 1.5px solid var(--nsa-field-border); border-radius: var(--nsa-radius-input); padding: 8px 10px; color: var(--nsa-field-ink); outline: none; font: inherit; font-size: 0.9em; }
+.nsa .nsa-cc__search:focus { border-color: var(--nsa-accent); box-shadow: 0 0 0 3px var(--nsa-ring); }
+.nsa-cc__list { max-height: 200px; overflow-y: auto; margin: 0; padding: 0; list-style: none; font-size: 0.88em; }
+.nsa-cc__list [role="option"] { padding: 7px 10px; border-radius: 6px; cursor: pointer; color: var(--nsa-text); }
+.nsa-cc__list [role="option"].is-active, .nsa-cc__list [role="option"]:hover { background: var(--nsa-chip-hover-bg); }
+.nsa-cc__list [aria-selected="true"] { font-weight: 700; }
+.nsa-esc__hint { margin: -4px 0 10px; font-size: 0.85em; color: var(--nsa-text); }
+.nsa-esc__hint[hidden] { display: none; }
+.nsa .nsa-linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
+.nsa .nsa-linkbtn:focus-visible { outline: 2px solid var(--nsa-accent); outline-offset: 2px; }
+.nsa-esc__error { margin: 0 0 10px; font-size: 0.85em; font-weight: 700; color: var(--nsa-error); }
+.nsa-esc__error[hidden] { display: none; }
+.nsa-privacy[hidden] { display: none; }
+
+/* ---- Buttons ---- */
+.nsa .nsa-btn { display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; font-family: var(--nsa-font-body); }
+.nsa .nsa-btn:focus-visible { outline: 2px solid var(--nsa-accent); outline-offset: 2px; }
+.nsa-btn--primary { background: var(--nsa-accent); color: var(--nsa-accent-ink); border-radius: var(--nsa-radius-button); padding: 12px 22px; font-weight: 700; font-size: 0.95em; }
+.nsa-btn--sm { padding: 8px 16px; font-size: 0.88em; }
+.nsa-btn--text { background: none; color: var(--nsa-muted); padding: 8px 10px; border-radius: var(--nsa-radius-button); }
+
+@media (prefers-reduced-motion: reduce) {
+  .nsa .nsa-fab, .nsa .nsa-send { transition: none; }
+  .nsa-typing .nsa-dot { animation: none; }
+  .nsa .nsa-mic.is-recording::after, .nsa .nsa-mic__spin, .nsa-busy__bar::after { animation: none; }
+  .nsa-busy__bar::after { left: 0; width: 100%; opacity: 0.6; }
+  .nsa-rec__wave span { transition: none; }
+}
+/* The same when an accessibility panel switches movement off. */
+html[data-a11y-motion] .nsa .nsa-mic.is-recording::after, html[data-a11y-motion] .nsa .nsa-mic__spin, html[data-a11y-motion] .nsa-busy__bar::after { animation: none; }
+html[data-a11y-motion] .nsa-busy__bar::after { left: 0; width: 100%; opacity: 0.6; }

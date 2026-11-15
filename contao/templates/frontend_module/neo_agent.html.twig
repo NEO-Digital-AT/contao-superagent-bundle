@@ -1,0 +1,161 @@
+{% extends "@Contao/frontend_module/_base.html.twig" %}
+
+{# SuperAgent — floating chat widget. Behaviour and message stream come from
+   neo-agent.js (reads data-nsa-config); keep all data-nsa-* hooks when you
+   override this template. Icons are <span class="nsa-i nsa-i--…">: their shape
+   comes from the variables --nsa-icon-… (see neo-agent.css), so no icon font.
+   The chat button takes part in the buttons at the edge of the screen of NEO
+   Basic (data-neo-dock-* on the widget, data-neo-dock-launcher on the button):
+   with buttons of other extensions in its corner it becomes an entry of one
+   settings button with a menu, or is stacked with them, as set in the page
+   layout; the entry shows the icon in the template data-neo-dock-icon. #}
+{% block inner %}
+<div class="nsa{{ cfg.side == 'left' ? ' nsa--left' }}" data-nsa data-nsa-lang="{{ cfg.lang }}" data-neo-dock="assistant" data-neo-dock-corner="bottom-{{ cfg.side }}" data-neo-dock-order="10" data-neo-dock-label="{{ cfg.i18n.open }}">
+  <script type="application/json" data-nsa-config>{{ cfgJson|raw }}</script>
+
+  <div class="nsa-panel" data-nsa-panel role="dialog" aria-label="{{ cfg.name }}" aria-modal="false" hidden>
+    {# <div>, not <header>: the module sits in the layout footer section, and Contao's
+       <footer id="footer"> must not contain header/footer descendants (invalid HTML). #}
+    <div class="nsa-head">
+      <span class="nsa-head__avatar" aria-hidden="true">{% if cfg.avatar %}<img src="{{ cfg.avatar }}" alt="" width="38" height="38">{% else %}<span class="nsa-i nsa-i--bot"></span>{% endif %}</span>
+      <span class="nsa-head__text">
+        <strong>{{ cfg.name }}</strong>
+        {% if cfg.subtitle %}<span>{{ cfg.subtitle }}</span>{% endif %}
+      </span>
+      <button class="nsa-head__new" type="button" data-nsa-new aria-label="{{ cfg.i18n.newChat }}" title="{{ cfg.i18n.newChat }}"><span class="nsa-i nsa-i--new" aria-hidden="true"></span></button>
+      <button class="nsa-head__close" type="button" data-nsa-close aria-label="{{ cfg.i18n.close }}"><span class="nsa-i nsa-i--close" aria-hidden="true"></span></button>
+    </div>
+
+    {# Required by the EU AI Act (Art. 50): visitors learn before the first message that they write with an AI.
+       Keep this line when you override the template; the script adds it again if it is missing. #}
+    <p class="nsa-ai" data-nsa-ai>{{ cfg.i18n.aiNotice }}</p>
+
+    {# Consent gate — shown until the visitor gives consent in the category of the assistant. When the
+       consent tool of the page never asks for that category, only the icon and [data-nsa-gate-unavailable]
+       are shown: the chat says why it is not available instead of waiting. #}
+    <div class="nsa-gate" data-nsa-gate hidden>
+      <span class="nsa-gate__icon" aria-hidden="true"><span class="nsa-i nsa-i--consent" aria-hidden="true"></span></span>
+      <h3>{{ cfg.i18n.gateTitle }}</h3>
+      <p>{{ cfg.i18n.gateBody }}</p>
+      <button class="nsa-btn nsa-btn--primary" type="button" data-nsa-consent data-ncc-open><span class="nsa-i nsa-i--settings" aria-hidden="true"></span> {{ cfg.i18n.gateButton }}</button>
+      <p class="nsa-gate__unavailable" data-nsa-gate-unavailable tabindex="-1" hidden>{{ cfg.i18n.gateUnavailable }}</p>
+    </div>
+
+    {# Chat body #}
+    <div class="nsa-body" data-nsa-body hidden>
+      <div class="nsa-log" data-nsa-log aria-live="polite"></div>
+
+      {# Notice before personal data goes to the AI service (privacy mode off): the server found an
+         e-mail address, phone number, IBAN, card number, social security number or date of birth in the
+         message and called no AI service. Shown instead of the conversation until the visitor sends the
+         message anyway or edits it; [data-nsa-pii-found] gets the kinds found. Without JavaScript the
+         chat does not run, so the notice needs no fallback. #}
+      {% if not cfg.privacyMode %}
+      <div class="nsa-gate nsa-pii" data-nsa-pii role="alertdialog" aria-modal="true" aria-labelledby="nsa-pii-title-{{ cfg.agent }}" aria-describedby="nsa-pii-text-{{ cfg.agent }}" hidden>
+        <span class="nsa-gate__icon" aria-hidden="true"><span class="nsa-i nsa-i--shield" aria-hidden="true"></span></span>
+        <h3 id="nsa-pii-title-{{ cfg.agent }}">{{ cfg.i18n.piiTitle }}</h3>
+        <p id="nsa-pii-text-{{ cfg.agent }}"><strong data-nsa-pii-found></strong> {{ cfg.i18n.piiBody }}{% if cfg.privacyPage %} <a href="{{ cfg.privacyPage }}" target="_blank" rel="noopener">{{ cfg.i18n.escPrivacyLink }}</a>{% endif %}</p>
+        <div class="nsa-pii__actions">
+          <button class="nsa-btn nsa-btn--text" type="button" data-nsa-pii-edit>{{ cfg.i18n.piiEdit }}</button>
+          <button class="nsa-btn nsa-btn--primary" type="button" data-nsa-pii-send>{{ cfg.i18n.piiSend }}</button>
+        </div>
+      </div>
+      {% endif %}
+
+      {# Shows the suggested questions again at the end of the conversation (only with suggestions). #}
+      {% if cfg.suggestions is not empty %}<button class="nsa-suggest-btn" type="button" data-nsa-suggestions>{{ cfg.i18n.suggestions }}</button>{% endif %}
+
+      <div class="nsa-inputbar" data-nsa-inputbar data-nsa-voice="idle">
+        <textarea class="nsa-input" data-nsa-input rows="1" placeholder="{{ cfg.placeholder }}" aria-label="{{ cfg.placeholder }}"></textarea>
+        {% if cfg.voice %}
+        {# While recording: level wave and time (decoration, the status line below says it); then the busy state. #}
+        <span class="nsa-rec" data-nsa-rec hidden><span class="nsa-rec__wave" data-nsa-wave aria-hidden="true"></span><span class="nsa-rec__time" data-nsa-rec-time aria-hidden="true">0:00</span></span>
+        <span class="nsa-busy" data-nsa-busy hidden><span class="nsa-busy__bar" aria-hidden="true"></span><span class="nsa-busy__text">{{ cfg.i18n.micBusy }}</span></span>
+        {# Icons: microphone, stop (while recording), progress (while the text is made); the script shows one. #}
+        <button class="nsa-mic" type="button" data-nsa-mic aria-pressed="false" aria-label="{{ cfg.i18n.mic }}">
+          <svg class="nsa-mic__icon" data-nsa-mic-icon="mic" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg class="nsa-mic__icon" data-nsa-mic-icon="stop" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" hidden><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></svg>
+          <svg class="nsa-mic__icon nsa-mic__spin" data-nsa-mic-icon="busy" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" hidden><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="36 14" stroke-linecap="round"/></svg>
+        </button>
+        {% endif %}
+        <button class="nsa-send" type="button" data-nsa-send aria-label="{{ cfg.i18n.send }}" disabled><span class="nsa-i nsa-i--send" aria-hidden="true"></span></button>
+      </div>
+      {# Visible: what happens (with the running time); announced once: start, stop, error. Not hidden, so that
+         screen readers know the live region before its first text. #}
+      {% if cfg.voice %}<p class="nsa-mic-status" data-nsa-mic-status><span data-nsa-mic-text aria-hidden="true"></span><span class="nsa-sr" role="status" data-nsa-mic-live></span></p>{% endif %}
+
+      {% if cfg.canEscalate %}
+      <div class="nsa-escalate" data-nsa-escalate hidden>
+        {# Fields per assistant (cfg.form); e-mail and message are always there and required. #}
+        {% set form = cfg.form %}
+        {% set star = '<span class="nsa-req" aria-hidden="true">*</span>' %}
+        <form data-nsa-esc-form novalidate>
+          {% if 'name' in form.fields %}
+          <label class="nsa-field"><span>{{ cfg.i18n.escName }}{% if 'name' in form.required %} {{ star|raw }}{% endif %}</span>
+            <input type="text" name="name" autocomplete="name" maxlength="120" data-nsa-esc-field="name"{% if 'name' in form.required %} required{% endif %}>
+          </label>
+          {% endif %}
+          <label class="nsa-field"><span>{{ cfg.i18n.escEmail }} {{ star|raw }}</span>
+            <input type="email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required data-nsa-esc-email placeholder="{{ cfg.i18n.escEmailPlaceholder }}">
+          </label>
+          {# Typo hint for well-known mail providers ("Did you mean …?"), filled by the script. #}
+          <p class="nsa-esc__hint" data-nsa-email-hint hidden></p>
+          {% if 'phone' in form.fields %}
+          {# Country code (searchable list) and national number; sent as +<code><number> (E.164). #}
+          {% set pid = 'nsa-phone-' ~ cfg.agent %}
+          <div class="nsa-field" role="group" aria-labelledby="{{ pid }}-label">
+            <span id="{{ pid }}-label">{{ cfg.i18n.escPhone }}{% if 'phone' in form.required %} {{ star|raw }}{% endif %}</span>
+            <div class="nsa-phone">
+              <div class="nsa-cc" data-nsa-cc>
+                <button type="button" class="nsa-cc__btn" aria-haspopup="listbox" aria-expanded="false" data-nsa-cc-btn><span data-nsa-cc-value></span></button>
+                <div class="nsa-cc__pop" data-nsa-cc-pop hidden>
+                  <input type="search" class="nsa-cc__search" role="combobox" aria-autocomplete="list" aria-expanded="true" aria-controls="{{ pid }}-list" aria-label="{{ cfg.i18n.escCountrySearch }}" placeholder="{{ cfg.i18n.escCountrySearch }}" autocomplete="off" spellcheck="false" data-nsa-cc-search>
+                  <ul class="nsa-cc__list" id="{{ pid }}-list" role="listbox" aria-label="{{ cfg.i18n.escCountryCode }}" data-nsa-cc-list></ul>
+                </div>
+              </div>
+              <input type="tel" name="phone" inputmode="tel" autocomplete="tel-national" maxlength="24" aria-labelledby="{{ pid }}-label" data-nsa-esc-field="phone"{% if 'phone' in form.required %} required{% endif %}>
+            </div>
+          </div>
+          {% endif %}
+          {% if 'company' in form.fields %}
+          <label class="nsa-field"><span>{{ cfg.i18n.escCompany }}{% if 'company' in form.required %} {{ star|raw }}{% endif %}</span>
+            <input type="text" name="company" autocomplete="organization" maxlength="120" data-nsa-esc-field="company"{% if 'company' in form.required %} required{% endif %}>
+          </label>
+          {% endif %}
+          <label class="nsa-field"><span>{{ cfg.i18n.escMessage }} {{ star|raw }}</span>
+            <textarea required rows="2" data-nsa-esc-message placeholder="{{ cfg.i18n.escMessagePlaceholder }}"></textarea>
+          </label>
+          {% if form.consent %}
+          <label class="nsa-check"><input type="checkbox" name="consent" required data-nsa-esc-consent> <span>{{ cfg.i18n.escConsent }}{% if form.privacyUrl %} <a href="{{ form.privacyUrl }}" target="_blank" rel="noopener">{{ cfg.i18n.escPrivacyLink }}</a>{% endif %} {{ star|raw }}</span></label>
+          {% endif %}
+          {% if form.newsletter %}
+          {# Never preset: the visitor ticks it; the newsletter confirms by e-mail (double opt-in). #}
+          <label class="nsa-check"><input type="checkbox" name="newsletter" data-nsa-esc-newsletter> <span>{{ cfg.i18n.escNewsletter }}</span></label>
+          {% endif %}
+          <p class="nsa-esc__error" data-nsa-esc-error role="status" hidden></p>
+          <div class="nsa-esc__actions">
+            <button class="nsa-btn nsa-btn--primary nsa-btn--sm" type="submit">{{ cfg.i18n.escSubmit }}</button>
+            <button class="nsa-btn nsa-btn--text nsa-btn--sm" type="button" data-nsa-esc-cancel>{{ cfg.i18n.escBack }}</button>
+          </div>
+        </form>
+      </div>
+
+      <button class="nsa-handoff" type="button" data-nsa-handoff>
+        <span class="nsa-i nsa-i--mail" aria-hidden="true"></span>
+        <span>{{ cfg.i18n.handoff }}</span>
+      </button>
+      {% endif %}
+
+      {% if cfg.privacyMode %}<p class="nsa-privacy" data-nsa-privacy>{{ cfg.i18n.privacyHint }}</p>{% endif %}
+      {% if cfg.factNote %}<p class="nsa-disclaimer">{{ cfg.factNote }}</p>{% endif %}
+    </div>
+  </div>
+
+  <button class="nsa-fab" type="button" data-nsa-toggle data-neo-dock-launcher aria-haspopup="dialog" aria-expanded="false" aria-label="{{ cfg.i18n.open }}">
+    <span class="nsa-i nsa-i--chat nsa-fab__open" aria-hidden="true"></span>
+    <span class="nsa-i nsa-i--close nsa-fab__close" aria-hidden="true"></span>
+  </button>
+  {# Icon of the entry in the menu of the settings button (NEO Basic); drawn outside the widget, hence an own SVG. #}
+  <template data-neo-dock-icon><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/><path d="M8 9.5h8M8 12.5h5"/></svg></template>
+</div>
+{% endblock %}

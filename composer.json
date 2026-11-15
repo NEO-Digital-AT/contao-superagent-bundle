@@ -1,0 +1,100 @@
+{
+    "name": "neo-digital/contao-superagent-bundle",
+    "type": "contao-bundle",
+    "description": "AI chat assistant for Contao: answers visitors from the website's knowledge and your questions and answers, formatted replies with tables and buttons, consent-aware, privacy mode, one assistant per language; with a licence page navigation, forwarding, web search, MCP tools and skills (e.g. apaleo hotel booking). Route and key of the AI connection come from the Basic bundle.",
+    "keywords": [
+        "contao",
+        "contao-bundle",
+        "ai",
+        "ai chat",
+        "chatbot",
+        "chat assistant",
+        "assistant",
+        "concierge",
+        "llm",
+        "mcp",
+        "apaleo",
+        "hotel",
+        "booking",
+        "gdpr",
+        "consent",
+        "multilingual"
+    ],
+    "homepage": "https://github.com/NEO-Digital-AT/contao-superagent-bundle",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "NEO Digital"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/NEO-Digital-AT/contao-superagent-bundle/issues",
+        "source": "https://github.com/NEO-Digital-AT/contao-superagent-bundle"
+    },
+    "require": {
+        "php": "^8.2",
+        "ext-ctype": "*",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "contao/core-bundle": "^5.3 || ^6.0",
+        "doctrine/dbal": "^3.6 || ^4.0",
+        "neo-digital/contao-basic-bundle": "^1.0",
+        "psr/cache": "^1.0 || ^2.0 || ^3.0",
+        "psr/log": "^1.1 || ^2.0 || ^3.0",
+        "symfony/config": "^6.4 || ^7.0 || ^8.0",
+        "symfony/dependency-injection": "^6.4 || ^7.0 || ^8.0",
+        "symfony/event-dispatcher": "^6.4 || ^7.0 || ^8.0",
+        "symfony/framework-bundle": "^6.4 || ^7.0 || ^8.0",
+        "symfony/http-client": "^6.4 || ^7.0 || ^8.0",
+        "symfony/http-client-contracts": "^3.0",
+        "symfony/http-foundation": "^6.4 || ^7.0 || ^8.0",
+        "symfony/http-kernel": "^6.4 || ^7.0 || ^8.0",
+        "symfony/mailer": "^6.4 || ^7.0 || ^8.0",
+        "symfony/mime": "^6.4 || ^7.0 || ^8.0",
+        "symfony/rate-limiter": "^6.4 || ^7.0 || ^8.0",
+        "symfony/routing": "^6.4 || ^7.0 || ^8.0",
+        "symfony/security-bundle": "^6.4 || ^7.0 || ^8.0",
+        "symfony/translation-contracts": "^3.0",
+        "symfony/yaml": "^6.4 || ^7.0 || ^8.0"
+    },
+    "require-dev": {
+        "ext-pdo_sqlite": "*",
+        "ext-zip": "*",
+        "contao/manager-plugin": "^2.0",
+        "phpunit/phpunit": "^10.5 || ^11.5",
+        "symfony/cache": "^6.4 || ^7.0 || ^8.0",
+        "symfony/translation": "^6.4 || ^7.0 || ^8.0"
+    },
+    "conflict": {
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "suggest": {
+        "ext-zip": "Install skills from a ZIP file (otherwise SKILL.md files only)"
+    },
+    "autoload": {
+        "psr-4": {
+            "Neo\\SuperAgentBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Neo\\SuperAgentBundle\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
+        },
+        "contao-manager-plugin": "Neo\\SuperAgentBundle\\ContaoManager\\Plugin"
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": false,
+            "contao/manager-plugin": false,
+            "php-http/discovery": false
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}

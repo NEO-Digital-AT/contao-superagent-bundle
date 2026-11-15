@@ -1,0 +1,41 @@
+neo_superagent_chat:
+    path: /api/superagent/chat
+    methods: [POST]
+    defaults:
+        _controller: Neo\SuperAgentBundle\Controller\ChatController::chat
+        _scope: frontend
+        _token_check: false   # JSON API with its own rate limit; Contao's form token is not available to the widget
+
+neo_superagent_escalate:
+    path: /api/superagent/escalate
+    methods: [POST]
+    defaults:
+        _controller: Neo\SuperAgentBundle\Controller\ChatController::escalate
+        _scope: frontend
+        _token_check: false
+
+neo_superagent_transcribe:
+    path: /api/superagent/transcribe
+    methods: [POST]
+    defaults:
+        _controller: Neo\SuperAgentBundle\Controller\ChatController::transcribe
+        _scope: frontend
+        _token_check: false   # multipart from the widget with its own rate limit
+
+# Back from the sign-in page of a service (OAuth, connections of the edition Plus).
+neo_superagent_oauth_callback:
+    path: /contao/neo-superagent/oauth
+    methods: [GET]
+    defaults:
+        _controller: Neo\SuperAgentBundle\Controller\Backend\OAuthCallbackController
+        _scope: backend
+
+# A file a tool delivered in the chat (e.g. an invoice), downloaded once.
+neo_superagent_file:
+    path: /api/superagent/file/{token}
+    methods: [GET]
+    requirements:
+        token: '[0-9a-f]{48}'
+    defaults:
+        _controller: Neo\SuperAgentBundle\Controller\ChatController::download
+        _scope: frontend

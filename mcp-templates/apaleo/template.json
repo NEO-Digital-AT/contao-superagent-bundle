@@ -1,0 +1,262 @@
+{
+    "name": "apaleo",
+    "url": "https://mcp.apaleo.com/mcp",
+    "auth": "oauth",
+    "help": "https://apaleo.dev/mcp-docs/",
+    "oauth": {
+        "scope": "mcp:tools offline_access properties.read setup.read availability.read offers.read reservations.read reservations.create reservations.manage folios.read folios.manage invoices.read invoices.create"
+    },
+    "tools": {
+        "kinds": {
+            "List*": "read",
+            "Get*": "read",
+            "Search*": "read",
+            "Delete*": "delete"
+        },
+        "locked": [
+            "Delete*",
+            "RunNightAudit",
+            "ExecuteDataQuery",
+            "GetDataMetadata",
+            "Export*",
+            "*Account*",
+            "*Report",
+            "*Logs",
+            "*Context*",
+            "*Subscription*",
+            "ListPersons",
+            "GetPerson",
+            "*ProfileReservation*",
+            "ListUsers",
+            "GetUser",
+            "ListGroups",
+            "GetGroup",
+            "ListBlocks",
+            "GetBlock",
+            "ListCompanies",
+            "GetCompany",
+            "ListPaymentAccounts",
+            "GetPaymentAccount",
+            "ListAuthorizations",
+            "GetAuthorization",
+            "ListMaintenances",
+            "GetMaintenance"
+        ],
+        "customer_data": [
+            "GetReservation",
+            "ListReservations",
+            "GetBooking",
+            "ListBookings",
+            "GetReservationOffers",
+            "GetReservationServiceOffers",
+            "GetReservationServices",
+            "ListFolios",
+            "GetFolio",
+            "ListFolioPayments",
+            "GetFolioPayment",
+            "ListInvoices",
+            "GetInvoice",
+            "GetInvoicePdf",
+            "ListInvoicePreview",
+            "ListInvoicePreviewPdf",
+            "CreateBooking",
+            "UpdateReservation",
+            "UpdateBooking",
+            "AmendReservation",
+            "BookService",
+            "CancelReservation",
+            "CreateFolioCancellationFee",
+            "CreatePaymentLink",
+            "CancelPayment",
+            "CreatePaymentRefund",
+            "UpdateFolio",
+            "CreateInvoice"
+        ],
+        "unlocked": [
+            "GetReservation",
+            "ListReservations",
+            "GetBooking",
+            "ListBookings",
+            "GetReservationOffers",
+            "GetReservationServiceOffers",
+            "GetReservationServices",
+            "ListFolios",
+            "GetFolio",
+            "ListFolioPayments",
+            "GetFolioPayment",
+            "ListInvoices",
+            "GetInvoice",
+            "GetInvoicePdf",
+            "ListInvoicePreview",
+            "ListInvoicePreviewPdf",
+            "CreateBooking",
+            "UpdateReservation",
+            "UpdateBooking",
+            "AmendReservation",
+            "BookService",
+            "CancelReservation",
+            "CreateFolioCancellationFee",
+            "CreatePaymentLink",
+            "CancelPayment",
+            "CreatePaymentRefund",
+            "UpdateFolio",
+            "CreateInvoice"
+        ],
+        "recommended": [
+            "ListOffers",
+            "ListServiceOffers",
+            "GetProperty",
+            "GetReservation",
+            "CreateBooking",
+            "ListFolios",
+            "CreatePaymentLink",
+            "GetFolioPayment",
+            "ListInvoices",
+            "GetInvoicePdf"
+        ]
+    },
+    "guest_check": {
+        "lookups": [
+            {
+                "tool": "GetReservation",
+                "arguments": {
+                    "id": "{reference}",
+                    "expand": [
+                        "booker"
+                    ]
+                }
+            },
+            {
+                "tool": "ListReservations",
+                "arguments": {
+                    "booking_id": "{reference}",
+                    "expand": [
+                        "booker"
+                    ]
+                }
+            }
+        ],
+        "id": "id",
+        "group": "bookingId",
+        "persons": [
+            "primaryGuest",
+            "booker",
+            "additionalGuests"
+        ],
+        "group_person": "booker",
+        "name": [
+            "lastName"
+        ],
+        "first_name": "firstName",
+        "contact": [
+            "email",
+            "phone"
+        ],
+        "arguments": [
+            "id",
+            "reservation_id",
+            "reservation_ids",
+            "booking_id",
+            "booking_ids",
+            "folio_id",
+            "folio_ids",
+            "folioId",
+            "bookingId",
+            "reservationId",
+            "reservationIds",
+            "targetFolioId",
+            "destinationFolioId"
+        ],
+        "protected": [
+            "GetReservation*",
+            "ListReservations",
+            "GetBooking",
+            "ListBookings",
+            "GetAvailableUnitsForReservation",
+            "*Folio*",
+            "*Invoice*",
+            "*Routing*",
+            "CreatePaymentLink",
+            "CancelPayment",
+            "CreatePaymentRefund",
+            "UpdateReservation",
+            "UpdateBooking",
+            "AmendReservation",
+            "BookService",
+            "RemoveServiceFromReservation",
+            "CancelReservation",
+            "AddReservationToBooking",
+            "CheckIn",
+            "CheckOut"
+        ],
+        "creates": [
+            "CreateBooking"
+        ]
+    },
+    "skills": [
+        "hotel-facts/SKILL.md",
+        "hotel-booking/SKILL.md",
+        "hotel-guest/SKILL.md",
+        "hotel-stay/SKILL.md",
+        "hotel-payment/SKILL.md",
+        "hotel-cancellation/SKILL.md",
+        "hotel-invoice/SKILL.md"
+    ],
+    "setup": {
+        "en": [
+            "Save, then **Connect**: the website registers itself at apaleo's sign-in for MCP, so no app of your own is needed and the client ID and secret stay empty. Sign in with an apaleo user of your account and allow the access. The assistant can only do what this user may do.",
+            "Set **Personal data** of this connection to **Send**: a booking needs the visitor's e-mail address and phone number. Reservations, folios and invoices reach the AI service only after the visitor proved they are the guest.",
+            "Check the tools below and lock what the assistant must not use. Then tick the tools and the skills of this connection at the assistant, and name the AI service and apaleo in the privacy policy of the website."
+        ],
+        "de": [
+            "Speichern, dann **Verbinden**: Die Website meldet sich selbst beim Anmeldedienst von apaleo für MCP an, eine eigene App ist nicht nötig, Client-ID und Client-Secret bleiben leer. Mit einem apaleo-Benutzer Ihres Kontos anmelden und den Zugriff erlauben. Der Assistent kann nur, was dieser Benutzer darf.",
+            "**Personenbezogene Daten** dieser Verbindung auf **Senden** stellen: Eine Buchung braucht die E-Mail-Adresse und Telefonnummer des Besuchers. Reservierungen, Folios und Rechnungen erreichen den KI-Dienst erst, wenn der Besucher nachgewiesen hat, dass er der Gast ist.",
+            "Die Werkzeuge unten prüfen und sperren, was der Assistent nicht nutzen soll. Dann am Assistenten die Werkzeuge und die Skills dieser Verbindung anhaken und den KI-Dienst und apaleo in der Datenschutzerklärung der Website nennen."
+        ],
+        "cs": [
+            "Uložte a poté klikněte na **Připojit**: web se sám zaregistruje u přihlašovací služby apaleo pro MCP, vlastní aplikace není potřeba a ID klienta i tajný klíč zůstanou prázdné. Přihlaste se uživatelem apaleo svého účtu a povolte přístup. Asistent smí jen to, co smí tento uživatel.",
+            "**Osobní údaje** tohoto připojení nastavte na **Odesílat**: rezervace potřebuje e-mail a telefon návštěvníka. Rezervace, folia a faktury se ke službě AI dostanou až poté, co návštěvník prokáže, že je hostem.",
+            "Zkontrolujte nástroje níže a zamkněte, co asistent používat nemá. Pak u asistenta zaškrtněte nástroje a skilly tohoto připojení a v zásadách ochrany osobních údajů webu uveďte službu AI a apaleo."
+        ],
+        "es": [
+            "Guarde y después pulse **Conectar**: el sitio web se registra por sí solo en el inicio de sesión de apaleo para MCP; no necesita una aplicación propia y el ID y el secreto de cliente quedan vacíos. Inicie sesión con un usuario de apaleo de su cuenta y permita el acceso. El asistente solo puede hacer lo que este usuario tiene permitido.",
+            "Ponga los **Datos personales** de esta conexión en **Enviar**: una reserva necesita el correo y el teléfono del visitante. Reservas, folios y facturas llegan al servicio de IA solo después de que el visitante demuestre que es el huésped.",
+            "Revise las herramientas de abajo y bloquee lo que el asistente no deba usar. Después marque en el asistente las herramientas y los skills de esta conexión y mencione el servicio de IA y apaleo en la política de privacidad del sitio web."
+        ],
+        "fr": [
+            "Enregistrez, puis cliquez sur **Connecter** : le site s’enregistre lui-même auprès du service de connexion MCP d’apaleo ; aucune application propre n’est nécessaire et l’ID client et le secret restent vides. Connectez-vous avec un utilisateur apaleo de votre compte et autorisez l’accès. L’assistant ne peut faire que ce que cet utilisateur a le droit de faire.",
+            "Réglez les **Données personnelles** de cette connexion sur **Envoyer** : une réservation a besoin de l’e-mail et du téléphone du visiteur. Réservations, folios et factures ne parviennent au service d’IA qu’après que le visiteur a prouvé être le client.",
+            "Vérifiez les outils ci-dessous et verrouillez ce que l’assistant ne doit pas utiliser. Cochez ensuite dans l’assistant les outils et les skills de cette connexion, et mentionnez le service d’IA et apaleo dans la politique de confidentialité du site."
+        ],
+        "hr": [
+            "Spremite, zatim kliknite **Poveži**: web-stranica se sama registrira kod usluge prijave apaleo za MCP, vlastita aplikacija nije potrebna, a ID klijenta i tajna ostaju prazni. Prijavite se korisnikom apaleo svog računa i dopustite pristup. Asistent može samo ono što smije taj korisnik.",
+            "**Osobne podatke** ove veze postavite na **Šalji**: rezervacija treba e-adresu i telefon posjetitelja. Rezervacije, folije i računi stižu do AI usluge tek kad posjetitelj dokaže da je gost.",
+            "Provjerite alate u nastavku i zaključajte ono što asistent ne smije koristiti. Zatim kod asistenta označite alate i skillove ove veze te u izjavi o privatnosti web-stranice navedite AI uslugu i apaleo."
+        ],
+        "hu": [
+            "Mentse, majd kattintson erre: **Csatlakozás**. A weboldal magától regisztrál az apaleo MCP-bejelentkezési szolgáltatásánál, saját alkalmazásra nincs szükség, az ügyfél-azonosító és a titkos kulcs üresen marad. Jelentkezzen be a fiókja egyik apaleo-felhasználójával, és engedélyezze a hozzáférést. Az asszisztens csak azt teheti, amit ez a felhasználó.",
+            "A kapcsolat **Személyes adatok** beállítását állítsa **Küldés** értékre: a foglaláshoz kell a látogató e-mail-címe és telefonszáma. Foglalások, foliók és számlák csak akkor jutnak el az MI-szolgáltatáshoz, ha a látogató igazolta, hogy ő a vendég.",
+            "Ellenőrizze az alábbi eszközöket, és zárolja, amit az asszisztens nem használhat. Ezután az asszisztensnél jelölje be a kapcsolat eszközeit és skilljeit, a webhely adatvédelmi tájékoztatójában pedig nevezze meg az MI-szolgáltatást és az apaleót."
+        ],
+        "it": [
+            "Salvare, poi fare clic su **Connetti**: il sito si registra da solo presso il servizio di accesso MCP di apaleo, non serve un’app propria e ID client e secret restano vuoti. Accedere con un utente apaleo del proprio account e consentire l’accesso. L’assistente può fare solo ciò che è consentito a questo utente.",
+            "Impostate i **Dati personali** di questa connessione su **Invia**: una prenotazione richiede e-mail e telefono del visitatore. Prenotazioni, folio e fatture arrivano al servizio di IA solo dopo che il visitatore ha dimostrato di essere l’ospite.",
+            "Controllate gli strumenti qui sotto e bloccate ciò che l’assistente non deve usare. Poi spuntate nell’assistente gli strumenti e gli skill di questa connessione e nominate il servizio di IA e apaleo nell’informativa privacy del sito."
+        ],
+        "nl": [
+            "Opslaan en dan **Verbinden**: de website registreert zich zelf bij de aanmelddienst van apaleo voor MCP; een eigen app is niet nodig en client-ID en clientgeheim blijven leeg. Meld u aan met een apaleo-gebruiker van uw account en sta de toegang toe. De assistent kan alleen wat deze gebruiker mag.",
+            "Zet **Persoonsgegevens** van deze verbinding op **Verzenden**: een boeking heeft het e-mailadres en telefoonnummer van de bezoeker nodig. Reserveringen, folio’s en facturen bereiken de AI-dienst pas nadat de bezoeker heeft aangetoond dat hij de gast is.",
+            "Controleer de tools hieronder en vergrendel wat de assistent niet mag gebruiken. Vink daarna bij de assistent de tools en skills van deze verbinding aan en noem de AI-dienst en apaleo in de privacyverklaring van de website."
+        ],
+        "pl": [
+            "Zapisz, a następnie kliknij **Połącz**: strona sama rejestruje się w usłudze logowania MCP apaleo, własna aplikacja nie jest potrzebna, a identyfikator klienta i sekret pozostają puste. Zaloguj się użytkownikiem apaleo swojego konta i zezwól na dostęp. Asystent może tylko to, na co pozwolono temu użytkownikowi.",
+            "Ustaw **Dane osobowe** tego połączenia na **Wysyłaj**: rezerwacja wymaga adresu e-mail i telefonu odwiedzającego. Rezerwacje, folia i faktury trafiają do usługi AI dopiero wtedy, gdy odwiedzający udowodni, że jest gościem.",
+            "Sprawdź narzędzia poniżej i zablokuj to, czego asystent nie powinien używać. Następnie zaznacz przy asystencie narzędzia i skille tego połączenia, a w polityce prywatności strony wymień usługę AI i apaleo."
+        ],
+        "sl": [
+            "Shranite in nato kliknite **Poveži**: spletno mesto se samo registrira pri prijavni storitvi apaleo za MCP, lastna aplikacija ni potrebna, ID odjemalca in skrivnost ostaneta prazna. Prijavite se z uporabnikom apaleo svojega računa in dovolite dostop. Asistent lahko le to, kar sme ta uporabnik.",
+            "**Osebne podatke** te povezave nastavite na **Pošlji**: rezervacija potrebuje e-naslov in telefon obiskovalca. Rezervacije, folii in računi pridejo do storitve UI šele, ko obiskovalec dokaže, da je gost.",
+            "Preverite spodnja orodja in zaklenite, česar asistent ne sme uporabljati. Nato pri asistentu označite orodja in skille te povezave ter v izjavi o zasebnosti spletnega mesta navedite storitev UI in apaleo."
+        ]
+    }
+}

@@ -1,0 +1,37 @@
+# Terms of the SuperAgent per edition, shown on "Access keys and licences".
+# The German text (neo_superagent_terms.de.yaml) is binding; a changed passage
+# needs a new version in Neo\SuperAgentBundle\Licence\Terms::PASSAGES.
+all:
+    title: "Sva izdanja"
+    text: |
+        Odgovori: Odgovore izrađuje jezični model drugog pružatelja. Mogu biti netočni, nepotpuni ili neprikladni. Kao operater odgovorni ste za postavke, znanje i tekstove asistenta te za njegovu upotrebu na web-stranici.
+
+        Sigurnosna pravila: Način zaštite podataka i pravilo protiv medicinskih savjeta smanjuju rizik, ali ga ne isključuju. Ne prepoznaje se svaki osobni podatak, a jezični model može zanemariti pravilo.
+
+        Zaštita podataka: Za izjavu o zaštiti privatnosti, privolu posjetitelja i ugovor o obradi podataka s UI uslugom odgovorni ste vi. Priloženi tekstovi (PRIVACY.md, zadani tekstovi) predlošci su, a ne pravni savjet.
+
+        Troškovi: Troškove kod UI usluge i drugih odabranih usluga snosite vi. Ograničenje broja upita smanjuje rizik zlouporabe, ali je ne sprječava.
+
+        Odgovornost: Proizvođač ovog proširenja ne preuzima odgovornost za sadržaje i troškove iz ovih točaka. Što točno vrijedi i koje iznimke postoje, navedeno je u licencnim uvjetima.
+basic:
+    title: "Izdanje Basic"
+    text: |
+        Pretraživanje interneta: Sadržaji drugih web-stranica koje asistent čita mogu biti netočni ili zastarjeli. Proizvođač ovog proširenja ih ne provjerava.
+
+        Prosljeđivanje: Nije zajamčeno da proslijeđeni upiti stignu e-poštom. Provjerite slanje e-pošte i svoj poštanski sandučić.
+plus:
+    title: "Izdanje Plus"
+    text: |
+        MCP poslužitelji: Putem MCP poslužitelja asistent može pozivati funkcije drugog sustava, i one koje ondje mijenjaju ili brišu podatke ili prikazuju podatke klijenata. Odobrite samo alate s malim rizikom ili alate koje ograničava skill i testirajte asistenta prije nego što ga omogućite posjetiteljima. Priloženi predlošci rizične alate zadano blokiraju. Preostali rizik ipak ostaje jer jezični model može pogriješiti ili ga mogu zavarati vješto sročene poruke.
+
+        Skillovi iz drugih izvora: Proizvođač ovog proširenja provjerava samo njihovu strukturu, ne i sadržaj.
+
+        Izvori znanja: Sve što se nalazi u odabranim mapama ili na odabranim stranicama, primjerice na OneDriveu ili u Notionu, chat može pokazati bilo kojem posjetitelju. Odaberite samo sadržaje koji smiju biti javni.
+
+        Odgovornost: Proizvođač ovog proširenja ne preuzima odgovornost za štetu koju uzrokuju odobreni alati, skillovi i izvori znanja. Što točno vrijedi i koje iznimke postoje, navedeno je u licencnim uvjetima.
+pro:
+    title: "Izdanje Pro"
+    text: |
+        Radnje s posljedicama: Putem odobrenih alata asistent može izvršavati radnje, primjerice stvarati rezervacije, generirati poveznice za plaćanje ili upisivati unose u CRM. Provjerite rezultate. Proizvođač ovog proširenja ne preuzima odgovornost za takve radnje i njihove posljedice; što točno vrijedi i koje iznimke postoje, navedeno je u licencnim uvjetima.
+
+        Glasovni unos: Transkripcija može izgovoreno pogrešno zapisati; posjetitelj provjerava tekst prije slanja. Snimka nefiltrirana odlazi usluzi za transkripciju. Navedite to u svojoj izjavi o zaštiti privatnosti.

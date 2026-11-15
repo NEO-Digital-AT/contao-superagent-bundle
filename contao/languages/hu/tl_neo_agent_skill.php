@@ -1,0 +1,63 @@
+<?php
+
+declare(strict_types=1);
+
+// Skills installed by administrators (edition Plus).
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['new'] = ['Új skill', 'Skill telepítése GitHubról vagy fájlból.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['edit'] = ['Szerkesztés', 'A skill ellenőrzése vagy frissítése.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['delete'] = ['Törlés', 'A skill eltávolítása.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['show'] = ['Részletek', 'A részletek megjelenítése.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['back_to_agents'] = ['Asszisztensek', 'Vissza az asszisztensek listájához.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_legend'] = 'Forrás';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_legend'] = 'Ellenőrzés és átvétel';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source'] = ['Forrás', 'Honnan származik a skill.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_options'] = [
+    'github' => 'GitHub',
+    'file' => 'Fájl (SKILL.md vagy ZIP)',
+    'template' => 'Sablon',
+];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['url'] = ['Cím a GitHubon', 'A skill mappája vagy fájlja, pl. https://github.com/owner/repo/tree/main/skills/idopontok. Ág nélkül az alapértelmezett ág érvényes; az ág helyett megadott commit-hash rögzít egy változatot.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['file'] = ['Fájl', 'Egy SKILL.md vagy egy SKILL.md-t tartalmazó ZIP-fájl, a fájlkezelőből vagy ide feltöltve.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['shipped'] = 'Mellékelt és rögzített: %s. Ezek a skillek a bővítmény részei, itt nem módosíthatók; a telepített skillek nem viselhetik a nevüket.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_not_installed'] = 'még nincs átvéve';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_installed'] = '%s · változat: %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_pending'] = 'új változat betöltve, nincs átvéve';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_github_url'] = 'Adja meg egy GitHub-tárhely mappájának vagy fájljának címét (github.com vagy raw.githubusercontent.com).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['installed'] = 'Átvéve: %s, átvette: %s, %s.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_load'] = 'Betöltés és ellenőrzés';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_update'] = 'Új változat keresése';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['text_installed'] = 'Átvett szöveg (ahogy a modell kapja)';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['text_pending'] = 'Betöltött szöveg (ahogy a modell kapná)';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['changes'] = 'Változások az átvett változathoz képest';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched'] = 'Betöltve: %s, még nincs átvéve.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_ok'] = 'SKILL.md beolvasva · név: %s · %s / %s karakter.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['files_ignored'] = 'Nincs átvéve (csak a SKILL.md számít, semmi sem fut le): %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_check'] = 'Elolvastam a tartalmat, és átveszem.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_help'] = 'A szöveg csak ezután érvényes. A bővítmény gyártója csak a skill felépítését ellenőrzi, a tartalmát nem.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_missing'] = 'A betöltött szöveg még nincs átvéve. Jelölje be lent a négyzetet, és mentsen.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['no_update'] = 'Nincs új változat: a szöveg nem változott.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched_ok'] = 'Betöltve és ellenőrizve. Olvassa el a szöveget, és vegye át a lenti négyzettel.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched_errors'] = 'A skill így nem vehető át. Az okok lent olvashatók.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['taken_over'] = 'A(z) „%s” skill átvéve.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_frontmatter'] = 'Az elejéről hiányzik a name és description adatokat tartalmazó fejléc (két „---” sor között).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_name'] = 'A(z) „%s” név érvénytelen: csak kisbetűk, számjegyek és kötőjelek, betűvel kezdődően, legfeljebb 64 karakter.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_name_taken'] = 'A(z) „%s” név már foglalt (mellékelt vagy másik telepített skill).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_description'] = 'Hiányzik a leírás (description). Ez mondja meg a modellnek, mikor töltse be a skillt.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_description_long'] = 'A leírás %s karakter, legfeljebb %s megengedett.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_body'] = 'A skill szövege üres.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_too_long'] = 'A szöveg %s karakter, legfeljebb %s megengedett. Ossza fel több kisebb skillre.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_depends'] = 'A skill erre épül: „%s” (depends), amely itt nem létezik.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_tool_unknown'] = 'A(z) „%s” eszköz (tools) egyetlen kapcsolatban sem létezik. A skill így is működik; az eszköz akkor kerül hozzá, ha lesz megfelelő kapcsolat.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_keys_ignored'] = 'Nem használt fejlécadatok: %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_renamed'] = 'A név „%s” helyett „%s” lesz. Azoknak az asszisztenseknek, amelyeknél a régi név volt bejelölve, újra be kell jelölniük a skillt.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_unreachable'] = 'A GitHub nem érhető el: %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_not_found'] = 'Ezen a címen nincs SKILL.md (%s).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_http'] = 'A GitHub HTTP %s kóddal válaszolt.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_too_big'] = 'A fájl túl nagy.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_file_missing'] = 'Válasszon fájlt.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_file_type'] = 'SKILL.md fájlok (.md) és ZIP-fájlok engedélyezettek.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_no_zip'] = 'Ez a szerver nem tud ZIP-fájlokat olvasni (hiányzik a PHP zip bővítmény). Töltse fel közvetlenül a SKILL.md-t.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_broken'] = 'A ZIP-fájl nem nyitható meg.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_many'] = 'A ZIP-fájl több skillt tartalmaz. Skillenként egy fájlt kérünk.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_none'] = 'A ZIP-fájl nem tartalmaz SKILL.md-t.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_template_missing'] = 'A(z) „%s” sablon már nem létezik ezen a weboldalon. A skill változatlan marad.';

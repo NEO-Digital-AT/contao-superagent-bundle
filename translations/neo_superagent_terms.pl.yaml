@@ -1,0 +1,37 @@
+# Terms of the SuperAgent per edition, shown on "Access keys and licences".
+# The German text (neo_superagent_terms.de.yaml) is binding; a changed passage
+# needs a new version in Neo\SuperAgentBundle\Licence\Terms::PASSAGES.
+all:
+    title: "Wszystkie edycje"
+    text: |
+        Odpowiedzi: Odpowiedzi generuje model językowy innego dostawcy. Mogą być błędne, niepełne lub nieodpowiednie. Jako operator odpowiadają Państwo za ustawienia, wiedzę i teksty asystenta oraz za jego użycie na stronie.
+
+        Zasady bezpieczeństwa: Tryb ochrony danych i zasada dotycząca porad medycznych zmniejszają ryzyko, ale go nie wykluczają. Nie każda dana osobowa zostaje rozpoznana, a model językowy może pominąć zasadę.
+
+        Ochrona danych: Za politykę prywatności, zgodę odwiedzających i umowę powierzenia przetwarzania danych z usługą AI odpowiadają Państwo. Dołączone teksty (PRIVACY.md, teksty domyślne) są wzorami, a nie poradą prawną.
+
+        Koszty: Koszty w usłudze AI i w innych wybranych usługach ponoszą Państwo. Ograniczenie liczby zapytań zmniejsza ryzyko nadużyć, ale im nie zapobiega.
+
+        Odpowiedzialność: Producent tego rozszerzenia nie ponosi odpowiedzialności za treści i koszty, o których mowa w tych punktach. Co dokładnie obowiązuje i jakie są wyjątki, określają warunki licencji.
+basic:
+    title: "Edycja Basic"
+    text: |
+        Wyszukiwanie w internecie: Treści innych stron, które czyta asystent, mogą być błędne lub nieaktualne. Producent tego rozszerzenia ich nie sprawdza.
+
+        Przekazywanie: Nie ma gwarancji, że przekazane zapytania dotrą pocztą e-mail. Prosimy sprawdzić wysyłkę e-maili i skrzynkę pocztową.
+plus:
+    title: "Edycja Plus"
+    text: |
+        Serwery MCP: Przez serwer MCP asystent może wywoływać funkcje innego systemu, także takie, które zmieniają lub usuwają tam dane albo pokazują dane klientów. Prosimy udostępniać tylko narzędzia o niskim ryzyku lub ograniczone przez skill i przetestować asystenta, zanim stanie się widoczny dla odwiedzających. Dołączone szablony domyślnie blokują ryzykowne narzędzia. Pozostaje jednak ryzyko resztkowe, ponieważ model językowy może się pomylić lub zostać wprowadzony w błąd sprytnie sformułowanymi wiadomościami.
+
+        Skille z innych źródeł: Producent tego rozszerzenia sprawdza tylko ich budowę, a nie treść.
+
+        Źródła wiedzy: Wszystko, co znajduje się w wybranych folderach lub na wybranych stronach, na przykład w OneDrive lub Notion, czat może pokazać każdemu odwiedzającemu. Prosimy wybierać tylko treści, które mogą być publiczne.
+
+        Odpowiedzialność: Producent tego rozszerzenia nie ponosi odpowiedzialności za szkody spowodowane przez udostępnione narzędzia, skille i źródła wiedzy. Co dokładnie obowiązuje i jakie są wyjątki, określają warunki licencji.
+pro:
+    title: "Edycja Pro"
+    text: |
+        Działania ze skutkami: Przez udostępnione narzędzia asystent może wykonywać działania, na przykład tworzyć rezerwacje, generować linki do płatności lub zapisywać wpisy w CRM. Prosimy sprawdzać wyniki. Producent tego rozszerzenia nie ponosi odpowiedzialności za takie działania i ich skutki; co dokładnie obowiązuje i jakie są wyjątki, określają warunki licencji.
+
+        Wprowadzanie głosowe: Transkrypcja może błędnie oddać to, co powiedziano; odwiedzający sprawdza tekst przed wysłaniem. Nagranie trafia bez filtrowania do usługi transkrypcji. Prosimy wspomnieć o tym w polityce prywatności.

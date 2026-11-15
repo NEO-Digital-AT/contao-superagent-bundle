@@ -1,0 +1,37 @@
+# Terms of the SuperAgent per edition, shown on "Access keys and licences".
+# The German text (neo_superagent_terms.de.yaml) is binding; a changed passage
+# needs a new version in Neo\SuperAgentBundle\Licence\Terms::PASSAGES.
+all:
+    title: "Tutte le edizioni"
+    text: |
+        Risposte: Le risposte sono generate da un modello linguistico di un altro fornitore. Possono essere errate, incomplete o inadatte. In qualità di gestore, Lei è responsabile delle impostazioni, delle conoscenze e dei testi dell'assistente e del suo utilizzo sul sito.
+
+        Regole di sicurezza: La modalità privacy e la regola contro i consigli medici riducono il rischio, ma non lo escludono. Non ogni dato personale viene riconosciuto e un modello linguistico può ignorare una regola.
+
+        Protezione dei dati: Lei è responsabile dell'informativa sulla privacy, del consenso dei visitatori e del contratto di trattamento dei dati con il servizio di IA. I testi forniti (PRIVACY.md, testi predefiniti) sono modelli, non consulenza legale.
+
+        Costi: I costi presso il servizio di IA e presso altri servizi scelti sono a Suo carico. La limitazione delle richieste riduce il rischio di abusi, ma non li impedisce.
+
+        Responsabilità: Il produttore di questa estensione non si assume alcuna responsabilità per contenuti e costi secondo questi punti. Che cosa vale esattamente e quali eccezioni esistono è indicato nelle condizioni di licenza.
+basic:
+    title: "Edizione Basic"
+    text: |
+        Ricerca su Internet: I contenuti di altri siti web letti dall'assistente possono essere errati o non aggiornati. Il produttore di questa estensione non li verifica.
+
+        Inoltro: Non è garantito che le richieste inoltrate arrivino via e-mail. Verifichi l'invio delle e-mail e la Sua casella di posta.
+plus:
+    title: "Edizione Plus"
+    text: |
+        Server MCP: Tramite un server MCP l'assistente può richiamare funzioni di un altro sistema, anche funzioni che lì modificano o eliminano dati o mostrano dati dei clienti. Abiliti solo strumenti a basso rischio o limitati da uno skill e provi l'assistente prima di renderlo visibile ai visitatori. I modelli forniti bloccano di serie gli strumenti rischiosi. Resta comunque un rischio residuo, perché un modello linguistico può sbagliare o essere ingannato da messaggi formulati ad arte.
+
+        Skill da altre fonti: Il produttore di questa estensione ne verifica solo la struttura, non il contenuto.
+
+        Fonti di conoscenza: Tutto ciò che si trova nelle cartelle o pagine scelte, ad esempio su OneDrive o in Notion, può essere mostrato dalla chat a qualsiasi visitatore. Scelga solo contenuti che possono essere pubblici.
+
+        Responsabilità: Il produttore di questa estensione non si assume alcuna responsabilità per danni causati da strumenti, skill e fonti di conoscenza abilitati. Che cosa vale esattamente e quali eccezioni esistono è indicato nelle condizioni di licenza.
+pro:
+    title: "Edizione Pro"
+    text: |
+        Azioni con conseguenze: Tramite strumenti abilitati l'assistente può eseguire azioni, ad esempio creare prenotazioni, generare link di pagamento o scrivere voci in un CRM. Verifichi i risultati. Il produttore di questa estensione non si assume alcuna responsabilità per tali azioni e le loro conseguenze; che cosa vale esattamente e quali eccezioni esistono è indicato nelle condizioni di licenza.
+
+        Input vocale: La trascrizione può riportare in modo errato ciò che è stato detto; il visitatore verifica il testo prima di inviarlo. La registrazione arriva senza filtri al servizio di trascrizione. Lo indichi nella Sua informativa sulla privacy.

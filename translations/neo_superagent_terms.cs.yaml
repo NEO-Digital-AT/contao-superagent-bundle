@@ -1,0 +1,37 @@
+# Terms of the SuperAgent per edition, shown on "Access keys and licences".
+# The German text (neo_superagent_terms.de.yaml) is binding; a changed passage
+# needs a new version in Neo\SuperAgentBundle\Licence\Terms::PASSAGES.
+all:
+    title: "Všechny edice"
+    text: |
+        Odpovědi: Odpovědi vytváří jazykový model jiného poskytovatele. Mohou být chybné, neúplné nebo nevhodné. Jako provozovatel odpovídáte za nastavení, znalosti a texty asistenta a za jeho použití na webu.
+
+        Bezpečnostní pravidla: Režim ochrany údajů a pravidlo proti zdravotním radám snižují riziko, ale nevylučují ho. Ne každý osobní údaj je rozpoznán a jazykový model může pravidlo obejít.
+
+        Ochrana údajů: Za zásady ochrany osobních údajů, souhlas návštěvníků a smlouvu o zpracování osobních údajů se službou AI odpovídáte vy. Dodané texty (PRIVACY.md, výchozí texty) jsou vzory, nikoli právní poradenství.
+
+        Náklady: Náklady u služby AI a u dalších zvolených služeb nesete vy. Omezení počtu dotazů snižuje riziko zneužití, ale nezabrání mu.
+
+        Odpovědnost: Výrobce tohoto rozšíření nenese odpovědnost za obsah a náklady podle těchto bodů. Co přesně platí a jaké jsou výjimky, stanoví licenční podmínky.
+basic:
+    title: "Edice Basic"
+    text: |
+        Vyhledávání na internetu: Obsah jiných webů, který asistent čte, může být chybný nebo zastaralý. Výrobce tohoto rozšíření ho nekontroluje.
+
+        Předávání: Není zaručeno, že předané dotazy dorazí e-mailem. Zkontrolujte odesílání e-mailů a svou poštovní schránku.
+plus:
+    title: "Edice Plus"
+    text: |
+        Servery MCP: Přes server MCP může asistent volat funkce jiného systému, i takové, které tam mění nebo mažou data nebo zobrazují údaje zákazníků. Povolte jen nástroje s nízkým rizikem nebo nástroje omezené skillem a asistenta otestujte, než ho zpřístupníte návštěvníkům. Dodané šablony rizikové nástroje ve výchozím stavu blokují. Zbytkové riziko přesto zůstává, protože jazykový model se může mýlit nebo se nechat oklamat šikovně formulovanými zprávami.
+
+        Skilly z jiných zdrojů: Výrobce tohoto rozšíření kontroluje jen jejich strukturu, ne obsah.
+
+        Zdroje znalostí: Vše, co je ve zvolených složkách nebo na zvolených stránkách, například na OneDrive nebo v Notionu, může chat ukázat kterémukoli návštěvníkovi. Volte jen obsah, který smí být veřejný.
+
+        Odpovědnost: Výrobce tohoto rozšíření nenese odpovědnost za škody způsobené povolenými nástroji, skilly a zdroji znalostí. Co přesně platí a jaké jsou výjimky, stanoví licenční podmínky.
+pro:
+    title: "Edice Pro"
+    text: |
+        Akce s následky: Přes povolené nástroje může asistent provádět akce, například vytvářet rezervace, generovat platební odkazy nebo zapisovat záznamy do CRM. Výsledky kontrolujte. Výrobce tohoto rozšíření nenese odpovědnost za takové akce a jejich následky; co přesně platí a jaké jsou výjimky, stanoví licenční podmínky.
+
+        Hlasové zadávání: Přepis může řečené zachytit chybně; návštěvník text před odesláním zkontroluje. Nahrávka jde bez filtrování ke službě pro přepis. Uveďte to ve svých zásadách ochrany osobních údajů.

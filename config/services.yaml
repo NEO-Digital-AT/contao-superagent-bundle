@@ -1,0 +1,168 @@
+parameters:
+    # Fallback sender used when the host has no MAILER_FROM env var. Empty means
+    # "let the application's global default From apply".
+    neo_super_agent.from_email: ''
+    # Model steps per reply (loading skills and tools and calling tools count as
+    # steps). In the last step the model gets no tools and writes its answer.
+    neo_super_agent.max_steps: 12
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Neo\SuperAgentBundle\:
+        resource: ../src/
+        exclude:
+            - ../src/DependencyInjection/
+            - ../src/ContaoManager/
+            - ../src/NeoSuperAgentBundle.php
+            - ../src/Model/
+            - ../src/SuperAgent.php
+
+    # Dedicated, throttling-friendly HTTP client for provider calls (short timeouts).
+    neo_super_agent.http_client:
+        class: Symfony\Contracts\HttpClient\HttpClientInterface
+        factory: ['Symfony\Component\HttpClient\HttpClient', 'create']
+        arguments:
+            - { timeout: 8, max_duration: 25 }
+
+    # Transcription of voice input: longer than a chat call (up to 60 s of audio).
+    neo_super_agent.voice_client:
+        class: Symfony\Contracts\HttpClient\HttpClientInterface
+        factory: ['Symfony\Component\HttpClient\HttpClient', 'create']
+        arguments:
+            - { timeout: 20, max_duration: 45 }
+
+    Neo\SuperAgentBundle\Voice\Transcriber:
+        arguments:
+            $httpClient: '@neo_super_agent.voice_client'
+
+    Neo\SuperAgentBundle\Chat\ProviderClient:
+        arguments:
+            $httpClient: '@neo_super_agent.http_client'
+
+    Neo\SuperAgentBundle\Chat\ChatHandler:
+        arguments:
+            $maxSteps: '%neo_super_agent.max_steps%'
+
+    Neo\SuperAgentBundle\Chat\GroundingProvider:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
+    # Web search on the approved sources (partner and vendor sites, llms.txt).
+    # Separate HTTP client: third-party sites must not slow down the chat.
+    neo_super_agent.research_client:
+        class: Symfony\Contracts\HttpClient\HttpClientInterface
+        factory: ['Symfony\Component\HttpClient\HttpClient', 'create']
+        arguments:
+            - { timeout: 6, max_duration: 15, max_redirects: 3 }
+
+    # MCP servers of the connections (Plus): only public HTTPS addresses, private
+    # networks blocked also after DNS resolution and redirects. A tool call may
+    # take up to 20 s; a slow server must not hold the chat longer.
+    neo_super_agent.mcp_http_client:
+        class: Symfony\Component\HttpClient\NoPrivateNetworkHttpClient
+        arguments:
+            - !service
+                class: Symfony\Contracts\HttpClient\HttpClientInterface
+                factory: ['Symfony\Component\HttpClient\HttpClient', 'create']
+                arguments:
+                    - { timeout: 10, max_duration: 20, max_redirects: 2 }
+
+    Neo\SuperAgentBundle\Mcp\McpClient:
+        arguments:
+            $httpClient: '@neo_super_agent.mcp_http_client'
+
+    # Templates for connections: shipped (mcp-templates/) and the project's own
+    # (config/superagent/mcp-templates/).
+    Neo\SuperAgentBundle\Mcp\TemplateCatalog:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
+    Neo\SuperAgentBundle\Mcp\OAuthFlow:
+        arguments:
+            $httpClient: '@neo_super_agent.mcp_http_client'
+
+    # Installed skills (Plus): an administrator loads a SKILL.md from GitHub in the
+    # back end; only public HTTPS addresses, as for the MCP servers.
+    neo_super_agent.skill_http_client:
+        class: Symfony\Component\HttpClient\NoPrivateNetworkHttpClient
+        arguments:
+            - !service
+                class: Symfony\Contracts\HttpClient\HttpClientInterface
+                factory: ['Symfony\Component\HttpClient\HttpClient', 'create']
+                arguments:
+                    - { timeout: 10, max_duration: 20, max_redirects: 3 }
+
+    Neo\SuperAgentBundle\Skill\SkillSource:
+        arguments:
+            $httpClient: '@neo_super_agent.skill_http_client'
+
+    # Installed skills in the back end (callbacks by class name).
+    Neo\SuperAgentBundle\Backend\SkillCallbacks:
+        public: true
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
+    # Connections, tool locks and the OAuth sign-in in the back end (callbacks by class name).
+    Neo\SuperAgentBundle\Backend\ConnectionCallbacks:
+        public: true
+
+    # Choice of the tools of the connections at the assistant.
+    Neo\SuperAgentBundle\Backend\AgentToolCallbacks:
+        public: true
+
+    Neo\SuperAgentBundle\Controller\Backend\OAuthCallbackController:
+        public: true
+        tags: ['controller.service_arguments']
+
+    # Pages the assistant may open (navigation), cached per start page.
+    Neo\SuperAgentBundle\Chat\PageIndex:
+        arguments:
+            $cache: '@cache.app'
+
+    Neo\SuperAgentBundle\Chat\WebResearch:
+        arguments:
+            $httpClient: '@neo_super_agent.research_client'
+            $cache: '@cache.app'
+        # Public, so the operator can check the approved list from the console.
+        public: true
+
+    # From address for escalation mail = host MAILER_FROM (e.g. a verified Postmark
+    # sender), falling back to the parameter above when that env var is absent.
+    Neo\SuperAgentBundle\Mail\EscalationMailer:
+        arguments:
+            $fromEmail: '%env(default:neo_super_agent.from_email:MAILER_FROM)%'
+
+    # DCA callbacks of the per-language records (resolved by class name).
+    Neo\SuperAgentBundle\Backend\LanguageCallbacks:
+        public: true
+
+    # DCA callbacks of the model section (Contao looks callbacks up in the container).
+    Neo\SuperAgentBundle\Backend\ModelCallbacks:
+        public: true
+
+    # Choices instead of free text (consent category, temperature, answer length).
+    Neo\SuperAgentBundle\Backend\OptionCallbacks:
+        public: true
+
+    # Fields and newsletter of the forwarding form in the back end.
+    Neo\SuperAgentBundle\Backend\FormCallbacks:
+        public: true
+
+    # Publishing ("preview only") and the terms in the back end.
+    Neo\SuperAgentBundle\Backend\PublishCallbacks:
+        public: true
+
+    # Settings of an edition the licence does not include are left out of the form.
+    Neo\SuperAgentBundle\Backend\EditionCallbacks:
+        public: true
+
+    # Settings without effect because of another setting, a key or the terms: disabled, reason at the field.
+    Neo\SuperAgentBundle\Backend\DependencyCallbacks:
+        public: true
+
+    # Licence features of a website (chat, front-end module, back-end forms).
+    Neo\SuperAgentBundle\Licence\FeatureResolver:
+        public: true

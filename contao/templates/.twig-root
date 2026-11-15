@@ -1,0 +1,4 @@
+# Marks contao/templates as a Contao Twig namespace root so subdirectories
+# (e.g. frontend_module/) are scanned recursively and template identifiers keep
+# their path prefix (frontend_module/neo_agent). Without this marker Contao would
+# register the template as "neo_agent" instead of "frontend_module/neo_agent".

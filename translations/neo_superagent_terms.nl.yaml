@@ -1,0 +1,37 @@
+# Terms of the SuperAgent per edition, shown on "Access keys and licences".
+# The German text (neo_superagent_terms.de.yaml) is binding; a changed passage
+# needs a new version in Neo\SuperAgentBundle\Licence\Terms::PASSAGES.
+all:
+    title: "Alle edities"
+    text: |
+        Antwoorden: De antwoorden worden gegenereerd door een taalmodel van een andere aanbieder. Ze kunnen onjuist, onvolledig of ongepast zijn. Als exploitant bent u verantwoordelijk voor de instellingen, de kennis en de teksten van de assistent en voor het gebruik ervan op de website.
+
+        Veiligheidsregels: De privacymodus en de regel tegen medisch advies verkleinen het risico, maar sluiten het niet uit. Niet elk persoonsgegeven wordt herkend en een taalmodel kan een regel negeren.
+
+        Privacy: U bent verantwoordelijk voor de privacyverklaring, de toestemming van bezoekers en de verwerkersovereenkomst met de AI-dienst. De meegeleverde teksten (PRIVACY.md, standaardteksten) zijn sjablonen, geen juridisch advies.
+
+        Kosten: De kosten bij de AI-dienst en bij andere gekozen diensten zijn voor uw rekening. Het beperken van verzoeken verkleint het risico op misbruik, maar voorkomt het niet.
+
+        Aansprakelijkheid: De fabrikant van deze extensie aanvaardt geen aansprakelijkheid voor inhoud en kosten volgens deze punten. Wat precies geldt en welke uitzonderingen er zijn, staat in de licentievoorwaarden.
+basic:
+    title: "Editie Basic"
+    text: |
+        Zoeken op internet: Inhoud van andere websites die de assistent leest, kan onjuist of verouderd zijn. De fabrikant van deze extensie controleert die niet.
+
+        Doorsturen: Het is niet gegarandeerd dat doorgestuurde vragen per e-mail aankomen. Controleer uw e-mailverzending en uw postvak.
+plus:
+    title: "Editie Plus"
+    text: |
+        MCP-servers: Via een MCP-server kan de assistent functies van een ander systeem aanroepen, ook functies die daar gegevens wijzigen of verwijderen of klantgegevens tonen. Geef alleen tools vrij met weinig risico of tools die door een skill worden beperkt, en test de assistent voordat u hem voor bezoekers zichtbaar maakt. De meegeleverde sjablonen blokkeren riskante tools standaard. Er blijft een restrisico, want een taalmodel kan zich vergissen of door slim geformuleerde berichten worden misleid.
+
+        Skills uit andere bronnen: De fabrikant van deze extensie controleert alleen hun opbouw, niet hun inhoud.
+
+        Kennisbronnen: Alles in de gekozen mappen of pagina's, bijvoorbeeld op OneDrive of in Notion, kan de chat aan elke bezoeker tonen. Kies alleen inhoud die openbaar mag zijn.
+
+        Aansprakelijkheid: De fabrikant van deze extensie aanvaardt geen aansprakelijkheid voor schade door vrijgegeven tools, skills en kennisbronnen. Wat precies geldt en welke uitzonderingen er zijn, staat in de licentievoorwaarden.
+pro:
+    title: "Editie Pro"
+    text: |
+        Acties met gevolgen: Via vrijgegeven tools kan de assistent acties uitvoeren, bijvoorbeeld boekingen aanmaken, betaallinks genereren of gegevens in een CRM schrijven. Controleer de resultaten. De fabrikant van deze extensie aanvaardt geen aansprakelijkheid voor zulke acties en hun gevolgen; wat precies geldt en welke uitzonderingen er zijn, staat in de licentievoorwaarden.
+
+        Spraakinvoer: De transcriptie kan het gesprokene verkeerd weergeven; de bezoeker controleert de tekst voor het verzenden. De opname gaat ongefilterd naar de transcriptiedienst. Vermeld dit in uw privacyverklaring.

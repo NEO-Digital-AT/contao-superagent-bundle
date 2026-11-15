@@ -1,0 +1,63 @@
+<?php
+
+declare(strict_types=1);
+
+// Skills installed by administrators (edition Plus).
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['new'] = ['New skill', 'Install a skill from GitHub or from a file.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['edit'] = ['Edit', 'Check or update the skill.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['delete'] = ['Delete', 'Remove the skill.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['show'] = ['Details', 'Show the details.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['back_to_agents'] = ['Assistants', 'Back to the list of assistants.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_legend'] = 'Source';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_legend'] = 'Check and take over';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source'] = ['Source', 'Where the skill comes from.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_options'] = [
+    'github' => 'GitHub',
+    'file' => 'File (SKILL.md or ZIP)',
+    'template' => 'Template',
+];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['url'] = ['Address on GitHub', 'Folder or file of the skill, e.g. https://github.com/owner/repo/tree/main/skills/appointments. Without a branch the default branch applies; a commit hash instead of the branch pins a version.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['file'] = ['File', 'A SKILL.md or a ZIP file with one SKILL.md, from the file manager or uploaded here.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['shipped'] = 'Shipped and fixed: %s. These skills belong to the extension and cannot be changed here; installed skills may not use their names.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_not_installed'] = 'not taken over yet';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_installed'] = '%s · version of %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_pending'] = 'new version loaded, not taken over';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_github_url'] = 'Please enter the address of a folder or file in a GitHub repository (github.com or raw.githubusercontent.com).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['installed'] = 'Taken over: %s, by %s on %s.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_load'] = 'Load and check';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_update'] = 'Check for a new version';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['text_installed'] = 'Text taken over (as the model gets it)';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['text_pending'] = 'Loaded text (as the model would get it)';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['changes'] = 'Changes against the version taken over';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched'] = 'Loaded on %s, not taken over yet.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_ok'] = 'SKILL.md read · name %s · %s of %s characters.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['files_ignored'] = 'Not taken over (only the SKILL.md counts, nothing is run): %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_check'] = 'I have read the content and take it over.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_help'] = 'The text applies only then. The manufacturer of this extension checks only the structure of a skill, not its content.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_missing'] = 'The loaded text is not taken over yet. Tick the box below and save.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['no_update'] = 'No new version: the text is unchanged.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched_ok'] = 'Loaded and checked. Read the text and take it over with the box below.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched_errors'] = 'The skill cannot be taken over like this. The reasons are listed below.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['taken_over'] = 'The skill "%s" has been taken over.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_frontmatter'] = 'The header with name and description (between two lines "---") is missing at the start.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_name'] = 'The name "%s" is invalid: lower-case letters, digits and hyphens only, starting with a letter, at most 64 characters.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_name_taken'] = 'The name "%s" is already used (shipped or another installed skill).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_description'] = 'The description is missing. It tells the model when to load the skill.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_description_long'] = 'The description has %s characters, at most %s are allowed.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_body'] = 'The text of the skill is empty.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_too_long'] = 'The text has %s characters, at most %s are allowed. Split it into several smaller skills.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_depends'] = 'The skill builds on "%s" (depends), which does not exist here.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_tool_unknown'] = 'The tool "%s" (tools) exists in no connection. The skill works anyway; the tool joins once a matching connection exists.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_keys_ignored'] = 'Header entries not used: %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_renamed'] = 'The name changes from "%s" to "%s". Assistants that ticked the old name need to tick the skill again.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_unreachable'] = 'GitHub is not reachable: %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_not_found'] = 'There is no SKILL.md at this address (%s).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_http'] = 'GitHub answered with HTTP %s.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_too_big'] = 'The file is too large.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_file_missing'] = 'Please choose a file.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_file_type'] = 'SKILL.md files (.md) and ZIP files are allowed.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_no_zip'] = 'This server cannot read ZIP files (the PHP extension zip is missing). Upload the SKILL.md directly.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_broken'] = 'The ZIP file cannot be opened.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_many'] = 'The ZIP file contains several skills. Please one file per skill.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_none'] = 'The ZIP file contains no SKILL.md.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_template_missing'] = 'The template "%s" no longer exists on this website. The skill stays as it is.';

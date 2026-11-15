@@ -1,0 +1,63 @@
+<?php
+
+declare(strict_types=1);
+
+// Skills installed by administrators (edition Plus).
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['new'] = ['Novi skill', 'Instaliraj skill s GitHuba ili iz datoteke.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['edit'] = ['Uredi', 'Provjeri ili ažuriraj skill.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['delete'] = ['Izbriši', 'Ukloni skill.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['show'] = ['Pojedinosti', 'Prikaži pojedinosti.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['back_to_agents'] = ['Asistenti', 'Natrag na popis asistenata.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_legend'] = 'Izvor';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_legend'] = 'Provjera i preuzimanje';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source'] = ['Izvor', 'Odakle dolazi skill.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_options'] = [
+    'github' => 'GitHub',
+    'file' => 'Datoteka (SKILL.md ili ZIP)',
+    'template' => 'Predložak',
+];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['url'] = ['Adresa na GitHubu', 'Mapa ili datoteka skilla, npr. https://github.com/owner/repo/tree/main/skills/termini. Bez grane vrijedi zadana grana; hash commita umjesto grane određuje verziju.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['file'] = ['Datoteka', 'SKILL.md ili ZIP datoteka s jednim SKILL.md, iz upravljanja datotekama ili ovdje učitana.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['shipped'] = 'Isporučeni i fiksni: %s. Ti skillovi pripadaju proširenju i ovdje se ne mogu mijenjati; instalirani skillovi ne smiju nositi njihova imena.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_not_installed'] = 'još nije preuzet';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_installed'] = '%s · verzija od %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_pending'] = 'nova verzija učitana, nije preuzeta';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_github_url'] = 'Unesite adresu mape ili datoteke u GitHub repozitoriju (github.com ili raw.githubusercontent.com).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['installed'] = 'Preuzeto: %s, preuzeo/la %s dana %s.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_load'] = 'Učitaj i provjeri';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_update'] = 'Provjeri novu verziju';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['text_installed'] = 'Preuzeti tekst (kako ga dobiva model)';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['text_pending'] = 'Učitani tekst (kako bi ga dobio model)';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['changes'] = 'Promjene u odnosu na preuzetu verziju';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched'] = 'Učitano %s, još nije preuzeto.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_ok'] = 'SKILL.md pročitan · naziv %s · %s od %s znakova.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['files_ignored'] = 'Nije preuzeto (vrijedi samo SKILL.md, ništa se ne pokreće): %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_check'] = 'Pročitao/la sam sadržaj i preuzimam ga.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_help'] = 'Tekst vrijedi tek nakon toga. Proizvođač ovog proširenja provjerava samo strukturu skilla, ne njegov sadržaj.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_missing'] = 'Učitani tekst još nije preuzet. Označite polje dolje i spremite.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['no_update'] = 'Nema nove verzije: tekst je nepromijenjen.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched_ok'] = 'Učitano i provjereno. Pročitajte tekst i preuzmite ga poljem dolje.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched_errors'] = 'Skill se ne može preuzeti u ovom obliku. Razlozi su navedeni dolje.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['taken_over'] = 'Skill „%s” je preuzet.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_frontmatter'] = 'Na početku nedostaje zaglavlje s name i description (između dva retka „---”).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_name'] = 'Naziv „%s” nije valjan: samo mala slova, znamenke i crtice, na početku slovo, najviše 64 znaka.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_name_taken'] = 'Naziv „%s” je već zauzet (isporučeni ili drugi instalirani skill).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_description'] = 'Nedostaje opis (description). On modelu govori kada učitati skill.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_description_long'] = 'Opis ima %s znakova, dopušteno je najviše %s.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_body'] = 'Tekst skilla je prazan.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_too_long'] = 'Tekst ima %s znakova, dopušteno je najviše %s. Podijelite ga na nekoliko manjih skillova.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_depends'] = 'Skill se oslanja na „%s” (depends), koji ovdje ne postoji.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_tool_unknown'] = 'Alat „%s” (tools) ne postoji ni u jednoj vezi. Skill ipak radi; alat se dodaje čim postoji odgovarajuća veza.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_keys_ignored'] = 'Nekorišteni podaci u zaglavlju: %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_renamed'] = 'Naziv se mijenja iz „%s” u „%s”. Asistenti koji su imali označen stari naziv moraju ponovno označiti skill.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_unreachable'] = 'GitHub nije dostupan: %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_not_found'] = 'Na ovoj adresi nema SKILL.md (%s).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_http'] = 'GitHub je odgovorio s HTTP %s.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_too_big'] = 'Datoteka je prevelika.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_file_missing'] = 'Odaberite datoteku.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_file_type'] = 'Dopuštene su datoteke SKILL.md (.md) i ZIP datoteke.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_no_zip'] = 'Ovaj poslužitelj ne može čitati ZIP datoteke (nedostaje PHP proširenje zip). Učitajte izravno SKILL.md.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_broken'] = 'ZIP datoteka se ne može otvoriti.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_many'] = 'ZIP datoteka sadrži više skillova. Molimo jednu datoteku po skillu.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_none'] = 'ZIP datoteka ne sadrži SKILL.md.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_template_missing'] = 'Predložak „%s” više ne postoji na ovom web-mjestu. Skill ostaje nepromijenjen.';

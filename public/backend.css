@@ -1,0 +1,33 @@
+/* Back end: a setting without effect (Backend\FieldLock) shows the reason in place
+   of its help text, in full and in Contao's error colour (light and dark scheme). */
+.widget.nsa-locked .tl_help {
+  height: auto;
+  white-space: normal;
+  overflow: visible;
+  color: var(--red, #c33);
+  font-weight: 600;
+}
+.widget.nsa-locked .tl_help a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Assistant form: the languages with their starter questions (LanguageCallbacks::overview). */
+.nsa-languages__list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 12px; }
+.nsa-languages__item { border: 1px solid var(--border, #ddd); border-radius: 4px; padding: 10px 14px; }
+.nsa-languages__item h4 { margin: 0 0 6px; font-size: 1em; }
+.nsa-languages__questions { margin: 0 0 8px; padding-left: 18px; }
+.nsa-languages__questions li { margin: 2px 0; }
+.nsa-languages__answer { color: var(--text-light, #6a6a6a); }
+.nsa-languages__none { margin: 0 0 8px; color: var(--text-light, #6a6a6a); }
+.nsa-languages p { margin-bottom: 0; }
+.nsa-languages > p:last-child { margin-top: 14px; }
+.nsa-languages .tl_submit { display: inline-block; text-decoration: none; }
+
+/* Setup steps of a connection template (ConnectionCallbacks::templateSetup). */
+.nsa-setup ol { margin: 6px 0 4px 18px; padding: 0; }
+.nsa-setup li { margin: 0 0 6px; line-height: 1.5; }
+.nsa-copy { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.nsa-copy code { word-break: break-all; }
+.nsa-copy__button { margin: 0; }
+.nsa-copy__status:not(:empty) { font-weight: 600; }

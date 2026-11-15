@@ -1,0 +1,63 @@
+<?php
+
+declare(strict_types=1);
+
+// Skills installed by administrators (edition Plus).
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['new'] = ['Nový skill', 'Nainstalovat skill z GitHubu nebo ze souboru.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['edit'] = ['Upravit', 'Zkontrolovat nebo aktualizovat skill.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['delete'] = ['Smazat', 'Odebrat skill.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['show'] = ['Podrobnosti', 'Zobrazit podrobnosti.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['back_to_agents'] = ['Asistenti', 'Zpět na seznam asistentů.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_legend'] = 'Zdroj';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_legend'] = 'Kontrola a převzetí';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source'] = ['Zdroj', 'Odkud skill pochází.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_options'] = [
+    'github' => 'GitHub',
+    'file' => 'Soubor (SKILL.md nebo ZIP)',
+    'template' => 'Šablona',
+];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['url'] = ['Adresa na GitHubu', 'Složka nebo soubor skillu, např. https://github.com/owner/repo/tree/main/skills/terminy. Bez větve platí výchozí větev; hash commitu místo větve určí pevnou verzi.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['file'] = ['Soubor', 'SKILL.md nebo soubor ZIP s jedním SKILL.md, ze správy souborů nebo nahraný zde.'];
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['shipped'] = 'Dodané a pevné: %s. Tyto skilly patří k rozšíření a zde je nelze měnit; nainstalované skilly nesmějí nést jejich názvy.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_not_installed'] = 'zatím nepřevzato';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_installed'] = '%s · verze z %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['badge_pending'] = 'nová verze načtena, nepřevzata';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_github_url'] = 'Zadejte adresu složky nebo souboru v repozitáři GitHub (github.com nebo raw.githubusercontent.com).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['installed'] = 'Převzato: %s, uživatel %s dne %s.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_load'] = 'Načíst a zkontrolovat';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_update'] = 'Zkontrolovat novou verzi';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['text_installed'] = 'Převzatý text (jak ho dostává model)';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['text_pending'] = 'Načtený text (jak by ho dostal model)';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['changes'] = 'Změny oproti převzaté verzi';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched'] = 'Načteno %s, zatím nepřevzato.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_ok'] = 'SKILL.md přečten · název %s · %s z %s znaků.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['files_ignored'] = 'Nepřevzato (počítá se jen SKILL.md, nic se nespouští): %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_check'] = 'Přečetl(a) jsem obsah a přebírám ho.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_help'] = 'Text platí teprve potom. Výrobce tohoto rozšíření kontroluje jen stavbu skillu, ne jeho obsah.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['confirm_missing'] = 'Načtený text zatím není převzat. Zaškrtněte níže políčko a uložte.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['no_update'] = 'Žádná nová verze: text se nezměnil.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched_ok'] = 'Načteno a zkontrolováno. Přečtěte si text a převezměte ho políčkem níže.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['fetched_errors'] = 'Skill nelze takto převzít. Důvody jsou uvedeny níže.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['taken_over'] = 'Skill „%s“ byl převzat.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_frontmatter'] = 'Na začátku chybí hlavička s name a description (mezi dvěma řádky „---“).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_name'] = 'Název „%s“ je neplatný: jen malá písmena, číslice a pomlčky, na začátku písmeno, nejvýše 64 znaků.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_name_taken'] = 'Název „%s“ je už obsazený (dodaný nebo jiný nainstalovaný skill).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_description'] = 'Chybí popis (description). Říká modelu, kdy skill načíst.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_description_long'] = 'Popis má %s znaků, povoleno je nejvýše %s.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_body'] = 'Text skillu je prázdný.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_too_long'] = 'Text má %s znaků, povoleno je nejvýše %s. Rozdělte ho do několika menších skillů.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_depends'] = 'Skill navazuje na „%s“ (depends), který zde neexistuje.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_tool_unknown'] = 'Nástroj „%s“ (tools) neexistuje v žádném připojení. Skill přesto funguje; nástroj přibude, jakmile bude existovat odpovídající připojení.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_keys_ignored'] = 'Nepoužité údaje v hlavičce: %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['check_renamed'] = 'Název se mění z „%s“ na „%s“. Asistenti, kteří měli zaškrtnutý starý název, musí skill zaškrtnout znovu.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_unreachable'] = 'GitHub není dostupný: %s';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_not_found'] = 'Na této adrese není žádný SKILL.md (%s).';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_http'] = 'GitHub odpověděl kódem HTTP %s.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_too_big'] = 'Soubor je příliš velký.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_file_missing'] = 'Vyberte soubor.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_file_type'] = 'Povoleny jsou soubory SKILL.md (.md) a ZIP.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_no_zip'] = 'Tento server neumí číst soubory ZIP (chybí rozšíření PHP zip). Nahrajte přímo SKILL.md.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_broken'] = 'Soubor ZIP nelze otevřít.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_many'] = 'Soubor ZIP obsahuje více skillů. Prosím jeden soubor na skill.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_zip_none'] = 'Soubor ZIP neobsahuje žádný SKILL.md.';
+$GLOBALS['TL_LANG']['tl_neo_agent_skill']['source_template_missing'] = 'Šablona „%s“ už na tomto webu není. Skill zůstává beze změny.';
