@@ -1,6 +1,7 @@
 parameters:
-    # Fallback sender used when the host has no MAILER_FROM env var. Empty means
-    # "let the application's global default From apply".
+    # Sender of forwarded requests when the host has no MAILER_FROM env var. Empty:
+    # the e-mail address of the website administrator (start point), else of the
+    # system administrator (System › Settings).
     neo_super_agent.from_email: ''
     # Model steps per reply (loading skills and tools and calling tools count as
     # steps). In the last step the model gets no tools and writes its answer.
@@ -131,9 +132,9 @@ services:
 
     # From address for escalation mail = host MAILER_FROM (e.g. a verified Postmark
     # sender), falling back to the parameter above when that env var is absent.
-    Neo\SuperAgentBundle\Mail\EscalationMailer:
+    Neo\SuperAgentBundle\Mail\SenderAddress:
         arguments:
-            $fromEmail: '%env(default:neo_super_agent.from_email:MAILER_FROM)%'
+            $configured: '%env(default:neo_super_agent.from_email:MAILER_FROM)%'
 
     # DCA callbacks of the per-language records (resolved by class name).
     Neo\SuperAgentBundle\Backend\LanguageCallbacks:

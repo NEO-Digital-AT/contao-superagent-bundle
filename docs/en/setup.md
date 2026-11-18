@@ -105,14 +105,25 @@ with one module per language. Both ways step by step:
 
 ## 5. Mail sender
 
-Forwarded requests go through the mailer of Contao. The sender is the
-environment variable `MAILER_FROM` when it is set; otherwise set the parameter
-in `config/config.yaml`:
+Forwarded requests go through the mailer of Contao. Their sender is the first of
+these addresses that is set:
 
-```yaml
-parameters:
-    neo_super_agent.from_email: 'office@example.com'
-```
+1. the environment variable `MAILER_FROM`, or the parameter in
+   `config/config.yaml`:
+
+   ```yaml
+   parameters:
+       neo_super_agent.from_email: 'office@example.com'
+   ```
+
+2. the **E-mail address of the website administrator** of the start point of
+   the page (settings of the start point in the site structure);
+3. the **E-mail address of the system administrator** under **System ›
+   Settings**.
+
+Without any of them a request is not sent: the chat shows its error notice
+instead of the confirmation, the log names the reason, and the assistant's form
+warns in the section **Escalation & consent** which start points are affected.
 
 The mail shows the name of the assistant as sender name. The visitor's address
 is the reply-to address; the mail contains the message and the conversation so

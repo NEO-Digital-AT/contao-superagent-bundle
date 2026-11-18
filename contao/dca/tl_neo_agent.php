@@ -202,7 +202,7 @@ $GLOBALS['TL_DCA']['tl_neo_agent'] = [
             .'{research_legend},web_search;'
             // Whom does the assistant refer to? Never to third-party vendors.
             .'{referral_legend},referral_company,preferred_solution,preferred_solution_note;'
-            .'{escalation_legend},escalation_email,escalation_name,contact_page,form_fields,form_required,phone_country,form_consent,newsletter_module,newsletter_note;'
+            .'{escalation_legend},escalation_email,escalation_name,sender_note,contact_page,form_fields,form_required,phone_country,form_consent,newsletter_module,newsletter_note;'
             .'{skills_legend},skills;'
             .'{mcp_legend},mcp_tools,mcp_note;'
             .'{expert_legend:hide},system_prompt;',
@@ -307,6 +307,8 @@ $GLOBALS['TL_DCA']['tl_neo_agent'] = [
             'sql' => "varchar(32) NOT NULL default ''",
         ],
         'newsletter_note' => ['input_field_callback' => [FormCallbacks::class, 'newsletterNote']],
+        // Warning when forwarded requests of a start point would have no sender address.
+        'sender_note' => ['input_field_callback' => [FormCallbacks::class, 'senderNote']],
 
         // --- Identity (the per-language texts live in tl_neo_agent_language) -
         'assistant_name' => [

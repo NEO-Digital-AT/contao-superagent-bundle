@@ -130,6 +130,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'Zvolený modul „Přihlášení k odběru“ není na žádné zveřejněné stránce. Potvrzovací odkaz vede na tuto stránku; dokud tam modul není, formulář políčko newsletteru nezobrazí.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'Zatím neexistuje žádný modul newsletteru (Brevo nebo „Přihlášení k odběru“ z Contaa). Vytvořte ho, pak ho zde půjde zvolit.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'Přeposlané dotazy z %s nelze odeslat: chybí adresa odesílatele. U kořenové stránky zadejte „E-mailovou adresu administrátora webu“, v nabídce Systém › Nastavení „E-mailovou adresu administrátora systému“, nebo na serveru nastavte MAILER_FROM. Do té doby chat místo odeslání zobrazí chybu.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [

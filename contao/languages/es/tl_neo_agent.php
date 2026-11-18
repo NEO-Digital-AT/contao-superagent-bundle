@@ -130,6 +130,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'El módulo «Suscribirse» elegido no está en ninguna página publicada. El enlace de confirmación lleva a esa página; mientras el módulo no esté allí, el formulario no muestra la casilla del boletín.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'Todavía no hay ningún módulo de boletín (Brevo o «Suscribirse» de Contao). Cree uno y podrá elegirlo aquí.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'Las solicitudes reenviadas desde %s no se pueden enviar: falta una dirección de remitente. Indique la «Dirección e-mail del administrador de la web» en la página raíz o la «Dirección e-mail del administrador del sistema» en Sistema › Ajustes, o defina MAILER_FROM en el servidor. Hasta entonces el chat muestra un error en lugar de enviar.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [

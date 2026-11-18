@@ -134,6 +134,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'Das gewählte Modul „Newsletter abonnieren“ steht auf keiner veröffentlichten Seite. Der Bestätigungslink führt auf diese Seite; bis das Modul dort steht, zeigt das Formular kein Newsletter-Häkchen.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'Es gibt noch kein Newsletter-Modul (Brevo oder „Newsletter abonnieren“ von Contao). Legen Sie eines an, dann lässt es sich hier wählen.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'Weitergeleitete Anfragen von %s können nicht gesendet werden: Es fehlt eine Absenderadresse. Tragen Sie beim Startpunkt die „E-Mail-Adresse des Webseiten-Administrators“ oder unter System › Einstellungen die „E-Mail-Adresse des Systemadministrators“ ein, oder setzen Sie MAILER_FROM auf dem Server. Bis dahin meldet der Chat einen Fehler, statt zu senden.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [

@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Neo\SuperAgentBundle\Tests\Mail;
 
 use Neo\SuperAgentBundle\Mail\EscalationMailer;
+use Neo\SuperAgentBundle\Mail\SenderAddress;
 use Neo\SuperAgentBundle\Model\AgentModel;
 use Neo\SuperAgentBundle\Tests\Support\Models;
+use Neo\SuperAgentBundle\Tests\Support\TestDatabase;
 use Neo\SuperAgentBundle\Tests\Support\Translations;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -54,7 +56,40 @@ final class EscalationMailerTest extends TestCase
         $mailer->expects($this->never())->method('send');
 
         $this->expectException(\RuntimeException::class);
-        (new EscalationMailer($mailer, Translations::translator()))->send(Models::make(AgentModel::class, ['escalation_email' => ' ']), 'max.mustermann@example.com', 'Text', 'en');
+        (new EscalationMailer($mailer, Translations::translator(), self::senders('noreply@example.com')))->send(Models::make(AgentModel::class, ['escalation_email' => ' ']), 'max.mustermann@example.com', 'Text', 'en');
+    }
+
+    public function testWithoutSenderNothingIsSent(): void
+    {
+        // Without a sender the mailer would accept the message and drop it later, after the visitor read "sent".
+        $mailer = $this->createMock(MailerInterface::class);
+        $mailer->expects($this->never())->method('send');
+
+        $this->expectException(\RuntimeException::class);
+        (new EscalationMailer($mailer, Translations::translator(), self::senders('')))->send(Models::make(AgentModel::class, ['escalation_email' => 'team@example.com']), 'max.mustermann@example.com', 'Text', 'en');
+    }
+
+    public function testTheWebsiteAdministratorIsTheFallbackSender(): void
+    {
+        $sent = null;
+        $mailer = $this->createMock(MailerInterface::class);
+        $mailer->expects($this->once())->method('send')->willReturnCallback(static function (RawMessage $message) use (&$sent): void {
+            $sent = $message;
+        });
+
+        $agent = Models::make(AgentModel::class, ['escalation_email' => 'team@example.com', 'assistant_name' => 'Bot']);
+        (new EscalationMailer($mailer, Translations::translator(), self::senders('', 'Example Hotel [office@example.com]')))->send($agent, 'max.mustermann@example.com', 'Text', 'en', [], [], false, false, 1, 'www.example.com');
+
+        $this->assertInstanceOf(Email::class, $sent);
+        $this->assertSame(['office@example.com', 'Bot'], [$sent->getFrom()[0]->getAddress(), $sent->getFrom()[0]->getName()]);
+    }
+
+    private static function senders(string $configured, string $rootAdmin = ''): SenderAddress
+    {
+        $db = TestDatabase::create();
+        TestDatabase::addPages($db, [['id' => 1, 'type' => 'root', 'title' => 'Example', 'adminEmail' => $rootAdmin]]);
+
+        return new SenderAddress($db, $configured, static fn (): string => '');
     }
 
     /**
@@ -70,7 +105,7 @@ final class EscalationMailerTest extends TestCase
         });
 
         $agent = Models::make(AgentModel::class, ['escalation_email' => ' team@example.com ', 'assistant_name' => 'Bot']);
-        (new EscalationMailer($mailer, Translations::translator(), 'noreply@example.com'))->send($agent, 'max.mustermann@example.com', 'Bitte um Rückruf', $locale, $transcript, $details, $newsletter, $consent);
+        (new EscalationMailer($mailer, Translations::translator(), self::senders('noreply@example.com')))->send($agent, 'max.mustermann@example.com', 'Bitte um Rückruf', $locale, $transcript, $details, $newsletter, $consent);
 
         $this->assertInstanceOf(Email::class, $sent);
 

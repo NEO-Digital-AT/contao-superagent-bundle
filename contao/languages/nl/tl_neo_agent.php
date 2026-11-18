@@ -130,6 +130,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'De gekozen module ‘Abonneren’ staat op geen enkele gepubliceerde pagina. De bevestigingslink leidt naar die pagina; zolang de module er niet staat, toont het formulier geen vakje voor de nieuwsbrief.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'Er is nog geen nieuwsbriefmodule (Brevo of ‘Abonneren’ van Contao). Maak er een aan, dan kan die hier worden gekozen.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'Doorgestuurde aanvragen van %s kunnen niet worden verzonden: er ontbreekt een afzenderadres. Vul bij de startpagina het „E-mail adres van de websitebeheerder” in, of onder Systeem › Instellingen het „E-mail adres van de systeembeheerder”, of stel MAILER_FROM in op de server. Tot dan toont de chat een fout in plaats van te verzenden.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [

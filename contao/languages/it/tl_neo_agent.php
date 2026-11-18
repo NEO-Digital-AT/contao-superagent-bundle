@@ -130,6 +130,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'Il modulo «Iscriversi» scelto non si trova su nessuna pagina pubblicata. Il link di conferma porta a quella pagina; finché il modulo non vi si trova, il modulo non mostra la casella newsletter.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'Non esiste ancora un modulo newsletter (Brevo o «Iscriversi» di Contao). Ne crei uno, poi potrà sceglierlo qui.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'Le richieste inoltrate da %s non possono essere inviate: manca un indirizzo mittente. Inserisci l’«Indirizzo e-mail dell’amministratore del sito» nella pagina radice, oppure l’«Indirizzo e-mail dell’amministratore di sistema» in Sistema › Impostazioni generali, oppure imposta MAILER_FROM sul server. Fino ad allora la chat mostra un errore invece di inviare.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [

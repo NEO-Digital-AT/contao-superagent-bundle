@@ -130,6 +130,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'Le module « S’abonner » choisi ne figure sur aucune page publiée. Le lien de confirmation mène à cette page ; tant que le module n’y est pas, le formulaire n’affiche pas de case newsletter.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'Il n’existe pas encore de module de newsletter (Brevo ou « S’abonner » de Contao). Créez-en un, il pourra ensuite être choisi ici.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'Les demandes transférées depuis %s ne peuvent pas être envoyées : il manque une adresse d’expéditeur. Indiquez l’« Adresse e-mail de l’administrateur du site » dans la page racine, ou l’« Adresse e-mail de l’administrateur » sous Système › Configuration, ou définissez MAILER_FROM sur le serveur. D’ici là, le chat affiche une erreur au lieu d’envoyer.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [

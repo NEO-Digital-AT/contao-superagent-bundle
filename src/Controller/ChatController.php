@@ -233,9 +233,13 @@ final class ChatController extends AbstractController
 
         try {
             // The chat so far goes along, so the team sees the context (sent by the
-            // visitor's own action, never stored).
-            $this->escalation->send($agent, $email, $message, $this->locale($request, $payload), $this->history($payload['transcript'] ?? null, self::TRANSCRIPT_TURNS), $details, $newsletter, $consent);
-        } catch (\Throwable) {
+            // visitor's own action, never stored). The start point of the page
+            // decides the fallback sender (its administrator's address).
+            $root = \is_array($payload['page'] ?? null) ? max(0, (int) ($payload['page']['root'] ?? 0)) : 0;
+            $this->escalation->send($agent, $email, $message, $this->locale($request, $payload), $this->history($payload['transcript'] ?? null, self::TRANSCRIPT_TURNS), $details, $newsletter, $consent, $root, $request->getHost());
+        } catch (\Throwable $e) {
+            $this->logger->error('SuperAgent: a forwarded request could not be sent: '.$e->getMessage());
+
             return $this->json(['error' => 'send_failed'], 502);
         }
 

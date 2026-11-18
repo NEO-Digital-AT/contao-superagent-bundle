@@ -1571,7 +1571,7 @@
         if (phoneInput && phoneInput.value.trim() && !/^\+[1-9]\d{6,14}$/.test(phone)) { showEscError([phoneInput], t.escPhoneInvalid); return; }
         showEscError([], '');
 
-        var payload = { email: email, message: message, transcript: history, lang: cfg.lang, agent: cfg.agent, page: { url: location.pathname + location.search, title: document.title } };
+        var payload = { email: email, message: message, transcript: history, lang: cfg.lang, agent: cfg.agent, page: { url: location.pathname + location.search, title: document.title, root: cfg.root || 0 } };
         escForm.querySelectorAll('[data-nsa-esc-field]').forEach(function (f) { payload[f.getAttribute('data-nsa-esc-field')] = (f.value || '').trim(); });
         if (phoneInput) payload.phone = phone;
         if (escNewsletter) payload.newsletter = escNewsletter.checked;
