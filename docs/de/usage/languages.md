@@ -3,7 +3,7 @@ titel: Texte je Sprache
 kurzfassung: Die Sprachdatensätze eines SuperAgent-Assistenten – Begrüßung, Einstiegsfragen mit optionaler Antwort, Fragen und Antworten, jeder Text des Chatfensters – Vorschläge in elf Sprachen, Platzhalter, welchen Datensatz eine Seite bekommt und die zwei Wege für mehrere Sprachen.
 zielgruppe: anwender
 sprache: de
-stand: 2026-11-14
+stand: 2026-11-18
 ---
 
 # Texte je Sprache
@@ -36,7 +36,19 @@ Liste der Assistenten sie.
 | | **Fragen & Antworten** | Weiteres Wissen, nicht als Knopf gezeigt: je Zeile eine Frage und ihre Antwort. Der Assistent nutzt sie als Wissen und formuliert seine Antworten selbst. |
 | Knöpfe & Hinweise des Widgets | jeder feste Text des Fensters | KI-Hinweis, Chat-Knopf, Knöpfe zum Öffnen und Schließen, Bitte um Einwilligung und der Hinweis, dass der Chat nicht verfügbar ist, Senden-Knopf, der Weiterleiten-Link und jeder Text des Weiterleiten-Formulars, die Bestätigung, die Fehlermeldung, der Datenschutzhinweis unter der Eingabe, „Seite öffnen“, „neues Gespräch“, die Statustexte, die Texte der Spracheingabe, der Knopf für die Einstiegsfragen |
 
-Leere Felder nutzen die Vorgabe der Sprache, grau angezeigt.
+![Der obere Teil eines Sprachdatensatzes: Rahmen 1 um Sprache mit gewähltem Deutsch, Rahmen 2 bis 5 um Untertitel, Begrüßung, Hinweistext und Eingabe-Platzhalter.](../bilder/language-texts.png)
+
+Im Bild: 1 **Sprache**, 2 **Untertitel**, 3 **Begrüßung** (`%name%` wird zum
+Anzeigenamen), 4 **Hinweistext** (leer: kein Hinweis), 5 **Eingabe-Platzhalter**.
+
+Leere Felder nutzen die Vorgabe der Sprache, grau angezeigt. Der Abschnitt
+**Knöpfe & Hinweise des Widgets** ist zugeklappt; ein Klick auf seine
+Überschrift öffnet ihn.
+
+![Der geöffnete Abschnitt Knöpfe & Hinweise des Widgets: Rahmen 1 um das Feld KI-Hinweis, darunter die Felder für den Datenschutzhinweis und die Vorgabe zum Datenschutz.](../bilder/language-widget.png)
+
+Im Bild: 1 einer der Texte des Fensters, hier der KI-Hinweis unter dem Kopf des
+Chatfensters.
 
 Zwei Felder sind Vorgaben statt fester Texte; die Antwort formuliert der
 Assistent selbst:
@@ -65,9 +77,11 @@ Ziel: Besucher sehen beim Öffnen des Chats ein paar Fragen zum Anklicken.
    seiner Wissensquelle wie auf jede andere Frage.
 4. Auf **Speichern** klicken.
 
-![Der Abschnitt Einstiegsfragen, Fragen & Antworten eines Sprachdatensatzes: Rahmen 1 um Einstiegsfragen mit den Spalten Frage und Antwort (optional), eine Frage mit Antwort und zwei ohne, Rahmen 2 um Fragen & Antworten.](../bilder/language-record.png)
+![Der Abschnitt Einstiegsfragen, Fragen & Antworten eines Sprachdatensatzes: Rahmen 1 um Einstiegsfragen mit den Spalten Frage und Antwort (optional), eine Frage ohne und eine mit Antwort, Rahmen 2 um die Knöpfe einer Zeile, Rahmen 3 um Fragen & Antworten, Rahmen 4 um den Knopf Vorschläge laden unten.](../bilder/language-record.png)
 
-Im Bild: 1 **Einstiegsfragen**, 2 **Fragen & Antworten**.
+Im Bild: 1 **Einstiegsfragen**, 2 die Knöpfe einer Zeile (kopieren, löschen;
+der Griff links verschiebt die Zeile, das Plus darunter fügt eine hinzu), 3
+**Fragen & Antworten**, 4 **Vorschläge laden**.
 
 Ergebnis: Der Chat zeigt die Fragen als Knöpfe unter der Begrüßung, bis der
 Besucher eine davon stellt; der Knopf über der Eingabe zeigt sie wieder. Der

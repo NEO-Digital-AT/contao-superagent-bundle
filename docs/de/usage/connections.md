@@ -3,7 +3,7 @@ titel: Verbindungen zu MCP-Servern
 kurzfassung: MCP-Server mit SuperAgent verbinden (Stufe Plus, nur Administratoren) – Anmeldung samt OAuth, Umgang mit persönlichen Daten, Werkzeuge und Sperren, die Auswahl am Assistenten, Aufrufe im Chat, das Protokoll und Vorlagen.
 zielgruppe: anwender
 sprache: de
-stand: 2026-11-12
+stand: 2026-11-18
 ---
 
 # Verbindungen zu MCP-Servern
@@ -47,11 +47,11 @@ Benutzer ist Administrator. Erst dann erscheint die Schaltfläche
    Namen und Anschriften werden nicht erkannt.
 6. Speichern. Die Erweiterung liest die Werkzeuge des Servers (unten).
 
-![Das Formular einer neuen Verbindung: Rahmen 1 um Name mit „Termine“, Rahmen 2 um Adresse des MCP-Servers mit https://mcp.example.com/mcp, Rahmen 3 um Anmeldung, Rahmen 4 um Persönliche Daten.](../bilder/connection-form.png)
+![Das Formular einer neuen Verbindung: Rahmen 1 um Vorlage, Rahmen 2 um Name mit „Kalender“, Rahmen 3 um Adresse des MCP-Servers mit https://mcp.example.com/mcp, Rahmen 4 um Anmeldung, Rahmen 5 um Persönliche Daten.](../bilder/connection-form.png)
 
-Im Bild: 1 **Name**, 2 **Adresse des MCP-Servers**, 3 **Anmeldung**,
-4 **Persönliche Daten**; darüber die Warnung, dass jeder Besucher mit dem
-Zugang der Verbindung arbeitet.
+Im Bild: 1 **Vorlage**, 2 **Name**, 3 **Adresse des MCP-Servers**, 4
+**Anmeldung**, 5 **Persönliche Daten**; darüber die Warnung, dass jeder
+Besucher mit dem Zugang der Verbindung arbeitet.
 
 Schlüssel, Werte der Header, Client-Secret und Tokens werden verschlüsselt
 gespeichert und nie wieder angezeigt.
@@ -94,6 +94,15 @@ gekennzeichnet*.
   Häkchen **Ich habe die freigegebenen Werkzeuge geprüft und verstehe das
   Restrisiko.** Gespeichert wird, wer es wann getan hat („Bestätigt von … am
   …“).
+
+![Die Abschnitte Werkzeuge und Bestätigung einer gespeicherten Verbindung: Rahmen 1 um den Knopf Werkzeuge neu lesen, Rahmen 2 um das Werkzeug list_free_slots (liest nur, nicht gesperrt), Rahmen 3 um das Werkzeug book_appointment (ändert Daten, gesperrt), Rahmen 4 um seinen Vermerk braucht persönliche Daten, Rahmen 5 um die Bestätigung mit ihrem Häkchen.](../bilder/connection-tools.png)
+
+Im Bild: 1 **Werkzeuge neu lesen**, 2 ein Werkzeug, das nur liest, freigegeben
+(das Kästchen **gesperrt** ist nicht angehakt), 3 ein Werkzeug, das Daten ändert,
+beim ersten Auftauchen gesperrt, 4 der Vermerk **braucht persönliche Daten**, 5
+die Bestätigung: wer wann bestätigt hat, und das Häkchen für die nächste
+Änderung. Ein Werkzeug freigeben: **gesperrt** abhaken, das Häkchen der
+Bestätigung setzen und speichern.
 
 Die Liste der Verbindungen zeigt den Stand jeder, z. B. „aktiv · 4 von 6
 Werkzeugen frei“, „Werkzeuge nicht gelesen“ oder „nicht bestätigt“.
@@ -158,6 +167,11 @@ ausgeführt**) und einen Hinweis (z. B. **gesperrt**, **Anmeldung abgelehnt**,
 **Server nicht erreichbar**, **Ergebnis gekürzt**, **persönliche Daten
 maskiert**, **vom KI-Dienst abgelehnt**). Argumente und Ergebnisse werden nicht
 gespeichert. Einträge bleiben 30 Tage.
+
+![Das Protokoll: Rahmen 1 um einen Aufruf von book_appointment mit dem Ergebnis nicht ausgeführt (gesperrt), Rahmen 2 um einen Aufruf von list_free_slots mit dem Ergebnis ausgeführt.](../bilder/tool-log.png)
+
+Im Bild: 1 ein Aufruf, der nicht lief, weil das Werkzeug gesperrt ist, 2 ein
+Aufruf, der lief. Das Symbol am Ende einer Zeile zeigt den Eintrag.
 
 **Vom KI-Dienst abgelehnt**: Der KI-Dienst hat die Beschreibung dieses
 Werkzeugs (sein Eingabeschema) nicht angenommen. Der Chat lässt nur dieses

@@ -3,7 +3,7 @@ title: Setup
 summary: Setting up SuperAgent once for the installation – editions and licence, AI connection and API keys, the terms, the front-end module, the mail sender, the consent tool and the parameters of the server configuration.
 audience: operations
 language: en
-updated: 2026-11-13
+updated: 2026-11-18
 ---
 
 # Setup
@@ -30,11 +30,19 @@ described in the [User manual](usage/README.md).
 | **Voice input**: the visitor speaks, the text appears in the input field | – | – | – | yes |
 
 **Entering the licence.** On *Access keys and licences*, section
-**Licences**, enter the key in the row *SuperAgent* and save. Which edition
+**Licences**, enter the key in the row *SuperAgent* (1 in the picture) and
+save. Which edition
 applies is decided only by the signed confirmation of the licence service for
 the domain, on the server. The status of the row says what each edition adds.
 The browser checks the confirmation before it leaves out the credit line; that
 needs HTTPS.
+
+![The page Access keys and licences: frame 1 around SuperAgent: Licence key, frame 2 around its status No licence with the link to the store, frame 3 around the folded section Terms of the extensions, frames 4 and 5 around Route and Key of the AI connection, frame 6 around Test connection.](bilder/access-licence.png)
+
+In the picture: 1 the licence key of SuperAgent, 2 its status (here: no
+licence, with the link to the store), 3 the section **Terms of the
+extensions** (step 3), 4 **Route** and 5 **Key** of the AI connection (step
+2), 6 **Test connection**.
 
 The key is checked with the licence service when it is saved and once a day.
 Only the key, the extension code, the domains of the website and the versions
@@ -50,7 +58,9 @@ appear again with a licence that includes them.
 ## 2. AI connection and API keys
 
 On *Access keys and licences*, section **AI connection**, choose the
-**Route** and enter the **Key** (see the documentation of the Basic bundle).
+**Route** (4 in the picture above) and enter the **Key** (5), then save (see
+the documentation of the Basic bundle). **Test connection** (6) asks the
+route for its models and says whether it answers.
 The connection is shared by all extensions; each assistant chooses its own
 model. Until a key is stored, the website does not show the chat, and the list
 of assistants says so ("No AI key is stored yet. …").
@@ -74,6 +84,18 @@ web search and forwarding; MCP servers, skills and knowledge sources; actions
 with consequences and voice input). They are shown in the back-end language;
 the German text is binding.
 
+1. Open the section **Terms of the extensions** with a click on its heading.
+2. Read each passage: **show text** opens it (1 and 2 in the picture).
+3. Tick **I have read the terms and accept them.** (3) and click **Confirm**
+   (4).
+
+![The section Terms of the extensions of a new installation: frame 1 around the heading SuperAgent · without licence with Not confirmed yet below, frame 2 around the passage All editions with show text, frame 3 around the checkbox I have read the terms and accept them, frame 4 around the button Confirm.](bilder/access-terms.png)
+
+In the picture: 1 the extension and the edition the passages belong to, with
+their state, 2 a passage (**show text** opens it, with the German version
+below), 3 the checkbox, 4 **Confirm**. Afterwards the state reads "Confirmed
+by … on …".
+
 - An assistant can be made visible to **All visitors** only after the
   confirmation. Until then it stays in the preview ("Please confirm the terms
   on "Access keys and licences" first. …").
@@ -87,20 +109,23 @@ the German text is binding.
 1. Create an assistant (see [User manual](usage/assistant.md)). A new
    assistant starts in **Preview only**.
 2. Open **Layout › Themes › Front end modules**, click **New** and choose the
-   module type **AI assistant (chat widget)** (group *NEO Digital*).
+   module type **AI assistant (chat widget)** (group *NEO Digital*; 1 in the
+   picture).
 3. Section *Configuration*:
-   - **Assistant**: which assistant the widget shows. Empty: the first active
-     assistant.
-   - **GA4 event "chat started"** (optional): the name of a Google Analytics 4
-     event, e.g. `chat_ai`, sent when the first message is sent, only after
-     statistics consent. Only the event name is sent, never content.
-4. Add the module to the page layout, usually in the footer section. One module
-   is enough for all pages of the layout; the language records follow the
-   page language.
+   - **Assistant** (2): which assistant the widget shows. Empty: the first
+     active assistant.
+   - **GA4 event "chat started"** (3, optional): the name of a Google
+     Analytics 4 event, e.g. `chat_ai`, sent when the first message is sent,
+     only after statistics consent. Only the event name is sent, never
+     content.
 
-For websites in several languages: one assistant with one language record per
-language, or one assistant per language (own knowledge, own forwarding address)
-with one module per language. Both ways step by step:
+   ![The form of the front-end module: frame 1 around Module type with AI assistant (chat widget), frame 2 around Assistant with the assistant Holiday flat, frame 3 around GA4 event "chat started".](bilder/module-form.png)
+4. Add the module to the page layout, usually in the footer section. One module
+   is enough for all pages of the layout.
+
+For websites in several languages: one assistant per language (with its own
+texts and, where needed, its own knowledge and forwarding address) and one
+module per language in the layout of that language. Step by step:
 [Several languages on the website](usage/languages.md#several-languages-on-the-website).
 
 ## 5. Mail sender

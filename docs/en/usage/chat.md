@@ -3,7 +3,7 @@ title: The chat on the website
 summary: What visitors see and can do in the SuperAgent chat – window and AI notice, starter questions, status of the assistant, navigation, forwarding form with phone and e-mail checks, newsletter, voice input, conversation across pages.
 audience: users
 language: en
-updated: 2026-11-14
+updated: 2026-11-18
 ---
 
 # The chat on the website
@@ -31,14 +31,25 @@ The window has:
   greeting until the visitor asks one of them, also in the conversation
   restored on the next page; the button **Suggestions** above the input shows
   them again at any time;
-- the input field with the send button; with privacy mode, the privacy note
-  below it;
+- the input field with the send button; with voice input (Pro) the microphone
+  next to it;
+- below the input **Forward to …** (Basic, with an escalation address) and,
+  with privacy mode, the privacy note;
 - without a licence, the credit line at the bottom.
 
-![The open chat window: frame 1 around the AI notice below the header, frame 2 around three starter questions below the greeting, frame 3 around the button Suggestions above the input.](../bilder/chat-window.png)
+![The open chat window: frame 1 around the button New conversation in the header, frame 2 around the AI notice, frame 3 around two starter questions below the greeting, frame 4 around the input field, frame 5 around the microphone, frame 6 around Forward to Anna, frame 7 around the round chat button.](../bilder/chat-window.png)
 
-In the picture: 1 the AI notice, 2 the starter questions, 3 the button
-**Suggestions**.
+In the picture: 1 **New conversation**, 2 the AI notice, 3 the starter
+questions, 4 the input field (the arrow next to it sends), 5 the microphone
+(Pro), 6 **Forward to …** with the name set at the assistant, 7 the chat
+button, which opens and closes the window. At the bottom the credit line of the
+free edition; with a licence it is not there.
+
+![The chat after a click on a starter question: frame 1 around the question "When can I check in?", frame 2 around the reply worded from its stored answer, frame 3 around the button Suggestions.](../bilder/chat-answer.png)
+
+In the picture: 1 the starter question the visitor clicked, 2 the reply the
+assistant words from the answer stored with the question, 3 **Suggestions**,
+which shows the starter questions again.
 
 While the assistant works, the answer bubble says what it is doing:
 "Thinking …", "Looking for the right page …", "Preparing the form …",
@@ -63,9 +74,17 @@ list can be opened, and only on the same host.
 ## Forwarding to the team (Basic)
 
 When a visitor wants to reach a person, the assistant opens the forwarding form
-in the chat, prefilled with a summary. The visitor adds the e-mail address and
-sends it; the assistant cannot send anything itself and never claims to have
-forwarded something. It can also open the contact page set in the assistant.
+in the chat, prefilled with a summary; the visitor opens it also with **Forward
+to …** below the input. The visitor adds the e-mail address and sends it; the
+assistant cannot send anything itself and never claims to have forwarded
+something. It can also open the contact page set in the assistant.
+
+![The forwarding form in the chat, filled in: frames 1 to 4 around Name, Your email, Phone with the country code and Short message, frame 5 around the consent checkbox, frame 6 around the button Send to Anna.](../bilder/chat-forwarding.png)
+
+In the picture: 1 **Name**, 2 **Your email**, 3 **Phone** with the country
+code, 4 **Short message**, 5 the consent to be contacted, 6 **Send to …**;
+**Back** returns to the conversation. Which fields appear is set at the
+assistant ([Escalation & consent](assistant.md#escalation--consent-basic)).
 
 The form has e-mail address and message (always required) and the fields chosen
 in the assistant:
