@@ -60,6 +60,12 @@ wants to go somewhere ("take me to the contact page"), the page opens at once;
 otherwise the reply ends with the button **Open page: …**. Only pages of this
 list can be opened, and only on the same host.
 
+Without Basic the assistant opens no page and links a page of the website only
+with an address that is in its knowledge (the knowledge source and the
+questions & answers, e.g. the page list of an `llms.txt`); a link to any other
+page of the website is shown as plain text. Links to other websites, e-mail
+addresses and phone numbers stay.
+
 ## Forwarding to the team (Basic)
 
 When a visitor wants to reach a person, the assistant opens the forwarding form

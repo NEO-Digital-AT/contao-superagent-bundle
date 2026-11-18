@@ -107,10 +107,11 @@ final class ChatHandler
      * @param string                                               $guest       what the visitor proved earlier in this conversation (GuestCheck token)
      * @param callable(string): void|null                          $say         called with a text the model wrote together with a tool call, while the tool runs
      * @param string                                               $memory      tool results and loaded skills of earlier replies (ConversationMemory token)
+     * @param string                                               $host        host of the website the visitor is on (links to its pages)
      *
      * @return array{interim?: list<string>, reply?: string, handoff?: string|null, navigate?: array{url: string, title: string, now: bool}|null, message?: string, error?: string, guest?: string, memory?: string, files?: list<array{token: string, name: string, size: int}>}
      */
-    public function reply(AgentModel $agent, string $message, array $history, string $locale, ?array $pageContext = null, ?Features $features = null, ?callable $progress = null, string $guest = '', ?callable $say = null, string $memory = ''): array
+    public function reply(AgentModel $agent, string $message, array $history, string $locale, ?array $pageContext = null, ?Features $features = null, ?callable $progress = null, string $guest = '', ?callable $say = null, string $memory = '', string $host = ''): array
     {
         $this->features = $features ?? Features::forEdition('');
         // Results of the connections and the proof of a guest check count only with
@@ -180,6 +181,12 @@ final class ChatHandler
         if (preg_match('/\[\[\s*HANDOFF\s*:\s*(.*?)\s*\]\]/su', $content, $m)) {
             $content = trim(str_replace($m[0], '', $content));
             $this->handoff ??= $this->canForward && '' !== trim($m[1]) ? trim(strip_tags($m[1])) : null;
+        }
+
+        // Without navigation (free edition) the assistant does not link the website's
+        // pages itself: a link to one stays only where its address is in the knowledge.
+        if (!$this->features->navigation) {
+            $content = PageLinks::limit($content, $host, $this->grounding->forAgent($agent)."\n".implode("\n", $this->canned->pairs($texts)));
         }
 
         if ('' === $content) {

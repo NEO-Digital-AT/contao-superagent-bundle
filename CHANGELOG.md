@@ -9,6 +9,7 @@ All notable changes to this extension are documented here. The format follows
 ### Fixed
 - Without the connections of the licence (no licence, a lower edition, or a licence that no longer covers the website), the results of connection tools kept in the memory of a running conversation and the proof of an earlier guest check no longer reach the model; the licence of each request decides.
 - A forwarded request no longer reports "sent" when it cannot go out: without a sender configured (`MAILER_FROM` or `neo_super_agent.from_email`) the e-mail address of the website administrator of the start point is the sender, else the one of the system administrator, as for Contao's own e-mails; without any of them the chat shows its error notice and the log names the reason (before, the mailer dropped the message later without a sender). The assistant's form warns in **Escalation & consent** which start points have no sender.
+- Without navigation (free edition), the assistant no longer links pages of the website it built an address for itself: a link to a page of the website stays only where its address is in the knowledge (knowledge source, questions & answers); others are shown as plain text. Links to other websites, e-mail addresses and phone numbers are unchanged.
 
 ## [1.0.0] - 2026-11-13
 

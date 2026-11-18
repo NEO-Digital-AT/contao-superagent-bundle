@@ -62,6 +62,12 @@ erkennbar irgendwohin („bring mich zur Kontaktseite“), öffnet sich die Seit
 sofort; sonst endet die Antwort mit dem Knopf **Seite öffnen: …**. Geöffnet werden
 nur Seiten dieser Liste, und nur auf demselben Host.
 
+Ohne Basic öffnet der Assistent keine Seite und verlinkt eine Seite der Website
+nur mit einer Adresse, die in seinem Wissen steht (Wissensquelle und Fragen &
+Antworten, z. B. die Seitenliste einer `llms.txt`); ein Link auf jede andere
+Seite der Website erscheint als reiner Text. Links auf andere Websites,
+E-Mail-Adressen und Telefonnummern bleiben.
+
 ## Weiterleiten an das Team (Basic)
 
 Will ein Besucher eine Person erreichen, öffnet der Assistent im Chat das

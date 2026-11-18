@@ -81,7 +81,7 @@ final class SystemPromptBuilderTest extends TestCase
         $prompt = $this->build();
 
         $this->assertStringContainsString("Assistant name: Assistant\nForm of address: ".PersonaOptions::ADDRESS['sie']."\nAnswer length: ".PersonaOptions::LENGTH['short'], $prompt);
-        $this->assertStringContainsString("Forwarding: not available\nNavigation: not available\nContact page: none", $prompt);
+        $this->assertStringContainsString("Forwarding: not available\nNavigation: not available; link a page of this website only with an address from the knowledge\nContact page: none", $prompt);
         $this->assertStringNotContainsString('Medical rule: on', $prompt);
         $this->assertStringNotContainsString("OPERATOR INSTRUCTIONS:\n", $prompt);
         $this->assertStringNotContainsString('=== PAGES (', $prompt);

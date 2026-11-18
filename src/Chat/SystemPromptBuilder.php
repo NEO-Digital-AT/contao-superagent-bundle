@@ -145,7 +145,8 @@ final class SystemPromptBuilder
             $run['canForward']
                 ? 'Forwarding: available, to "'.$run['forwardTo'].'"; send button of the form: "'.$run['submitLabel'].'"'
                 : 'Forwarding: not available',
-            'Navigation: '.($run['navigation'] ? 'available' : 'not available'),
+            // Without navigation the reply links no page of the website itself (PageLinks removes such links).
+            'Navigation: '.($run['navigation'] ? 'available' : 'not available; link a page of this website only with an address from the knowledge'),
             'Contact page: '.(null !== $run['contactPage'] ? 'id '.$run['contactPage']['id'].' "'.$run['contactPage']['title'].'"' : 'none'),
             'Web search: '.($run['webSearch'] ? 'available' : 'not available'),
         ];

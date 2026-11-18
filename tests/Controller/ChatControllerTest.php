@@ -154,7 +154,7 @@ final class ChatControllerTest extends TestCase
         $events = [];
         $stream = new \ReflectionMethod(ChatController::class, 'events');
         $args = [Models::make(AgentModel::class, ['id' => 3, 'model' => 'provider/model-a', 'temperature' => '0.3', 'assistant_name' => 'Bot']), 'Hi', [], 'en', null, (new FeatureResolver(Licences::service('pro'), Licences::terms()))->for('www.example.com')];
-        $stream->invoke($controller, $args, 'not-a-token', '', 'en', static function (string $event, array $data) use (&$events): void {
+        $stream->invoke($controller, $args, 'not-a-token', '', 'en', 'www.example.com', static function (string $event, array $data) use (&$events): void {
             $events[] = [$event, $data];
         });
 
