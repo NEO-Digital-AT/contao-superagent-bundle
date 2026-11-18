@@ -76,7 +76,21 @@ final class ChatHandlerTest extends TestCase
 
         $this->assertSame(['load_module'], $this->offered(0));
         $this->assertNotContains('navigation', $this->chat->sent[0]['tools'][0]['function']['parameters']['properties']['modules']['items']['enum']);
-        $this->assertStringContainsString("Forwarding: not available\nNavigation: not available", $this->chat->sent[0]['messages'][0]['content']);
+        $this->assertStringContainsString("Forwarding: not available\nNavigation: not available; link a page of this website only with an address from the knowledge", $this->chat->sent[0]['messages'][0]['content']);
+    }
+
+    public function testWithoutNavigationTheReplyLinksOnlyPagesFromTheKnowledge(): void
+    {
+        $reply = "See [Contact](https://www.example.com/en/contact) and [Prices](/en/prices), or [Partner](https://partner.example.org/).";
+        $agent = ['grounding_source' => 'text', 'grounding_text' => 'We rent bikes. Contact: https://www.example.com/en/contact'];
+
+        // Free edition: the page that is not in the knowledge is not linked.
+        $this->chat->answers = [$reply];
+        $this->assertSame('See [Contact](https://www.example.com/en/contact) and Prices, or [Partner](https://partner.example.org/).', $this->reply($agent, 'Where is the contact page?', [], Features::forEdition(''))['reply']);
+
+        // With navigation (Basic) the assistant links the pages of the website.
+        $this->chat->answers = [$reply];
+        $this->assertSame($reply, $this->reply($agent, 'Where is the contact page?', [], Features::forEdition('basic'))['reply']);
     }
 
     public function testAPageOfTheIndexIsOpenedAfterItsSkillIsLoaded(): void
@@ -328,7 +342,7 @@ final class ChatHandlerTest extends TestCase
         }
     }
 
-    private function reply(array $agent, string $message, array $history = [], Features|null $features = null, callable|null $progress = null, int $maxSteps = 8, AgentLanguageModel|null $texts = null, string $memory = ''): array
+    private function reply(array $agent, string $message, array $history = [], Features|null $features = null, callable|null $progress = null, int $maxSteps = 8, AgentLanguageModel|null $texts = null, string $memory = '', string $host = 'www.example.com'): array
     {
         $this->chat->texts = $texts;
 
@@ -341,6 +355,7 @@ final class ChatHandlerTest extends TestCase
             $features,
             $progress,
             memory: $memory,
+            host: $host,
         );
     }
 

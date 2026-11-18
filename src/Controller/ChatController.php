@@ -121,12 +121,14 @@ final class ChatController extends AbstractController
         if (str_contains((string) $request->headers->get('Accept'), 'text/event-stream')) {
             $locale = $args[3];
 
-            return new StreamedResponse(function () use ($args, $guest, $memory, $locale): void {
+            $host = $request->getHost();
+
+            return new StreamedResponse(function () use ($args, $guest, $memory, $locale, $host): void {
                 while (ob_get_level() > 0) {
                     ob_end_flush();
                 }
 
-                $this->events($args, $guest, $memory, $locale, static function (string $event, array $data): void {
+                $this->events($args, $guest, $memory, $locale, $host, static function (string $event, array $data): void {
                     echo 'event: '.$event."\n".'data: '.json_encode($data, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE)."\n\n";
                     flush();
                 });
@@ -137,7 +139,7 @@ final class ChatController extends AbstractController
             ]);
         }
 
-        $result = $this->withDownloads($this->handler->reply(...[...$args, null, $guest, null, $memory]), $args[3]);
+        $result = $this->withDownloads($this->handler->reply(...[...$args, null, $guest, null, $memory], host: $request->getHost()), $args[3]);
 
         // No answer from the AI service: the widget shows its error notice; the
         // body still carries the message as sent, when privacy mode changed it.
@@ -334,7 +336,7 @@ final class ChatController extends AbstractController
      * @param list<mixed>                                  $args arguments of ChatHandler::reply() up to the features
      * @param callable(string, array<string, mixed>): void $send
      */
-    private function events(array $args, string $guest, string $memory, string $locale, callable $send): void
+    private function events(array $args, string $guest, string $memory, string $locale, string $host, callable $send): void
     {
         $last = '';
         $step = static function (string $name) use (&$last, $send): void {
@@ -349,7 +351,7 @@ final class ChatController extends AbstractController
         };
 
         $step('thinking');
-        $result = $this->withDownloads($this->handler->reply(...[...$args, $step, $guest, $say, $memory]), $locale);
+        $result = $this->withDownloads($this->handler->reply(...[...$args, $step, $guest, $say, $memory], host: $host), $locale);
         $send(isset($result['error']) ? 'error' : 'done', $result);
     }
 
