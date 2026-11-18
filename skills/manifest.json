@@ -2,7 +2,7 @@
     "schemaVersion": 1,
     "core": { "id": "core", "version": 4 },
     "modules": [
-        { "id": "navigation", "version": 1, "purpose": "opening pages of this website", "dependsOn": [], "tools": ["open_page", "find_pages"] },
+        { "id": "navigation", "version": 2, "purpose": "opening pages of this website", "dependsOn": [], "tools": ["open_page", "find_pages"] },
         { "id": "contact", "version": 1, "purpose": "reaching a person: the forwarding form in the chat and the contact page", "dependsOn": [], "tools": ["request_handoff", "open_page"] },
         { "id": "web-search", "version": 1, "purpose": "facts from the approved external sources", "dependsOn": [], "tools": ["web_search"] },
         { "id": "referral", "version": 1, "purpose": "whom to refer to and which own solution to name first", "dependsOn": [], "tools": [] },

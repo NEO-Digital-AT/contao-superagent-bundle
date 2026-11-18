@@ -60,6 +60,13 @@ wants to go somewhere ("take me to the contact page"), the page opens at once;
 otherwise the reply ends with the button **Open page: …**. Only pages of this
 list can be opened, and only on the same host.
 
+When the website has no page for what the visitor asks for, the assistant says
+so and offers the forwarding form or the contact page of its settings; it opens
+no other page (such as the start page) in its place. A page opens by itself
+only when the reply names it; otherwise it becomes the button below the reply.
+Links in a reply to pages of the website stay only where their address is in
+the page list or in the knowledge.
+
 Without Basic the assistant opens no page and links a page of the website only
 with an address that is in its knowledge (the knowledge source and the
 questions & answers, e.g. the page list of an `llms.txt`); a link to any other

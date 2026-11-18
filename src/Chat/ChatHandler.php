@@ -183,14 +183,26 @@ final class ChatHandler
             $this->handoff ??= $this->canForward && '' !== trim($m[1]) ? trim(strip_tags($m[1])) : null;
         }
 
-        // Without navigation (free edition) the assistant does not link the website's
-        // pages itself: a link to one stays only where its address is in the knowledge.
-        if (!$this->features->navigation) {
-            $content = PageLinks::limit($content, $host, $this->grounding->forAgent($agent)."\n".implode("\n", $this->canned->pairs($texts)));
+        // Links to pages of the website stay only where the page exists for the
+        // assistant: its address is in the knowledge or, with navigation (Basic), in
+        // the page list. Without navigation (free edition) the assistant does not
+        // link pages itself; with it, a link never points to a page that is not there.
+        $knowledge = $this->grounding->forAgent($agent)."\n".implode("\n", $this->canned->pairs($texts));
+
+        if ($this->features->navigation) {
+            $knowledge .= "\n".implode("\n", array_column($this->pages, 'url'));
         }
+
+        $content = PageLinks::limit($content, $host, $knowledge);
 
         if ('' === $content) {
             return $out + ['error' => 'unavailable'];
+        }
+
+        // A page opens by itself only when the reply names it: a page opened in
+        // place of another, without saying so, becomes the button below the reply.
+        if (null !== $this->navigate && $this->navigate['now'] && false === mb_stripos($content, trim($this->navigate['title']))) {
+            $this->navigate['now'] = false;
         }
 
         // The widget puts the reply into the page with JavaScript, past every HTML
@@ -537,9 +549,11 @@ final class ChatHandler
                     return 'There is no page with this id.';
                 }
 
-                return $this->navigate['now']
+                // The reply names the page that really opens: a page in place of a missing one is no answer.
+                return ($this->navigate['now']
                     ? 'The page "'.$this->navigate['title'].'" opens right after your reply.'
-                    : 'A button for the page "'.$this->navigate['title'].'" is shown below your reply.';
+                    : 'A button for the page "'.$this->navigate['title'].'" is shown below your reply.')
+                    .' Call it by this title. If it is not the page the visitor asked for, call open_page again with the right page, or say that this website has no such page.';
 
             case 'find_pages':
                 return $this->findPages((string) ($args['query'] ?? ''));
