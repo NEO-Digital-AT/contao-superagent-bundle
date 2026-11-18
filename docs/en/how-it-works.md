@@ -60,6 +60,13 @@ secret, like the token of the guest check. The window keeps it in
 drops it. A token of another assistant, a changed one or one older than two
 hours counts as empty.
 
+The licence of each request decides, not what the conversation brings along.
+Without the connections of the licence (no licence, a lower edition, or a
+licence that no longer covers the website) the results of the connections in
+the memory and the proof of an earlier guest check are dropped before the
+model is asked; no tool of a connection is offered or called, also in a
+conversation that started with the licence.
+
 The skill files are checked when they are read (header, at most 2,800
 characters per skill, known tools and dependencies). An invalid package stops
 the chat instead of running with half its rules.

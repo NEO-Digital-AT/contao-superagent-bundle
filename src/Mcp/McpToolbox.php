@@ -70,7 +70,8 @@ final class McpToolbox
         $this->files = [];
         $this->checks = [];
         $this->agentId = (int) $agent->id;
-        $this->guests->load($this->agentId, $guestToken);
+        // Without the connections of the licence, an earlier guest check counts for nothing.
+        $this->guests->load($this->agentId, $enabled ? $guestToken : '');
 
         if (!$enabled) {
             return;
