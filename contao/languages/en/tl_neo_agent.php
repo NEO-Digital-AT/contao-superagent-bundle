@@ -130,6 +130,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'The chosen module “Subscribe” is not on any published page. The confirmation link leads to that page; until the module is there, the form shows no newsletter checkbox.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'There is no newsletter module yet (Brevo or Contao’s “Subscribe”). Create one, then it can be chosen here.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'Forwarded requests from %s cannot be sent: there is no sender address. Enter the “E-mail address of the website administrator” at the start point, or the “E-mail address of the system administrator” under System › Settings, or set MAILER_FROM on the server. Until then the chat shows an error instead of sending.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [

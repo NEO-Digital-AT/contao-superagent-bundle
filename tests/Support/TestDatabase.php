@@ -34,7 +34,7 @@ final class TestDatabase
      */
     public static function addPages(Connection $db, array $rows): void
     {
-        $db->executeStatement("CREATE TABLE IF NOT EXISTS tl_page (id INTEGER PRIMARY KEY AUTOINCREMENT, pid int NOT NULL DEFAULT 0, sorting int NOT NULL DEFAULT 0, tstamp int NOT NULL DEFAULT 0, title varchar(255) NOT NULL DEFAULT '', pageTitle varchar(255) NOT NULL DEFAULT '', description text NULL, robots varchar(32) NOT NULL DEFAULT '', type varchar(64) NOT NULL DEFAULT 'regular', language varchar(64) NOT NULL DEFAULT '', dns varchar(255) NOT NULL DEFAULT '', published char(1) NOT NULL DEFAULT '1', protected char(1) NOT NULL DEFAULT '', start varchar(10) NOT NULL DEFAULT '', stop varchar(10) NOT NULL DEFAULT '')");
+        $db->executeStatement("CREATE TABLE IF NOT EXISTS tl_page (id INTEGER PRIMARY KEY AUTOINCREMENT, pid int NOT NULL DEFAULT 0, sorting int NOT NULL DEFAULT 0, tstamp int NOT NULL DEFAULT 0, title varchar(255) NOT NULL DEFAULT '', pageTitle varchar(255) NOT NULL DEFAULT '', description text NULL, robots varchar(32) NOT NULL DEFAULT '', type varchar(64) NOT NULL DEFAULT 'regular', language varchar(64) NOT NULL DEFAULT '', dns varchar(255) NOT NULL DEFAULT '', adminEmail varchar(255) NOT NULL DEFAULT '', published char(1) NOT NULL DEFAULT '1', protected char(1) NOT NULL DEFAULT '', start varchar(10) NOT NULL DEFAULT '', stop varchar(10) NOT NULL DEFAULT '')");
 
         foreach ($rows as $row) {
             $db->insert('tl_page', $row);

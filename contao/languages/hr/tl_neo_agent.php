@@ -130,6 +130,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'Odabrani modul „Pretplata” nije ni na jednoj objavljenoj stranici. Poveznica za potvrdu vodi na tu stranicu; dok modul nije ondje, obrazac ne prikazuje okvir za newsletter.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'Još ne postoji modul newslettera (Brevo ili „Pretplata” iz Contaa). Izradite ga, zatim ga ovdje možete odabrati.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'Proslijeđeni upiti s %s ne mogu se poslati: nedostaje adresa pošiljatelja. Na početnoj stranici unesite e-mail adresu administratora web-stranice ili pod Sustav › Postavke e-mail adresu administratora sustava, ili na poslužitelju postavite MAILER_FROM. Do tada chat umjesto slanja prikazuje pogrešku.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [

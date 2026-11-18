@@ -13,12 +13,14 @@ use Neo\SuperAgentBundle\Chat\PersonalDataGuard;
 use Neo\SuperAgentBundle\Controller\ChatController;
 use Neo\SuperAgentBundle\Licence\FeatureResolver;
 use Neo\SuperAgentBundle\Mail\EscalationMailer;
+use Neo\SuperAgentBundle\Mail\SenderAddress;
 use Neo\SuperAgentBundle\Model\AgentModel;
 use Neo\SuperAgentBundle\Newsletter\NewsletterSignup;
 use Neo\SuperAgentBundle\Security\PreviewAccess;
 use Neo\SuperAgentBundle\Tests\Support\ChatStack;
 use Neo\SuperAgentBundle\Tests\Support\Licences;
 use Neo\SuperAgentBundle\Tests\Support\Models;
+use Neo\SuperAgentBundle\Tests\Support\TestDatabase;
 use Neo\SuperAgentBundle\Tests\Support\Translations;
 use Neo\SuperAgentBundle\Voice\Transcriber;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -274,7 +276,7 @@ final class ChatControllerTest extends TestCase
             $framework,
             $this->chat->handler($framework, $this->createMock(ContentUrlGenerator::class)),
             new ChatRateLimiter($this->cache),
-            new EscalationMailer($this->createMock(MailerInterface::class), Translations::translator()),
+            new EscalationMailer($this->createMock(MailerInterface::class), Translations::translator(), new SenderAddress(TestDatabase::create(), 'noreply@example.com')),
             $features,
             new Transcriber($this->chat->http(), $this->chat->connection()),
             new PreviewAccess($tokens, new RequestStack()),

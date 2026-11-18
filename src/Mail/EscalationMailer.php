@@ -13,17 +13,18 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Sends a visitor's "forward to the team" request to the agent's escalation
- * address. The From is the host's configured sender (e.g. a Postmark-verified
- * MAILER_FROM) shown under the assistant's name; the visitor's address is set as
- * Reply-To so the team can answer directly. If no sender is configured, the
- * application's global default applies.
+ * address. The From is the sender of SenderAddress (the configured MAILER_FROM,
+ * else the e-mail address of the website or system administrator) shown under
+ * the assistant's name; the visitor's address is set as Reply-To so the team can
+ * answer directly. Without any sender nothing is sent and the visitor gets an
+ * error, instead of a message the mailer would drop later.
  */
 final class EscalationMailer
 {
     public function __construct(
         private readonly MailerInterface $mailer,
         private readonly TranslatorInterface $translator,
-        private readonly string $fromEmail = '',
+        private readonly SenderAddress $senders,
     ) {
     }
 
@@ -32,13 +33,21 @@ final class EscalationMailer
      * @param array<string, string>                       $details    optional form fields (name, phone, company) => value
      * @param bool                                        $newsletter the visitor ticked the newsletter box (sign-up started)
      * @param bool                                        $consent    the visitor agreed to be contacted (required checkbox)
+     * @param int                                         $root       start point of the visitor's page (its administrator's address is the fallback sender)
+     * @param string                                      $host       host the request came in on
      */
-    public function send(AgentModel $agent, string $visitorEmail, string $message, string $locale, array $transcript = [], array $details = [], bool $newsletter = false, bool $consent = false): void
+    public function send(AgentModel $agent, string $visitorEmail, string $message, string $locale, array $transcript = [], array $details = [], bool $newsletter = false, bool $consent = false, int $root = 0, string $host = ''): void
     {
         $to = trim((string) $agent->escalation_email);
 
         if ('' === $to) {
             throw new \RuntimeException('No escalation address configured.');
+        }
+
+        $from = $this->senders->resolve($root, $host);
+
+        if ('' === $from) {
+            throw new \RuntimeException('No sender address for forwarded requests: set MAILER_FROM or the e-mail address of the website or system administrator.');
         }
 
         $name = trim((string) $agent->assistant_name) ?: 'Assistant';
@@ -85,14 +94,11 @@ final class EscalationMailer
         }
 
         $email = (new Email())
+            ->from(new Address($from, $name))
             ->to($to)
             ->replyTo($visitorEmail)
             ->subject($subject)
             ->text($body);
-
-        if ('' !== $this->fromEmail) {
-            $email->from(new Address($this->fromEmail, $name));
-        }
 
         $this->mailer->send($email);
     }

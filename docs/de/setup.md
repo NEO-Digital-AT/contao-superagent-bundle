@@ -109,13 +109,25 @@ Schritt: [Mehrere Sprachen auf der Website](usage/languages.md#mehrere-sprachen-
 ## 5. Absender
 
 Weitergeleitete Anfragen gehen über den Mailversand von Contao. Absender ist die
-Umgebungsvariable `MAILER_FROM`, wenn sie gesetzt ist; sonst den Parameter in
-`config/config.yaml` setzen:
+erste dieser Adressen, die gesetzt ist:
 
-```yaml
-parameters:
-    neo_super_agent.from_email: 'office@example.com'
-```
+1. die Umgebungsvariable `MAILER_FROM` oder der Parameter in
+   `config/config.yaml`:
+
+   ```yaml
+   parameters:
+       neo_super_agent.from_email: 'office@example.com'
+   ```
+
+2. die **E-Mail-Adresse des Webseiten-Administrators** beim Startpunkt der Seite
+   (Einstellungen des Startpunkts in der Seitenstruktur);
+3. die **E-Mail-Adresse des Systemadministrators** unter **System ›
+   Einstellungen**.
+
+Ohne eine davon wird eine Anfrage nicht gesendet: Der Chat zeigt seinen
+Fehlerhinweis statt der Bestätigung, das Protokoll nennt den Grund, und das
+Formular des Assistenten warnt im Abschnitt **Eskalation & Einwilligung**,
+welche Startpunkte betroffen sind.
 
 Als Absendername zeigt die E-Mail den Namen des Assistenten. Die Adresse des
 Besuchers ist die Antwortadresse; die E-Mail enthält die Nachricht und das

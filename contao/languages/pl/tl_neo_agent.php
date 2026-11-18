@@ -130,6 +130,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'Wybrany moduł „Subskrypcja” nie znajduje się na żadnej opublikowanej stronie. Link potwierdzający prowadzi do tej strony; dopóki moduł tam nie stoi, formularz nie pokazuje pola newslettera.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'Nie ma jeszcze modułu newslettera (Brevo lub „Subskrypcja” Contao). Po jego utworzeniu można go tu wybrać.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'Przekazanych zapytań z %s nie można wysłać: brakuje adresu nadawcy. Wpisz „Adres e-mail administratora strony” na stronie głównej albo „Adres e-mail administratora systemu” w System › Ustawienia, albo ustaw MAILER_FROM na serwerze. Do tego czasu czat zamiast wysłać pokazuje błąd.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [

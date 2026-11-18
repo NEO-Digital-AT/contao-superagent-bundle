@@ -130,6 +130,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'Izbrani modul »Naročnina« ni na nobeni objavljeni strani. Potrditvena povezava vodi na to stran; dokler modula ni tam, obrazec ne prikaže polja za novice.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'Modula za novice še ni (Brevo ali »Naročnina« iz Contaa). Ustvarite ga, nato ga lahko izberete tukaj.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'Posredovanih vprašanj s/z %s ni mogoče poslati: manjka naslov pošiljatelja. Pri korenski strani vnesite »Naslov elektronske pošte administratorja spletnega mesta« ali pod Sistem › Nastavitve »Administratorjev naslov elektronske pošte« ali na strežniku nastavite MAILER_FROM. Do takrat klepet namesto pošiljanja prikaže napako.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [

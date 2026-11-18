@@ -130,6 +130,7 @@ $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_problem'] = [
     'contao_page' => 'A kiválasztott „Feliratkozás” modul egyetlen közzétett oldalon sincs. A megerősítő hivatkozás erre az oldalra vezet; amíg a modul nincs ott, az űrlap nem mutat hírlevél jelölőnégyzetet.',
 ];
 $GLOBALS['TL_LANG']['tl_neo_agent']['newsletter_none'] = 'Még nincs hírlevélmodul (Brevo vagy a Contao „Feliratkozás” modulja). Hozzon létre egyet, utána itt kiválasztható.';
+$GLOBALS['TL_LANG']['tl_neo_agent']['sender_missing'] = 'A(z) %s oldalról továbbított kérések nem küldhetők el: hiányzik a feladó címe. Adja meg a gyökéroldalon a weboldal adminisztrátorának e-mail-címét, vagy a Rendszer › Beállítások alatt a rendszeradminisztrátor e-mail-címét, vagy állítsa be a MAILER_FROM értéket a szerveren. Addig a csevegés küldés helyett hibát jelez.';
 
 // Choices instead of free text
 $GLOBALS['TL_LANG']['tl_neo_agent']['consent_options'] = [
