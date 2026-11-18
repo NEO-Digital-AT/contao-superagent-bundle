@@ -88,9 +88,9 @@ final class ChatHandlerTest extends TestCase
         $this->chat->answers = [$reply];
         $this->assertSame('See [Contact](https://www.example.com/en/contact) and Prices, or [Partner](https://partner.example.org/).', $this->reply($agent, 'Where is the contact page?', [], Features::forEdition(''))['reply']);
 
-        // With navigation (Basic) the assistant links the pages of the website.
-        $this->chat->answers = [$reply];
-        $this->assertSame($reply, $this->reply($agent, 'Where is the contact page?', [], Features::forEdition('basic'))['reply']);
+        // With navigation (Basic) the pages of the page list are linked as well, but no page that is not there.
+        $this->chat->answers = ["See [Prices](https://www.example.com/prices), [Contact](/en/contact) and [Imprint](/imprint)."];
+        $this->assertSame('See [Prices](https://www.example.com/prices), [Contact](/en/contact) and Imprint.', $this->reply($agent, 'Where is the contact page?', [], Features::forEdition('basic'))['reply']);
     }
 
     public function testAPageOfTheIndexIsOpenedAfterItsSkillIsLoaded(): void
@@ -111,10 +111,23 @@ final class ChatHandlerTest extends TestCase
         $this->assertSame('This tool is not available in this step.', $this->toolAnswer(1, 'c1'), 'not before its skill is loaded');
         $this->assertStringStartsWith('Loaded skills: navigation.', $this->toolAnswer(2, 'c2'));
         $this->assertSame('There is no page with this id.', $this->toolAnswer(3, 'c3'));
-        $this->assertSame('A button for the page "Prices" is shown below your reply.', $this->toolAnswer(3, 'c4'));
+        $this->assertStringStartsWith('A button for the page "Prices" is shown below your reply. Call it by this title.', $this->toolAnswer(3, 'c4'), 'the reply names the page that really opens');
         $this->assertContains('open_page', $this->offered(2));
         $this->assertStringContainsString("12 | Contact | /contact | How to reach us\n14 | Prices | /prices", $this->chat->sent[0]['messages'][0]['content']);
         $this->assertSame(['pages', 'pages', 'pages', 'pages'], $steps, 'one status per tool call');
+    }
+
+    public function testAPageOpensByItselfOnlyWhenTheReplyNamesIt(): void
+    {
+        $open = [['id' => 'c1', 'name' => 'load_module', 'arguments' => ['modules' => ['navigation']]]];
+        $prices = [['id' => 'c2', 'name' => 'open_page', 'arguments' => ['page_id' => 14, 'now' => true]]];
+
+        // The visitor asked for an imprint; the model opened the price page and wrote about something else.
+        $this->chat->answers = [$open, $prices, 'This website has no imprint page. I can forward your request.'];
+        $this->assertSame(['url' => 'https://www.example.com/prices', 'title' => 'Prices', 'now' => false], $this->reply([], 'Open the imprint, please.', [], Features::forEdition('basic'))['navigate'], 'only the button, no page opened in place of another');
+
+        $this->chat->answers = [$open, $prices, 'I am opening the page "Prices" for you.'];
+        $this->assertTrue($this->reply([], 'Open the prices, please.', [], Features::forEdition('basic'))['navigate']['now']);
     }
 
     public function testWhatTheModelSaysWhileItsToolsRunReachesTheVisitorAtOnce(): void

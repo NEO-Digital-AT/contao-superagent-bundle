@@ -62,6 +62,13 @@ erkennbar irgendwohin („bring mich zur Kontaktseite“), öffnet sich die Seit
 sofort; sonst endet die Antwort mit dem Knopf **Seite öffnen: …**. Geöffnet werden
 nur Seiten dieser Liste, und nur auf demselben Host.
 
+Hat die Website keine Seite für das, was der Besucher sucht, sagt der Assistent
+das und bietet das Weiterleiten-Formular oder die Kontaktseite aus seinen
+Einstellungen an; eine andere Seite (etwa die Startseite) öffnet er nicht an
+ihrer Stelle. Von selbst öffnet sich eine Seite nur, wenn die Antwort sie nennt;
+sonst wird sie zum Knopf unter der Antwort. Links in einer Antwort auf Seiten der
+Website bleiben nur, wenn ihre Adresse in der Seitenliste oder im Wissen steht.
+
 Ohne Basic öffnet der Assistent keine Seite und verlinkt eine Seite der Website
 nur mit einer Adresse, die in seinem Wissen steht (Wissensquelle und Fragen &
 Antworten, z. B. die Seitenliste einer `llms.txt`); ein Link auf jede andere

@@ -22,7 +22,7 @@ final class ChatTools
     public static function definition(string $name): array
     {
         return match ($name) {
-            'open_page' => self::fn('open_page', 'Opens a page of this website for the visitor: now=true opens it right after your reply, now=false shows a button below your reply. Returns the page title.', [
+            'open_page' => self::fn('open_page', 'Opens a page of this website for the visitor: now=true opens it right after your reply, now=false shows a button below your reply. Only for the page the visitor asks for or a page that answers the question, never in place of a page this website does not have (not the start page either). Returns the page title.', [
                 'page_id' => ['type' => 'integer', 'description' => 'Id of the page from PAGES or from find_pages.'],
                 'now' => ['type' => 'boolean', 'description' => 'true: open at once; false: show a button.'],
             ], ['page_id', 'now']),
