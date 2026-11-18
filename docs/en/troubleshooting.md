@@ -3,7 +3,7 @@ title: Troubleshooting
 summary: Common problems with SuperAgent – chat not shown, no answer, features missing, forwarding, newsletter, voice input, connections to MCP servers, skills, credit line, missing permissions – with cause and solution.
 audience: operations
 language: en
-updated: 2026-11-12
+updated: 2026-11-18
 ---
 
 # Troubleshooting
@@ -27,7 +27,7 @@ always missing permissions; see [Permissions](permissions.md).
 | After **Send** in the forwarding form the chat shows its error notice | The request could not be sent; without a sender address it is not sent at all (the assistant's form warns in **Escalation & consent**) | Enter a sender ([Setup](setup.md#5-mail-sender)); otherwise check the mail settings of the installation and the log. |
 | The answer comes at once at the end, without the status texts | The hosting buffers the response of the server | The chat works the same; for nginx the response already sets `X-Accel-Buffering: no`. |
 | The assistant does not know a page | The page is not a regular page below the root page, not published, protected or set to `noindex`; the list is refreshed every ten minutes | Check the page; wait up to ten minutes. |
-| The window is in English on a page in another language | The page language has no record and is not one of the eleven languages | Create a language record for it. |
+| The window is in English on a page in another language | The assistant of the module has no record in the language of the page, and that language is not one of the eleven | Create an assistant for that language (**Copy** one, change the **Language** of its record) and put its module in the layout of that language ([Several languages](usage/languages.md#several-languages-on-the-website)). |
 | The credit line stays although a licence exists | The website runs without HTTPS, or the licence does not cover the domain | Use HTTPS; check the licence row on *Access keys and licences*. |
 | The chat takes no input | The credit line of the free edition is cut off or covered by the design | Make it visible; it is part of the free licence. |
 | The chat stops with an error for every question | The skill package of the extension is invalid (a skill longer than 2,800 characters, an unknown tool or dependency) | Read the log; install the package again. |

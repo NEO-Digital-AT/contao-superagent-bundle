@@ -3,7 +3,7 @@ titel: Fehlersuche
 kurzfassung: Häufige Probleme mit SuperAgent – Chat nicht sichtbar, keine Antwort, fehlende Funktionen, Weiterleitung, Newsletter, Spracheingabe, Verbindungen zu MCP-Servern, Skills, Hinweis der Gratisfassung, fehlende Rechte – mit Ursache und Lösung.
 zielgruppe: betrieb
 sprache: de
-stand: 2026-11-12
+stand: 2026-11-18
 ---
 
 # Fehlersuche
@@ -28,7 +28,7 @@ Fehlende Menüeinträge oder Felder sind fast immer fehlende Rechte; siehe
 | Nach **Senden** im Weiterleiten-Formular zeigt der Chat seinen Fehlerhinweis | Die Anfrage ließ sich nicht senden; ohne Absenderadresse wird sie gar nicht gesendet (das Formular des Assistenten warnt unter **Eskalation & Einwilligung**) | Einen Absender eintragen ([Einrichtung](setup.md#5-absender)); sonst die Mail-Einstellungen der Installation und das Protokoll prüfen. |
 | Die Antwort kommt erst am Ende auf einmal, ohne die Statustexte | Das Hosting puffert die Antwort des Servers | Der Chat funktioniert genauso; für nginx setzt die Antwort bereits `X-Accel-Buffering: no`. |
 | Der Assistent kennt eine Seite nicht | Die Seite ist keine reguläre Seite unter dem Startpunkt, nicht veröffentlicht, geschützt oder auf `noindex`; die Liste wird alle zehn Minuten aufgefrischt | Die Seite prüfen; bis zu zehn Minuten warten. |
-| Das Fenster ist auf einer Seite in einer anderen Sprache englisch | Die Sprache der Seite hat keinen Datensatz und ist keine der elf Sprachen | Einen Sprachdatensatz dafür anlegen. |
+| Das Fenster ist auf einer Seite in einer anderen Sprache englisch | Der Assistent des Moduls hat keinen Datensatz in der Sprache der Seite, und diese Sprache ist keine der elf | Einen Assistenten für diese Sprache anlegen (einen **Kopieren**, die **Sprache** seines Datensatzes ändern) und sein Modul in das Layout dieser Sprache setzen ([Mehrere Sprachen](usage/languages.md#mehrere-sprachen-auf-der-website)). |
 | Der Hinweis der Gratisfassung bleibt, obwohl eine Lizenz besteht | Die Website läuft ohne HTTPS, oder die Lizenz deckt die Domain nicht ab | HTTPS verwenden; die Lizenzzeile unter *Zugänge und Lizenzen* prüfen. |
 | Der Chat nimmt keine Eingabe an | Der Hinweis der Gratisfassung ist abgeschnitten oder vom Design verdeckt | Ihn sichtbar machen; er gehört zur kostenlosen Lizenz. |
 | Der Chat bricht bei jeder Frage mit einem Fehler ab | Das Skill-Paket der Erweiterung ist ungültig (ein Skill länger als 2 800 Zeichen, ein unbekanntes Werkzeug oder eine unbekannte Abhängigkeit) | Das Protokoll lesen; das Paket neu installieren. |

@@ -3,7 +3,7 @@ titel: Einrichtung
 kurzfassung: SuperAgent einmal für die Installation einrichten – Stufen und Lizenz, KI-Verbindung und API-Schlüssel, die Bedingungen, das Frontend-Modul, der Absender, das Einwilligungswerkzeug und die Parameter der Server-Konfiguration.
 zielgruppe: betrieb
 sprache: de
-stand: 2026-11-13
+stand: 2026-11-18
 ---
 
 # Einrichtung
@@ -30,10 +30,17 @@ selbst beschreibt die [Bedienungsanleitung](usage/README.md).
 | **Spracheingabe**: Der Besucher spricht, der Text erscheint im Eingabefeld | – | – | – | ja |
 
 **Lizenz eintragen.** Unter *Zugänge und Lizenzen*, Abschnitt **Lizenzen**, den
-Schlüssel in der Zeile *SuperAgent* eintragen und speichern. Welche Stufe gilt,
+Schlüssel in der Zeile *SuperAgent* eintragen (1 im Bild) und speichern. Welche Stufe gilt,
 entscheidet allein der signierte Nachweis des Lizenzdiensts für die Domain, auf
 dem Server. Der Stand der Zeile sagt, was jede Stufe ergänzt. Der Browser prüft
 den Nachweis, bevor er den Hinweis weglässt; dafür braucht es HTTPS.
+
+![Die Seite Zugänge und Lizenzen: Rahmen 1 um SuperAgent: Lizenzschlüssel, Rahmen 2 um seinen Stand Ohne Lizenz mit dem Link zum Store, Rahmen 3 um den zugeklappten Abschnitt Bedingungen der Erweiterungen, Rahmen 4 und 5 um Route und Schlüssel der KI-Verbindung, Rahmen 6 um Verbindung prüfen.](bilder/access-licence.png)
+
+Im Bild: 1 der Lizenzschlüssel des SuperAgent, 2 sein Stand (hier: ohne Lizenz,
+mit dem Link zum Store), 3 der Abschnitt **Bedingungen der Erweiterungen**
+(Schritt 3), 4 **Route** und 5 **Schlüssel** der KI-Verbindung (Schritt 2), 6
+**Verbindung prüfen**.
 
 Der Schlüssel wird beim Speichern und einmal täglich beim Lizenzdienst geprüft.
 Übertragen werden nur der Schlüssel, der Code der Erweiterung, die Domains der
@@ -49,7 +56,9 @@ Werte bleiben und erscheinen mit einer passenden Lizenz wieder.
 ## 2. KI-Verbindung und API-Schlüssel
 
 Unter *Zugänge und Lizenzen*, Abschnitt **KI-Verbindung**, die **Route** wählen
-und den **Schlüssel** eintragen (siehe Dokumentation des Basic-Bundles). Die
+(4 im Bild oben), den **Schlüssel** eintragen (5) und speichern (siehe
+Dokumentation des Basic-Bundles). **Verbindung prüfen** (6) fragt die Route
+nach ihren Modellen und sagt, ob sie antwortet. Die
 Verbindung teilen sich alle Erweiterungen; jeder Assistent wählt sein eigenes
 Modell. Solange kein Schlüssel gespeichert ist, zeigt die Website den Chat
 nicht, und die Liste der Assistenten sagt es („Noch kein KI-Schlüssel
@@ -74,6 +83,19 @@ Datenschutz, Kosten; Internetsuche und Weiterleitung; MCP-Server, Skills und
 Wissensquellen; Aktionen mit Folgen und Spracheingabe). Sie erscheinen in der
 Backend-Sprache; verbindlich ist der deutsche Text.
 
+1. Den Abschnitt **Bedingungen der Erweiterungen** mit einem Klick auf seine
+   Überschrift öffnen.
+2. Jede Passage lesen: **Text anzeigen** öffnet sie (1 und 2 im Bild).
+3. **Ich habe die Bedingungen gelesen und akzeptiere sie.** anhaken (3) und auf
+   **Bestätigen** klicken (4).
+
+![Der Abschnitt Bedingungen der Erweiterungen einer neuen Installation: Rahmen 1 um die Überschrift SuperAgent · ohne Lizenz mit Noch nicht bestätigt darunter, Rahmen 2 um die Passage Für alle Stufen mit Text anzeigen, Rahmen 3 um das Häkchen Ich habe die Bedingungen gelesen und akzeptiere sie, Rahmen 4 um den Knopf Bestätigen.](bilder/access-terms.png)
+
+Im Bild: 1 die Erweiterung und die Stufe, zu der die Passagen gehören, mit ihrem
+Stand, 2 eine Passage (**Text anzeigen** öffnet sie, mit der deutschen Fassung
+darunter), 3 das Häkchen, 4 **Bestätigen**. Danach steht dort „Bestätigt von …
+am …“.
+
 - Ein Assistent lässt sich erst nach der Bestätigung auf **Alle Besucher**
   stellen. Bis dahin bleibt er in der Vorschau („Bitte bestätigen Sie zuerst
   die Bedingungen unter „Zugänge und Lizenzen“. …“).
@@ -89,22 +111,24 @@ Backend-Sprache; verbindlich ist der deutsche Text.
    [Bedienungsanleitung](usage/assistant.md)). Ein neuer Assistent steht zuerst
    auf **Nur Vorschau**.
 2. **Layout › Themes › Frontend-Module** öffnen, auf **Neu** klicken und den
-   Modultyp **KI-Assistent (Chat-Widget)** wählen (Gruppe *NEO Digital*).
+   Modultyp **KI-Assistent (Chat-Widget)** wählen (Gruppe *NEO Digital*; 1 im
+   Bild).
 3. Abschnitt *Konfiguration*:
-   - **Assistent**: welchen Assistenten das Widget zeigt. Leer: der erste
+   - **Assistent** (2): welchen Assistenten das Widget zeigt. Leer: der erste
      aktive Assistent.
-   - **GA4-Ereignis „Chat gestartet“** (optional): der Name eines
+   - **GA4-Ereignis „Chat gestartet“** (3, optional): der Name eines
      Google-Analytics-4-Ereignisses, z. B. `chat_ai`, gesendet bei der ersten
      Nachricht, nur nach Einwilligung in die Statistik. Gesendet wird nur der
      Name des Ereignisses, nie ein Inhalt.
-4. Das Modul in das Seitenlayout setzen, meist in die Fußzeile. Ein Modul reicht
-   für alle Seiten des Layouts; die Sprachdatensätze folgen der Sprache der
-   Seite.
 
-Für Websites in mehreren Sprachen: ein Assistent mit einem Sprachdatensatz je
-Sprache, oder ein Assistent je Sprache (eigenes Wissen, eigene
-Weiterleitungsadresse) mit einem Modul je Sprache. Beide Wege Schritt für
-Schritt: [Mehrere Sprachen auf der Website](usage/languages.md#mehrere-sprachen-auf-der-website).
+   ![Das Formular des Frontend-Moduls: Rahmen 1 um Modultyp mit KI-Assistent (Chat-Widget), Rahmen 2 um Assistent mit dem Assistenten Ferienwohnung, Rahmen 3 um GA4-Ereignis „Chat gestartet“.](bilder/module-form.png)
+4. Das Modul in das Seitenlayout setzen, meist in die Fußzeile. Ein Modul reicht
+   für alle Seiten des Layouts.
+
+Für Websites in mehreren Sprachen: ein Assistent je Sprache (mit eigenen
+Texten und, wo nötig, eigenem Wissen und eigener Weiterleitungsadresse) und
+ein Modul je Sprache im Layout dieser Sprache. Schritt für Schritt:
+[Mehrere Sprachen auf der Website](usage/languages.md#mehrere-sprachen-auf-der-website).
 
 ## 5. Absender
 

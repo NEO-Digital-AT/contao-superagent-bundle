@@ -3,7 +3,7 @@ titel: Installierte Skills
 kurzfassung: Skills für SuperAgent installieren (Stufe Plus, nur Administratoren) aus GitHub oder als Datei – die Prüfung, die Übernahme eines Skills, Updates und die Auswahl am Assistenten.
 zielgruppe: anwender
 sprache: de
-stand: 2026-11-12
+stand: 2026-11-18
 ---
 
 # Installierte Skills
@@ -34,10 +34,10 @@ Benutzer ist Administrator.
 3. Speichern. Die Erweiterung lädt und prüft den Skill („Geladen und geprüft.
    Lesen Sie den Text und übernehmen Sie ihn mit dem Häkchen unten.“).
 
-![Das Formular eines neuen Skills: Rahmen 1 um Quelle mit gewähltem GitHub, Rahmen 2 um Adresse auf GitHub mit einer Beispieladresse.](../bilder/skill-form.png)
+![Das Formular eines neuen Skills: Rahmen 1 um Quelle mit gewähltem GitHub, Rahmen 2 um Adresse auf GitHub mit einer Beispieladresse, Rahmen 3 um den Knopf Laden und prüfen.](../bilder/skill-form.png)
 
-Im Bild: 1 **Quelle**, 2 **Adresse auf GitHub**; darunter der Knopf **Laden
-und prüfen**.
+Im Bild: 1 **Quelle**, 2 **Adresse auf GitHub**, 3 **Laden und prüfen**
+(speichert und lädt den Skill).
 
 ## Die Prüfung
 
@@ -62,6 +62,12 @@ nach dem Häkchen **Ich habe den Inhalt gelesen und übernehme ihn.** und dem
 Speichern. Gespeichert wird, wer ihn wann übernommen hat („Übernommen: …, von …
 am …“). Der Hersteller der Erweiterung prüft nur den Aufbau eines Skills, nicht
 seinen Inhalt.
+
+![Ein geladener, noch nicht übernommener Skill: Rahmen 1 um die Meldungen Geladen am … noch nicht übernommen und SKILL.md gelesen, Rahmen 2 um den geladenen Text, Rahmen 3 um das Häkchen Ich habe den Inhalt gelesen und übernehme ihn, Rahmen 4 um Speichern.](../bilder/skill-review.png)
+
+Im Bild: 1 das Ergebnis des Ladens und der Prüfung, 2 der Text, wie ihn das
+Modell bekäme (ein Klick auf seine Überschrift klappt ihn zu), 3 das Häkchen, 4
+**Speichern**.
 
 ## Updates
 

@@ -3,7 +3,7 @@ title: Connections to MCP servers
 summary: Connecting MCP servers to SuperAgent (edition Plus, administrators only) – sign-in including OAuth, handling of personal data, tools and locks, the choice at the assistant, calls in the chat, the tool log and templates.
 audience: users
 language: en
-updated: 2026-11-12
+updated: 2026-11-18
 ---
 
 # Connections to MCP servers
@@ -47,11 +47,11 @@ only then.
    Names and postal addresses are not recognised.
 6. Save. The extension reads the tools of the server (below).
 
-![The form of a new connection: frame 1 around Name with "Appointments", frame 2 around Address of the MCP server with https://mcp.example.com/mcp, frame 3 around Sign-in, frame 4 around Personal data.](../bilder/connection-form.png)
+![The form of a new connection: frame 1 around Template, frame 2 around Name with "Calendar", frame 3 around Address of the MCP server with https://mcp.example.com/mcp, frame 4 around Sign-in, frame 5 around Personal data.](../bilder/connection-form.png)
 
-In the picture: 1 **Name**, 2 **Address of the MCP server**, 3 **Sign-in**,
-4 **Personal data**; above them the warning that every visitor works with the
-access of the connection.
+In the picture: 1 **Template**, 2 **Name**, 3 **Address of the MCP server**, 4
+**Sign-in**, 5 **Personal data**; above them the warning that every visitor
+works with the access of the connection.
 
 Keys, header values, client secret and tokens are stored encrypted and never
 shown again.
@@ -88,6 +88,14 @@ server states: *reads only*, *changes data*, *deletes data*, *not marked*.
 - Lifting a lock and the first release of the connection need the checkbox **I
   have checked the released tools and understand the residual risk.** Who did
   it and when is kept ("Confirmed by … on …").
+
+![The sections Tools and Confirmation of a saved connection: frame 1 around the button Read tools again, frame 2 around the tool list_free_slots (reads only, not locked), frame 3 around the tool book_appointment (changes data, locked), frame 4 around its note needs personal data, frame 5 around the confirmation with its checkbox.](../bilder/connection-tools.png)
+
+In the picture: 1 **Read tools again**, 2 a tool that only reads, released
+(the box **locked** is not ticked), 3 a tool that changes data, locked as it
+first appeared, 4 the note **needs personal data**, 5 the confirmation: who
+confirmed and when, and the checkbox for the next change. To release a tool,
+untick **locked**, tick the checkbox of the confirmation and save.
 
 The list of connections shows the state of each, e.g. "active · 4 of 6 tools
 released", "tools not read" or "not confirmed".
@@ -148,6 +156,11 @@ every call: assistant, connection, tool, time, duration, result (**run**,
 **locked**, **sign-in refused**, **server not reachable**, **result cut**,
 **personal data masked**, **refused by the AI service**). Arguments and
 results are not kept. Entries are kept 30 days.
+
+![The tool log: frame 1 around a call of book_appointment with the result not run (locked), frame 2 around a call of list_free_slots with the result run.](../bilder/tool-log.png)
+
+In the picture: 1 a call that did not run because the tool is locked, 2 a call
+that ran. The icon at the end of a row shows the entry.
 
 **Refused by the AI service**: the AI service did not accept the description
 of this tool (its input schema). The chat leaves only this tool out and goes

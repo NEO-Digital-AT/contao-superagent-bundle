@@ -3,7 +3,7 @@ titel: Der Chat auf der Website
 kurzfassung: Was Besucher im Chat von SuperAgent sehen und tun können – Fenster und KI-Hinweis, Einstiegsfragen, Stand des Assistenten, Navigation, Weiterleiten-Formular mit Prüfung von Telefon und E-Mail, Newsletter, Spracheingabe, Gespräch über Seiten hinweg.
 zielgruppe: anwender
 sprache: de
-stand: 2026-11-14
+stand: 2026-11-18
 ---
 
 # Der Chat auf der Website
@@ -33,14 +33,25 @@ Das Fenster hat:
   Begrüßung, bis der Besucher eine davon stellt, auch im wiederhergestellten
   Gespräch auf der nächsten Seite; der Knopf **Häufige Fragen** über der Eingabe
   zeigt sie jederzeit wieder;
-- das Eingabefeld mit dem Senden-Knopf; mit Datenschutz-Modus den
-  Datenschutzhinweis darunter;
+- das Eingabefeld mit dem Senden-Knopf; mit Spracheingabe (Pro) daneben das
+  Mikrofon;
+- unter der Eingabe **An … weiterleiten** (Basic, mit Eskalationsadresse) und,
+  mit Datenschutz-Modus, den Datenschutzhinweis;
 - ohne Lizenz unten den Hinweis.
 
-![Das geöffnete Chatfenster: Rahmen 1 um den KI-Hinweis unter dem Kopf, Rahmen 2 um drei Einstiegsfragen unter der Begrüßung, Rahmen 3 um den Knopf Häufige Fragen über der Eingabe.](../bilder/chat-window.png)
+![Das geöffnete Chatfenster: Rahmen 1 um den Knopf Neues Gespräch im Kopf, Rahmen 2 um den KI-Hinweis, Rahmen 3 um zwei Einstiegsfragen unter der Begrüßung, Rahmen 4 um das Eingabefeld, Rahmen 5 um das Mikrofon, Rahmen 6 um An Anna weiterleiten, Rahmen 7 um den runden Chat-Knopf.](../bilder/chat-window.png)
 
-Im Bild: 1 der KI-Hinweis, 2 die Einstiegsfragen, 3 der Knopf **Häufige
-Fragen**.
+Im Bild: 1 **Neues Gespräch**, 2 der KI-Hinweis, 3 die Einstiegsfragen, 4 das
+Eingabefeld (der Pfeil daneben sendet), 5 das Mikrofon (Pro), 6 **An …
+weiterleiten** mit dem Namen, der am Assistenten eingestellt ist, 7 der
+Chat-Knopf, der das Fenster öffnet und schließt. Unten der Hinweis der
+Gratisfassung; mit Lizenz fehlt er.
+
+![Der Chat nach einem Klick auf eine Einstiegsfrage: Rahmen 1 um die Frage „Ab wann kann ich einchecken?“, Rahmen 2 um die Antwort, formuliert aus der hinterlegten Antwort, Rahmen 3 um den Knopf Häufige Fragen.](../bilder/chat-answer.png)
+
+Im Bild: 1 die Einstiegsfrage, die der Besucher angeklickt hat, 2 die Antwort,
+die der Assistent aus der bei der Frage hinterlegten Antwort formuliert, 3
+**Häufige Fragen**, das die Einstiegsfragen wieder zeigt.
 
 Während der Assistent arbeitet, sagt die Antwortblase, was er tut: „Denkt nach
 …“, „Sucht die passende Seite …“, „Bereitet das Formular vor …“, „Sucht im
@@ -78,10 +89,18 @@ E-Mail-Adressen und Telefonnummern bleiben.
 ## Weiterleiten an das Team (Basic)
 
 Will ein Besucher eine Person erreichen, öffnet der Assistent im Chat das
-Weiterleiten-Formular, vorbefüllt mit einer Zusammenfassung. Der Besucher
+Weiterleiten-Formular, vorbefüllt mit einer Zusammenfassung; der Besucher
+öffnet es auch selbst mit **An … weiterleiten** unter der Eingabe. Der Besucher
 ergänzt die E-Mail-Adresse und schickt es ab; der Assistent kann selbst nichts
 senden und behauptet nie, etwas weitergeleitet zu haben. Er kann auch die
 Kontaktseite öffnen, die im Assistenten eingestellt ist.
+
+![Das ausgefüllte Weiterleiten-Formular im Chat: Rahmen 1 bis 4 um Name, Ihre E-Mail, Telefon mit Ländervorwahl und Kurze Nachricht, Rahmen 5 um das Häkchen der Einwilligung, Rahmen 6 um den Knopf An Anna senden.](../bilder/chat-forwarding.png)
+
+Im Bild: 1 **Name**, 2 **Ihre E-Mail**, 3 **Telefon** mit Ländervorwahl, 4
+**Kurze Nachricht**, 5 die Einwilligung zur Kontaktaufnahme, 6 **An … senden**;
+**Zurück** kehrt zum Gespräch zurück. Welche Felder erscheinen, steht am
+Assistenten ([Eskalation & Einwilligung](assistant.md#eskalation--einwilligung-basic)).
 
 Das Formular hat E-Mail-Adresse und Nachricht (immer Pflicht) und die im
 Assistenten gewählten Felder:

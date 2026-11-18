@@ -3,7 +3,7 @@ title: Texts per language
 summary: The language records of a SuperAgent assistant – greeting, starter questions with an optional answer, questions and answers, every text of the chat window – suggestions in eleven languages, placeholders, which record a page gets and the two ways for several languages.
 audience: users
 language: en
-updated: 2026-11-14
+updated: 2026-11-18
 ---
 
 # Texts per language
@@ -35,7 +35,19 @@ website language has no published assistant, the list of assistants names it.
 | | **Questions & answers** | Further knowledge, not shown as buttons: one question and its answer per row. The assistant uses them as knowledge and words its replies itself. |
 | Buttons & notes of the widget | every fixed text of the window | AI notice, chat button, open and close buttons, consent request and the note that the chat is not available, send button, the forward link and every text of the forwarding form, the confirmation, the error message, the privacy note below the input, "Open page", "New conversation", the status texts, the texts of voice input, the button for the starter questions |
 
-Empty fields use the default of the language, shown in grey.
+![The top of a language record: frame 1 around Language with English chosen, frames 2 to 5 around Subtitle, Greeting, Safety note and Input placeholder.](../bilder/language-texts.png)
+
+In the picture: 1 **Language**, 2 **Subtitle**, 3 **Greeting** (`%name%`
+becomes the display name), 4 **Safety note** (empty: no note), 5 **Input
+placeholder**.
+
+Empty fields use the default of the language, shown in grey. The section
+**Buttons & notes of the widget** is folded; a click on its heading opens it.
+
+![The section Buttons & notes of the widget opened: frame 1 around the field AI notice, below it the fields for the privacy note and the privacy guidance.](../bilder/language-widget.png)
+
+In the picture: 1 one of the texts of the window, here the AI notice below the
+header of the chat window.
 
 Two fields are guidance rather than fixed text; the assistant words the reply
 itself:
@@ -64,9 +76,11 @@ Goal: visitors see a few questions to click when they open the chat.
    like any other question.
 4. Click **Save**.
 
-![The section Starter questions, questions & answers of a language record: frame 1 around Starter questions with the columns Question and Answer (optional), one question with an answer and two without, frame 2 around Questions & answers.](../bilder/language-record.png)
+![The section Starter questions, questions & answers of a language record: frame 1 around Starter questions with the columns Question and Answer (optional), one question without and one with an answer, frame 2 around the buttons of a row, frame 3 around Questions & answers, frame 4 around the button Load suggestions at the bottom.](../bilder/language-record.png)
 
-In the picture: 1 **Starter questions**, 2 **Questions & answers**.
+In the picture: 1 **Starter questions**, 2 the buttons of a row (copy, delete;
+the grip at the left moves the row, the plus below adds one), 3 **Questions &
+answers**, 4 **Load suggestions**.
 
 Result: the chat shows the questions as buttons below the greeting, until the
 visitor asks one of them; the button above the input shows them again. The

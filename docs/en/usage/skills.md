@@ -3,7 +3,7 @@ title: Installed skills
 summary: Installing skills for SuperAgent (edition Plus, administrators only) from GitHub or as a file – the check, taking a skill over, updates and the choice at the assistant.
 audience: users
 language: en
-updated: 2026-11-12
+updated: 2026-11-18
 ---
 
 # Installed skills
@@ -32,10 +32,10 @@ administrator.
 3. Save. The extension loads and checks the skill ("Loaded and checked. Read
    the text and take it over with the box below.").
 
-![The form of a new skill: frame 1 around Source with GitHub chosen, frame 2 around Address on GitHub with an example address.](../bilder/skill-form.png)
+![The form of a new skill: frame 1 around Source with GitHub chosen, frame 2 around Address on GitHub with an example address, frame 3 around the button Load and check.](../bilder/skill-form.png)
 
-In the picture: 1 **Source**, 2 **Address on GitHub**; below them the button
-**Load and check**.
+In the picture: 1 **Source**, 2 **Address on GitHub**, 3 **Load and check**
+(saves and loads the skill).
 
 ## The check
 
@@ -56,7 +56,13 @@ run.
 ## Taking a skill over
 
 The form shows the full text as the model gets it. It applies only after the
-checkbox **I have read the content and take it over.** and saving. Who took it
+checkbox **I have read the content and take it over.** and saving.
+
+![A loaded skill that is not taken over yet: frame 1 around the messages Loaded on … not taken over yet and SKILL.md read, frame 2 around the loaded text, frame 3 around the checkbox I have read the content and take it over, frame 4 around Save.](../bilder/skill-review.png)
+
+In the picture: 1 the result of loading and of the check, 2 the text as the
+model would get it (a click on its heading folds it), 3 the checkbox, 4
+**Save**. Who took it
 over and when is kept ("Taken over: …, by … on …"). The manufacturer of the
 extension checks only the structure of a skill, not its content.
 

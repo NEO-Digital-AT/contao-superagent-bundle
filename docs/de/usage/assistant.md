@@ -3,22 +3,31 @@ titel: Einen Assistenten einrichten
 kurzfassung: Jeder Abschnitt des Formulars eines SuperAgent-Assistenten – Veröffentlichung, Identität, Modell, Antwortstil, Wissensquelle, Sicherheit, Spracheingabe, Internetsuche, Vermittlung, Eskalation und Formular, Skills, Werkzeuge – und das Testen in der Vorschau, bevor Besucher ihn sehen.
 zielgruppe: anwender
 sprache: de
-stand: 2026-11-14
+stand: 2026-11-18
 ---
 
 # Einen Assistenten einrichten
 
 ## Einen Assistenten anlegen
 
-1. **NEO Digital › SuperAgent** öffnen und auf **Neu** klicken.
+1. **NEO Digital › SuperAgent** öffnen und auf **Neu** klicken (1 im Bild).
 2. Die Abschnitte unten ausfüllen und speichern.
-3. Ein neuer Assistent bekommt je Sprache der Website (eine je Startpunkt) einen
-   Sprachdatensatz, mit Vorschlägen gefüllt. Der Abschnitt **Sprachen und
-   Einstiegsfragen** des Formulars nennt sie; siehe
-   [Texte je Sprache](languages.md).
+3. Ein neuer Assistent bekommt einen Sprachdatensatz in der ersten Sprache der
+   Website, mit Vorschlägen gefüllt. Ein Assistent hat eine Sprache; für jede
+   weitere Sprache der Website wird er kopiert (7) und die Sprache der Kopie
+   geändert (siehe [Texte je Sprache](languages.md#mehrere-sprachen-auf-der-website)).
 
-Die Liste zeigt jeden Assistenten mit seiner Bezeichnung; ein Assistent in der
-Vorschau trägt die Markierung *Vorschau*. Warnungen über der Liste nennen, was
+![Die Liste der Assistenten: Rahmen 1 bis 5 um die Knöpfe Neu, Zugänge und Lizenzen, Verbindungen, Skills und Protokoll über der Liste, Rahmen 6 und 7 um die Aktionen Bearbeiten und Kopieren des Assistenten „Ferienwohnung“.](../bilder/assistant-list.png)
+
+Im Bild: 1 **Neu**, 2 **Zugänge und Lizenzen** (Lizenz, KI-Verbindung,
+Bedingungen; siehe [Einrichtung](../setup.md)), 3 **Verbindungen** und 4
+**Skills** (Plus, Administratoren), 5 **Protokoll** der Werkzeugaufrufe
+(Administratoren), 6 den Assistenten **Bearbeiten**, 7 ihn **Kopieren**, etwa
+für eine weitere Sprache.
+
+Die Liste zeigt jeden Assistenten mit seiner Bezeichnung und, in Klammern,
+seinem Anzeigenamen; ein Assistent in der Vorschau trägt die Markierung
+*Vorschau*. Warnungen über der Liste nennen, was
 fehlt: kein KI-Schlüssel, Bedingungen nicht bestätigt, eine Sprache der Website
 ohne eigene Texte („Für … (Startpunkt „…“) hat noch kein Assistent eigene Texte;
 …“, mit **Mit Vorschlägen anlegen bei „…“**).
@@ -38,25 +47,26 @@ ohne eigene Texte („Für … (Startpunkt „…“) hat noch kein Assistent ei
 
 | Feld | Bedeutung |
 | --- | --- |
-| **Anzeigename** | Wie sich der Assistent vorstellt und im Kopf erscheint, z. B. „Mia“. Gilt für alle Sprachen. |
+| **Anzeigename** | Wie sich der Assistent vorstellt und im Kopf erscheint, z. B. „Mia“ |
 | **Bild** | Erscheint statt des Roboter-Icons (quadratisch, z. B. 96 × 96 px); jedes Bild aus der Dateiverwaltung, auch aus geschützten Ordnern |
 | **Position** | **Unten rechts** oder **Unten links** für Chat-Knopf und Fenster. Sitzen Knöpfe anderer Erweiterungen in derselben Ecke (Cookie-Einstellungen, Barrierefreiheit), werden sie gemeinsam so angeordnet, wie es im Seitenlayout eingestellt ist: eine Einstellungs-Schaltfläche mit Menü, übereinander oder nebeneinander ([Der Chat](chat.md#fenster)). |
 
 
 ### Sprachen und Einstiegsfragen
 
-Nennt jede Sprache des Assistenten mit ihren Einstiegsfragen (und deren Antwort,
+Zeigt die Sprache des Assistenten mit ihren Einstiegsfragen (und deren Antwort,
 wo es eine gibt), nur zum Lesen. **Texte und Einstiegsfragen bearbeiten** öffnet
-den Datensatz dieser Sprache, mit Begrüßung, Einstiegsfragen, Fragen & Antworten
-und den Texten des Fensters; **Sprache hinzufügen** legt einen Datensatz für eine
-weitere Sprache an. Einzelheiten:
+den Sprachdatensatz, mit Begrüßung, Einstiegsfragen, Fragen & Antworten und den
+Texten des Fensters. **Sprache hinzufügen** erscheint nur, solange der Assistent
+keinen Sprachdatensatz hat. Einzelheiten:
 [Texte je Sprache](languages.md#einstiegsfragen).
 
-![Der obere Teil des Formulars eines Assistenten: Rahmen 1 um das Feld Einwilligungs-Kategorie, Rahmen 2 um den Abschnitt Sprachen und Einstiegsfragen mit Englisch und Deutsch und ihren Einstiegsfragen, Rahmen 3 um den Knopf Texte und Einstiegsfragen bearbeiten der ersten Sprache, Rahmen 4 um den Knopf Sprache hinzufügen.](../bilder/assistant-form.png)
+![Der obere Teil des Formulars eines Assistenten: Rahmen 1 bis 6 um Aktiv, Sichtbar für, Einwilligungs-Kategorie, Anzeigename, Bild und Position, Rahmen 7 um die Sprache Deutsch mit zwei Einstiegsfragen, Rahmen 8 um den Knopf Texte und Einstiegsfragen bearbeiten.](../bilder/assistant-form.png)
 
-Im Bild: 1 **Einwilligungs-Kategorie**, 2 die Sprachen mit ihren
-Einstiegsfragen (eine Antwort steht grau hinter der Frage), 3 **Texte und
-Einstiegsfragen bearbeiten** einer Sprache, 4 **Sprache hinzufügen**.
+Im Bild: 1 **Aktiv**, 2 **Sichtbar für**, 3 **Einwilligungs-Kategorie**, 4
+**Anzeigename**, 5 **Bild** (**Auswahl ändern** öffnet die Dateiverwaltung), 6
+**Position**, 7 die Sprache mit ihren Einstiegsfragen (eine Antwort steht grau
+hinter der Frage), 8 **Texte und Einstiegsfragen bearbeiten**.
 
 ### Modell
 
@@ -71,6 +81,12 @@ Ein Modell ohne Werkzeuge zeigt: „Dieses Modell kann keine Werkzeuge nutzen. D
 Internetsuche funktioniert damit nicht; Navigation und Weiterleitung laufen über
 Ersatzzeilen.“
 
+![Der Abschnitt Modell: Rahmen 1 um das Feld Modell, Rahmen 2 um die Zeile darunter mit dem, was das Modell kann, und dem Hinweis, ob es mit Werkzeugen von Verbindungen getestet ist, Rahmen 3 um Temperatur, Rahmen 4 um Antwortlänge (Max. Tokens).](../bilder/assistant-model.png)
+
+Im Bild: 1 **Modell**, 2 was das Modell kann und ob es zu den mit Werkzeugen von
+Verbindungen getesteten Modellen gehört, 3 **Temperatur** (bei Modellen, die
+denken: **Denkaufwand**), 4 **Antwortlänge (Max. Tokens)**.
+
 ### Persönlichkeit & Antwortstil
 
 | Feld | Auswahl |
@@ -81,7 +97,7 @@ Ersatzzeilen.“
 
 ### Wissensbasis
 
-**Wissensquelle** (gilt für alle Sprachen):
+**Wissensquelle**:
 
 | Auswahl | Was der Assistent weiß |
 | --- | --- |
@@ -104,6 +120,11 @@ zeigt das Fenster seinen Fehlerhinweis statt einer gespeicherten Antwort.
 
 Eine Regel für ein Sprachmodell schließt nicht jeden Fehler aus.
 
+![Die Abschnitte Persönlichkeit & Antwortstil, Wissensbasis und Sicherheit: Rahmen 1 bis 3 um Anredeform, Antwortlänge und Tonfall, Rahmen 4 um Wissensquelle, Rahmen 5 und 6 um Keine medizinischen Auskünfte und Datenschutz-Modus.](../bilder/assistant-answers.png)
+
+Im Bild: 1 **Anredeform**, 2 **Antwortlänge**, 3 **Tonfall**, 4
+**Wissensquelle**, 5 **Keine medizinischen Auskünfte**, 6 **Datenschutz-Modus**.
+
 ### Spracheingabe (Pro)
 
 | Feld | Bedeutung |
@@ -120,6 +141,16 @@ Eine Regel für ein Sprachmodell schließt nicht jeden Fehler aus.
 | **Suchdienst** | **Nur die freigegebenen Quellen lesen (kostenlos)**: Die eingetragenen Adressen werden direkt gelesen. **Über SerpAPI suchen — eingeschränkt auf die freigegebenen Domains**: Eine Suchmaschine findet Seiten, nur auf den freigegebenen Domains; braucht den SerpAPI-Schlüssel (die Statuszeile sagt, ob er gespeichert ist). |
 | **Freigegebene Quellen** | Eine Adresse je Zeile: eine Partner- oder Herstellerseite, deren `llms.txt`, ein Datenendpunkt. Beantwortet die Startseite die Frage nicht, folgt der Assistent passenden Unterseiten. |
 | **Quellen je Frage** | 1 bis 5 (Vorgabe 3) |
+
+Die Felder, die zu einem Schalter gehören, erscheinen, sobald er angehakt ist
+(das Formular lädt neu).
+
+![Die Abschnitte Spracheingabe und Internetsuche: Rahmen 1 bis 3 um Spracheingabe erlauben, Umschrift-Modell und Spracheingabe auch im Datenschutzmodus, Rahmen 4 bis 7 um Internetsuche erlauben, Suchdienst, Freigegebene Quellen mit zwei Adressen und Quellen je Frage.](../bilder/assistant-voice-search.png)
+
+Im Bild: 1 **Spracheingabe erlauben**, 2 **Umschrift-Modell**, 3 **Spracheingabe
+auch im Datenschutzmodus**, 4 **Internetsuche erlauben**, 5 **Suchdienst**, 6
+**Freigegebene Quellen** (eine Adresse je Zeile; die Knöpfe neben einer Zeile
+kopieren oder löschen sie), 7 **Quellen je Frage**.
 
 ### Vermittlung
 
@@ -150,6 +181,15 @@ Feld, z. B. „Das gewählte Modul „Newsletter abonnieren“ steht auf keiner
 veröffentlichten Seite. …“; bis sie behoben sind, zeigt das Formular kein
 Newsletter-Häkchen.
 
+![Der Abschnitt Eskalation & Einwilligung: Rahmen 1 bis 9 um Eskalations-E-Mail, Weiterleiten an (Name), Kontaktseite, Zusätzliche Felder im Formular mit angehaktem Name und Telefon, Davon Pflichtfelder, Vorgewählte Ländervorwahl, Einwilligung zur Kontaktaufnahme verlangen, Datenschutzerklärung und Newsletter-Häkchen.](../bilder/assistant-escalation.png)
+
+Im Bild: 1 **Eskalations-E-Mail**, 2 **Weiterleiten an (Name)**, 3
+**Kontaktseite** und 8 **Datenschutzerklärung** (**Auswahl ändern** öffnet den
+Seitenbaum), 4 **Zusätzliche Felder im Formular**, 5 **Davon Pflichtfelder**, 6
+**Vorgewählte Ländervorwahl**, 7 **Einwilligung zur Kontaktaufnahme
+verlangen**, 9 **Newsletter-Häkchen**. Was Besucher davon sehen:
+[Der Chat](chat.md#weiterleiten-an-das-team-basic).
+
 ### Installierte Skills und Werkzeuge (Plus)
 
 - **Skills**: welche installierten Skills der Assistent benutzen darf; ab Werk
@@ -161,11 +201,17 @@ Newsletter-Häkchen.
   Angaben zu einer Person verlangt, wenn das Modell keine Werkzeuge aufrufen kann und
   wie viele angehakte Werkzeuge nicht nutzbar sind.
 
+![Die Abschnitte Installierte Skills und Werkzeuge der Verbindungen: Rahmen 1 um Skills mit einem installierten Skill, Rahmen 2 um Werkzeuge mit der aufgeklappten Verbindung Termine und ihrem angehakten Werkzeug list_free_slots und der zugeklappten Verbindung Open-Meteo, Rahmen 3 um den Hinweis zum Sprachmodell.](../bilder/assistant-tools.png)
+
+Im Bild: 1 **Skills**, 2 **Werkzeuge**, nach Verbindung gruppiert (ein Klick auf
+den Namen einer Verbindung zeigt oder verbirgt ihre Werkzeuge), 3 der Hinweis
+zum Sprachmodell (siehe [Welches Sprachmodell](connections.md#welches-sprachmodell)).
+
 ### Experten-Einstellungen
 
 **Zusätzliche Anweisungen (optional)**: eigene Anweisungen an das Modell, nur
 für Sonderfälle; Anrede, Länge und Tonfall sind oben eingestellt. `{name}`
-steht für den Anzeigenamen. Gilt für alle Sprachen.
+steht für den Anzeigenamen.
 
 ## In der Vorschau testen
 

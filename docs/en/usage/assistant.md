@@ -3,25 +3,32 @@ title: Setting up an assistant
 summary: Every section of the SuperAgent assistant form – publishing, identity, model, answer style, knowledge source, safety, voice input, web search, referral, escalation and form, skills, tools – and testing in the preview before visitors see it.
 audience: users
 language: en
-updated: 2026-11-14
+updated: 2026-11-18
 ---
 
 # Setting up an assistant
 
 ## Creating an assistant
 
-1. Open **NEO Digital › SuperAgent** and click **New**.
+1. Open **NEO Digital › SuperAgent** and click **New** (1 in the picture).
 2. Fill in the sections below and save.
-3. A new assistant gets one language record for each language of the website
-   (one per root page), filled with suggestions. The section **Languages and
-   starter questions** of the form lists them; see
-   [Texts per language](languages.md).
+3. A new assistant gets a language record in the first language of the website,
+   filled with suggestions. An assistant has one language; for each further
+   language of the website, copy it (7) and change the language of the copy
+   (see [Texts per language](languages.md#several-languages-on-the-website)).
 
-The list shows each assistant with its label; an assistant in the preview
-carries the label *Preview*. Warnings above the list name what is missing: no
-AI key, terms not confirmed, a website language without its own texts ("No
-assistant has its own texts for … yet; …", with **Create with suggestions for
-"…"**).
+![The list of assistants: frames 1 to 5 around the buttons New, Access keys and licences, Connections, Skills and Tool log above the list, frames 6 and 7 around the operations Edit and Copy of the assistant "Holiday flat".](../bilder/assistant-list.png)
+
+In the picture: 1 **New**, 2 **Access keys and licences** (licence, AI
+connection, terms; see [Setup](../setup.md)), 3 **Connections** and 4
+**Skills** (Plus, administrators), 5 **Tool log** (administrators), 6 **Edit**
+the assistant, 7 **Copy** it, e.g. for another language.
+
+The list shows each assistant with its label and, in brackets, its display
+name; an assistant in the preview carries the label *Preview*. Warnings above
+the list name what is missing: no AI key, terms not confirmed, a website
+language without its own texts ("No assistant has its own texts for … yet;
+…", with **Create with suggestions for "…"**).
 
 ## The sections of the form
 
@@ -38,24 +45,26 @@ assistant has its own texts for … yet; …", with **Create with suggestions fo
 
 | Field | Meaning |
 | --- | --- |
-| **Display name** | How the assistant introduces itself and appears in the header, e.g. "Mia". Same in all languages. |
+| **Display name** | How the assistant introduces itself and appears in the header, e.g. "Mia" |
 | **Image** | Shown instead of the bot icon (square, e.g. 96 × 96 px); any image from the file manager, also from protected folders |
 | **Position** | **Bottom right** or **Bottom left** for chat button and window. When buttons of other extensions sit in the same corner (cookie settings, accessibility), they are arranged together as set in the page layout: one settings button with a menu, stacked or side by side ([The chat](chat.md#window)). |
 
 
 ### Languages and starter questions
 
-Lists each language of the assistant with its starter questions (and their
+Shows the language of the assistant with its starter questions (and their
 answer, where there is one), read only. **Edit texts and starter questions**
-opens the record of that language, with greeting, starter questions, questions
-& answers and the texts of the window; **Add language** creates a record for
-another language. Details: [Texts per language](languages.md#starter-questions).
+opens the language record, with greeting, starter questions, questions &
+answers and the texts of the window. **Add language** appears only while the
+assistant has no language record. Details:
+[Texts per language](languages.md#starter-questions).
 
-![The top of the assistant's form: frame 1 around the field Consent category, frame 2 around the section Languages and starter questions with English and German and their starter questions, frame 3 around the button Edit texts and starter questions of the first language, frame 4 around the button Add language.](../bilder/assistant-form.png)
+![The top of the assistant's form: frames 1 to 6 around Active, Visible to, Consent category, Display name, Image and Position, frame 7 around the language English with two starter questions, frame 8 around the button Edit texts and starter questions.](../bilder/assistant-form.png)
 
-In the picture: 1 **Consent category**, 2 the languages with their starter
-questions (an answer follows the question in grey), 3 **Edit texts and
-starter questions** of a language, 4 **Add language**.
+In the picture: 1 **Active**, 2 **Visible to**, 3 **Consent category**, 4
+**Display name**, 5 **Image** (**Change selection** opens the file manager),
+6 **Position**, 7 the language with its starter questions (an answer follows
+the question in grey), 8 **Edit texts and starter questions**.
 
 ### Model
 
@@ -69,6 +78,12 @@ starter questions** of a language, 4 **Add language**.
 A model that cannot use tools shows: "This model cannot use tools. Web search
 does not work with it; navigation and forwarding work through marker lines."
 
+![The section Model: frame 1 around the field Model, frame 2 around the line below it with what the model can do and the note whether it is tested with tools of connections, frame 3 around Temperature, frame 4 around Answer length (max tokens).](../bilder/assistant-model.png)
+
+In the picture: 1 **Model**, 2 what the model can do and whether it is one of
+the models tested with tools of connections, 3 **Temperature** (for models that
+reason: **Reasoning effort**), 4 **Answer length (max tokens)**.
+
 ### Personality & answer style
 
 | Field | Choices |
@@ -79,7 +94,7 @@ does not work with it; navigation and forwarding work through marker lines."
 
 ### Knowledge base
 
-**Knowledge source** (same for all languages):
+**Knowledge source**:
 
 | Choice | What the assistant knows |
 | --- | --- |
@@ -102,6 +117,11 @@ the window shows its error notice instead of a stored answer.
 
 A rule for a language model cannot rule out every slip.
 
+![The sections Personality & answer style, Knowledge base and Safety: frames 1 to 3 around Form of address, Answer length and Tone, frame 4 around Knowledge source, frames 5 and 6 around No medical advice and Privacy mode.](../bilder/assistant-answers.png)
+
+In the picture: 1 **Form of address**, 2 **Answer length**, 3 **Tone**, 4
+**Knowledge source**, 5 **No medical advice**, 6 **Privacy mode**.
+
 ### Voice input (Pro)
 
 | Field | Meaning |
@@ -118,6 +138,15 @@ A rule for a language model cannot rule out every slip.
 | **Search service** | **Read approved sources only (free)**: the listed addresses are read directly. **Search via SerpAPI — limited to the approved domains**: a search engine finds pages, only on the approved domains; needs the SerpAPI key (the status line says whether it is stored). |
 | **Approved sources** | One address per line: a partner or manufacturer website, its `llms.txt`, a data endpoint. If the start page does not answer, the assistant follows matching sub-pages. |
 | **Sources per question** | 1 to 5 (preset 3) |
+
+The fields that belong to a switch appear as soon as it is ticked (the form reloads).
+
+![The sections Voice input and Web search: frames 1 to 3 around Allow voice input, Transcription model and Voice input also in privacy mode, frames 4 to 7 around Allow web search, Search service, Approved sources with two addresses and Sources per question.](../bilder/assistant-voice-search.png)
+
+In the picture: 1 **Allow voice input**, 2 **Transcription model**, 3 **Voice
+input also in privacy mode**, 4 **Allow web search**, 5 **Search service**, 6
+**Approved sources** (one address per row; the buttons next to a row copy or
+delete it), 7 **Sources per question**.
 
 ### Referral
 
@@ -147,6 +176,14 @@ form." Problems of the chosen newsletter module are named at the field, e.g.
 "The chosen module "Subscribe" is not on any published page. …"; until they are
 solved the form shows no newsletter checkbox.
 
+![The section Escalation & consent: frames 1 to 9 around Escalation email, Forward to (name), Contact page, Additional fields in the form with Name and Phone ticked, Of these, required, Preselected country code, Ask for consent to be contacted, Privacy policy and Newsletter checkbox.](../bilder/assistant-escalation.png)
+
+In the picture: 1 **Escalation email**, 2 **Forward to (name)**, 3 **Contact
+page** and 8 **Privacy policy** (**Change selection** opens the page tree), 4
+**Additional fields in the form**, 5 **Of these, required**, 6 **Preselected
+country code**, 7 **Ask for consent to be contacted**, 9 **Newsletter
+checkbox**. What visitors see of it: [The chat](chat.md#forwarding-to-the-team-basic).
+
 ### Installed skills and tools (Plus)
 
 - **Skills**: which installed skills the assistant may use; nothing is ticked
@@ -157,11 +194,17 @@ solved the form shows no newsletter checkbox.
   when privacy mode is on and a ticked tool asks for a person's data, when the model
   cannot call tools, and how many ticked tools are not usable.
 
+![The sections Installed skills and Tools of the connections: frame 1 around Skills with one installed skill, frame 2 around Tools with the connection Appointments opened and its tool list_free_slots ticked and the connection Open-Meteo folded, frame 3 around the note on the language model.](../bilder/assistant-tools.png)
+
+In the picture: 1 **Skills**, 2 **Tools**, grouped by connection (a click on
+the name of a connection shows or hides its tools), 3 the note on the language
+model (see [Which language model](connections.md#which-language-model)).
+
 ### Expert settings
 
 **System prompt**: own instructions for the model, only for special cases;
 form of address, length and tone are set above. `{name}` stands for the
-display name. Same for all languages.
+display name.
 
 ## Testing in the preview
 
