@@ -98,6 +98,16 @@ final class ConversationMemory
     }
 
     /**
+     * Drops the results of the connection tools. Without the connections of the
+     * licence (no licence, a lower edition, or a licence that fell back) nothing a
+     * connection returned earlier reaches the model or the next token.
+     */
+    public function forgetResults(): void
+    {
+        $this->entries = [];
+    }
+
+    /**
      * Skills and tools loaded at the end of this reply: the next reply starts with them.
      *
      * @param list<string> $skills

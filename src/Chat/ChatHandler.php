@@ -112,11 +112,19 @@ final class ChatHandler
      */
     public function reply(AgentModel $agent, string $message, array $history, string $locale, ?array $pageContext = null, ?Features $features = null, ?callable $progress = null, string $guest = '', ?callable $say = null, string $memory = ''): array
     {
-        $this->guest = $guest;
+        $this->features = $features ?? Features::forEdition('');
+        // Results of the connections and the proof of a guest check count only with
+        // the connections of the licence: the licence of this request decides, not
+        // what the conversation brings along.
+        $this->guest = $this->features->mcp ? $guest : '';
         $this->memory->load((int) $agent->id, $memory);
+
+        if (!$this->features->mcp) {
+            $this->memory->forgetResults();
+        }
+
         $this->say = null !== $say ? \Closure::fromCallable($say) : null;
         $this->interim = [];
-        $this->features = $features ?? Features::forEdition('');
         $this->progress = null !== $progress ? \Closure::fromCallable($progress) : null;
         $this->navigate = null;
         $this->handoff = null;

@@ -276,6 +276,16 @@ final class McpToolboxTest extends TestCase
             $this->assertStringNotContainsString('Kunde', $answer);
             $this->assertSame([['token' => $toolbox->files()[0]['token'], 'name' => 'A-1.pdf', 'size' => \strlen($pdf)]], $toolbox->files());
             $this->assertSame($pdf, $this->downloads->take($toolbox->files()[0]['token'])['data'] ?? null);
+
+            // The licence falls back: the proof the widget brings along counts for nothing, no tool is offered.
+            $token = $toolbox->guestToken();
+            $toolbox->prepare(Models::make(AgentModel::class, ['id' => 9, 'mcp_tools' => serialize(['1:get_order'])]), false, $token);
+            $this->assertSame([], $toolbox->names());
+            $this->assertSame('', $toolbox->guestToken(), 'no proof handed on without the connections of the licence');
+
+            // With the licence again, the same token still proves the guest.
+            $toolbox->prepare(Models::make(AgentModel::class, ['id' => 9, 'mcp_tools' => serialize(['1:get_order'])]), true, $token);
+            $this->assertNotSame('', $toolbox->guestToken());
         } finally {
             unlink($project.'/config/superagent/mcp-templates/shop/template.json');
             rmdir($project.'/config/superagent/mcp-templates/shop');

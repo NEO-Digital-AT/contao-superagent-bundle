@@ -65,6 +65,13 @@ schickt es mit der nächsten Nachricht; **Neues Gespräch** verwirft es. Ein
 Kennzeichen eines anderen Assistenten, ein verändertes oder eines, das älter als
 zwei Stunden ist, gilt als leer.
 
+Es zählt die Lizenz jeder einzelnen Anfrage, nicht das, was das Gespräch
+mitbringt. Ohne die Verbindungen der Lizenz (keine Lizenz, eine niedrigere Stufe
+oder eine Lizenz, die die Website nicht mehr abdeckt) werden die Ergebnisse der
+Verbindungen im Gedächtnis und der Nachweis einer früheren Gastprüfung verworfen,
+bevor das Modell gefragt wird; kein Werkzeug einer Verbindung wird angeboten oder
+aufgerufen, auch nicht in einem Gespräch, das mit der Lizenz begonnen hat.
+
 Die Skill-Dateien werden beim Lesen geprüft (Kopf, höchstens 2 800 Zeichen je
 Skill, bekannte Werkzeuge und Abhängigkeiten). Ein ungültiges Paket hält den
 Chat an, statt mit der Hälfte seiner Regeln zu laufen.

@@ -4,6 +4,11 @@ All notable changes to this extension are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-11-18
+
+### Fixed
+- Without the connections of the licence (no licence, a lower edition, or a licence that no longer covers the website), the results of connection tools kept in the memory of a running conversation and the proof of an earlier guest check no longer reach the model; the licence of each request decides.
+
 ## [1.0.0] - 2026-11-13
 
 Initial release. Runs on Contao 5.3 to 6.0 with PHP 8.2 to 8.5, as far as the Contao version supports it (Contao 5.7 needs PHP 8.3, Contao 6.0 PHP 8.4).

@@ -293,6 +293,41 @@ final class ChatHandlerTest extends TestCase
      * @param array<string, mixed>                       $agent
      * @param list<array{role: string, content: string}> $history
      */
+    public function testAfterTheLicenceIsGoneNothingOfTheConnectionReachesTheModel(): void
+    {
+        $this->hotelConnection();
+        $this->chat->mcpAnswers = ['ListOffers' => '{"offers":[{"ratePlanId":"NONREF","total":88}]}'];
+        $this->chat->answers = [
+            [['id' => 'c1', 'name' => 'load_tools', 'arguments' => ['tools' => ['mcp1_ListOffers']]]],
+            [['id' => 'c2', 'name' => 'mcp1_ListOffers', 'arguments' => ['arrival' => '2026-12-01']]],
+            'One offer: 88 EUR, not refundable.',
+        ];
+        $agent = ['mcp_tools' => serialize(['1:ListOffers'])];
+
+        try {
+            $first = $this->reply($agent, 'A room on 1 December, please.', [], Features::forEdition('plus'));
+
+            // The licence falls back to the free edition; the widget still sends the memory of the conversation.
+            $this->chat->sent = [];
+            $this->chat->mcpCalls = [];
+            $this->chat->answers = [
+                [['id' => 'c3', 'name' => 'mcp1_ListOffers', 'arguments' => ['arrival' => '2026-12-02']]],
+                'Sorry.',
+            ];
+            $second = $this->reply($agent, 'And on 2 December?', [], Features::forEdition(''), memory: $first['memory']);
+
+            $prompt = $this->chat->sent[0]['messages'][0]['content'];
+            $this->assertStringNotContainsString('EARLIER TOOL RESULTS', $prompt, 'no results of the connection');
+            $this->assertStringNotContainsString('NONREF', $prompt);
+            $this->assertStringNotContainsString('mcp1_ListOffers', $prompt, 'the tool is not named');
+            $this->assertNotContains('mcp1_ListOffers', $this->offered(0), 'the tool is not offered');
+            $this->assertSame([], $this->chat->mcpCalls, 'the connection is not called');
+            $this->assertArrayNotHasKey('memory', $second, 'the memory of the paid edition is not handed on');
+        } finally {
+            Registry::getInstance()->reset();
+        }
+    }
+
     private function reply(array $agent, string $message, array $history = [], Features|null $features = null, callable|null $progress = null, int $maxSteps = 8, AgentLanguageModel|null $texts = null, string $memory = ''): array
     {
         $this->chat->texts = $texts;
